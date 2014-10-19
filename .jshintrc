@@ -1,0 +1,26 @@
+{
+    "nonew":true,
+    "curly":true,
+    "latedef":true,
+    "unused":true,
+    "noarg":true,
+    "forin":true,
+    "noempty":true,
+    "node":true,
+    "eqeqeq":true,
+    "undef":true,
+    "bitwise":false,
+    "newcap":true,
+    "immed":true,
+    "browser":true,
+    "freeze":true,
+    "globals"   : {
+        /* MOCHA */
+        "describe"   : false,
+        "it"         : false,
+        "before"     : false,
+        "beforeEach" : false,
+        "after"      : false,
+        "afterEach"  : false
+    }
+}

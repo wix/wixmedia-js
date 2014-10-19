@@ -1,0 +1,23 @@
+{
+  "name": "wixmedia",
+  "version": "0.0.1",
+  "homepage": "https://github.com/wix/mediaservicesjs",
+  "authors": [
+    "David Zuckerman <davidz@wix.com>"
+  ],
+  "description": "isomorphic library for Wix Media Services",
+  "main": "dist/wixmedia.dist.js",
+  "keywords": [
+
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
