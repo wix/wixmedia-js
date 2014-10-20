@@ -8,7 +8,7 @@ This package is an isomorphic JavaScript library (works in Node and in the brows
 ## Prerequisites
 To begin working with Wix Media Services:
 
-- [Create a Google Computer Engine application](http://link-to-come) or use an existing app. 
+- [Create a Google Computer Engine application](link) or use an existing app. 
 - [Create a Wix Media Services account](link)
 
 
@@ -33,6 +33,27 @@ var BASE_URL = "<your base URL here>";
 var WixImage = require('wixmedia').WixImage;
 var image = new WixImage(BASE_URL, "<your image ID here>");
 image.srz().w(1000).h(1000).name("cats.jpg");
+//prints out the new URL for an image that has width of 1000px and height of 1000px
 console.log(image.toUrl());
+
+````
+### Browser, no AMD ###
+````js
+var BASE_URL = "<your base URL here>";
+var image = WixMedia.WixImage(BASE_URL, "<your image ID here>");
+image.srz().w(1000).h(1000).name("cats.jpg");
+//prints out the new URL for an image that has width of 1000px and height of 1000px
+console.log(image.toUrl());
+````
+
+### Browser, using require.js ###
+````js
+require(['WixMedia'], function(WixMedia) {
+    var BASE_URL = "<your base URL here>";
+    var image = WixMedia.WixImage(BASE_URL, "<your image ID here>");
+    image.srz().w(1000).h(1000).name("cats.jpg");
+    //prints out the new URL for an image that has width of 1000px and height of 1000px
+    console.log(image.toUrl());
+});
 
 ````
