@@ -38,7 +38,8 @@ function outputParams(params, name) {
  * This provides methods used for adjustment APIs. It's not meant to
  * be used directly.
  *
- * @mixin AdjustMixin
+ * @mixin
+ * @alias AdjustMixin
  */
 function AdjustMixin(init) {
     this.adjustments = {};
@@ -130,7 +131,8 @@ AdjustMixin.prototype.vib = AdjustMixin.prototype.vibrance;
 /**
  * This provides methods used for filter APIs. It's not meant to
  * be used directly.
- * @mixin FilterMixin
+ * @mixin
+ * @alias FilterMixin
  */
 function FilterMixin(init) {
     this.filters = {};
@@ -143,6 +145,7 @@ function FilterMixin(init) {
     }
 }
 FilterMixin.prototype = {
+    /** @lends FilterMixin */
     /**
      * Applies an oil paint effect to the image.
      * @param {Number} [oil=true] enabled
@@ -228,7 +231,8 @@ FilterMixin.prototype.pixfs = FilterMixin.prototype.pixelateFaces;
 /**
  * This provides methods used for filter APIs. It's not meant to
  * be used directly.
- * @mixin BaseMixin
+ * @mixin
+ * @alias BaseMixin
  */
 function BaseMixin(endpoint, imageId, opName) {
     this.endpoint = endpoint;
@@ -287,7 +291,8 @@ OperationMixin.prototype.toUrl = function() {
 
 /**
  * This provides methods used for operation APIs. It's not meant to be used directly.
- * @mixin WidthHeightQualityMixin
+ * @mixin
+ * @alias WidthHeightQualityMixin
  */
 function WidthHeightQualityMixin() { }
 WidthHeightQualityMixin.prototype = {
@@ -340,7 +345,8 @@ WidthHeightQualityMixin.prototype.q = WidthHeightQualityMixin.prototype.quality;
 
 /**
  * This provides methods used for operation APIs. It's not meant to be used directly.
- * @mixin UnsharpMaskMixin
+ * @mixin
+ * @alias UnsharpMaskMixin
  */
 function UnsharpMaskMixin() { }
 
@@ -359,7 +365,8 @@ UnsharpMaskMixin.prototype.us = UnsharpMaskMixin.prototype.unsharpMask;
 
 /**
  * This provides methods used for operation APIs. It's not meant to be used directly.
- * @mixin AlignmentMixin
+ * @mixin
+ * @alias AlignmentMixin
  */
 function AlignmentMixin() { }
 
@@ -546,7 +553,6 @@ Watermark.prototype.scl = Watermark.prototype.scale;
  * @constructor Adjustment
  * @mixes AdjustMixin
  * @mixes FilterMixin
- * @mixes AlignmentMixin
  */
 function Adjustment(endpoint, imageId, init, filter) {
     BaseMixin.call(this, endpoint, imageId, "adjust");
@@ -570,7 +576,6 @@ Adjustment.prototype.toUrl = function() {
  * @constructor Filter
  * @mixes AdjustMixin
  * @mixes FilterMixin
- * @mixes AlignmentMixin
  */
 function Filter(endpoint, imageId, init, adjust) {
     BaseMixin.call(this, endpoint, imageId, "filter");
