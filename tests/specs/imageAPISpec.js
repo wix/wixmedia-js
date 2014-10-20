@@ -6,12 +6,12 @@ var expect = require('expect.js');
 describe('Test Wix Media Services', function () {
     it('Test srz construction, w, h, a', function () {
        var i = new WixImage("http://test.wix.com", "12345");
-       var url = i.srz().size(100, 300).alignment(wms.SRZ.Alignment.CENTER_LEFT).name("cat.jpg").toUrl();
+       var url = i.srz().size(100, 300).alignment(wms.SRZ.Alignment.LEFT).name("cat.jpg").toUrl();
        expect(url).to.be("http://test.wix.com/12345/srz/w_100,h_300,a_l/cat.jpg");
     });
     it('Test srz construction, w, h, a shorthand', function () {
         var i = new WixImage("http://test.wix.com", "12345");
-        var url = i.srz().w(100).h(300).alignment(wms.SRZ.Alignment.CENTER_LEFT).name("cat.jpg").toUrl();
+        var url = i.srz().w(100).h(300).alignment(wms.SRZ.Alignment.LEFT).name("cat.jpg").toUrl();
         expect(url).to.be("http://test.wix.com/12345/srz/w_100,h_300,a_l/cat.jpg");
     });
     it('Test srz construction, (w, h), q', function () {
@@ -56,7 +56,7 @@ describe('Test Wix Media Services', function () {
     });
     it('Test canvas construction, (w,h), a', function () {
         var i = new WixImage("http://test.wix.com", "12345");
-        var url = i.canvas().size(100, 300).anchor(wms.CANVAS.ANCHORS.CENTER_LEFT).name("cat.jpg").toUrl();
+        var url = i.canvas().size(100, 300).anchor(wms.CANVAS.ANCHORS.LEFT).name("cat.jpg").toUrl();
         expect(url).to.be("http://test.wix.com/12345/canvas/w_100,h_300,a_l/cat.jpg");
     });
     it('Test fill construction, (w,h)', function () {
@@ -76,22 +76,22 @@ describe('Test Wix Media Services', function () {
     });
     it('Test wm construction, op,a', function () {
         var i = new WixImage("http://test.wix.com", "12345");
-        var url = i.wm().opacity(100).alignment(wms.WM.Alignment.CENTER_LEFT).name("cat.jpg").toUrl();
+        var url = i.wm().opacity(100).alignment(wms.WM.Alignment.LEFT).name("cat.jpg").toUrl();
         expect(url).to.be("http://test.wix.com/12345/wm/op_100,a_l/cat.jpg");
     });
     it('Test wm construction, op,a shorthand', function () {
         var i = new WixImage("http://test.wix.com", "12345");
-        var url = i.wm().op(100).alignment(wms.WM.Alignment.CENTER_LEFT).name("cat.jpg").toUrl();
+        var url = i.wm().op(100).alignment(wms.WM.Alignment.LEFT).name("cat.jpg").toUrl();
         expect(url).to.be("http://test.wix.com/12345/wm/op_100,a_l/cat.jpg");
     });
     it('Test wm construction, a,scl', function () {
         var i = new WixImage("http://test.wix.com", "12345");
-        var url = i.wm().alignment(wms.WM.Alignment.CENTER_LEFT).scale(4).name("cat.jpg").toUrl();
+        var url = i.wm().alignment(wms.WM.Alignment.LEFT).scale(4).name("cat.jpg").toUrl();
         expect(url).to.be("http://test.wix.com/12345/wm/a_l,scl_4/cat.jpg");
     });
     it('Test wm construction, a,scl shorthand', function () {
         var i = new WixImage("http://test.wix.com", "12345");
-        var url = i.wm().alignment(wms.WM.Alignment.CENTER_LEFT).scl(4).name("cat.jpg").toUrl();
+        var url = i.wm().alignment(wms.WM.Alignment.LEFT).scl(4).name("cat.jpg").toUrl();
         expect(url).to.be("http://test.wix.com/12345/wm/a_l,scl_4/cat.jpg");
     });
     it('Test adjust construction, br', function () {

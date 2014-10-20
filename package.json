@@ -11,9 +11,12 @@
         "grunt-mocha": "latest",
         "mocha": "latest",
         "expect.js": "latest",
-        "uglifyify": "latest"
-
+        "uglifyify": "latest",
+        "grunt-jsdoc": "0.5.4",
+        "ink-docstrap": "latest",
+        "grunt-gh-pages": "latest"
     },
+
     "engines": {
         "node": ">= 0.10.20"
     },
