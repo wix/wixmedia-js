@@ -7,62 +7,6 @@ var DEFAULT_US_THRESHOLD = 0.00;
 var DEFAULT_US_AMOUNT = 0.20;
 var DEFAULT_AUTO = "auto";
 
-/**
- * Alignments and Anchors used in different operations
- * @alias Alignments
- * @enum
- * @readonly
- */
-var Alignments = {
-    /**
-     * Focuses or aligns on the center of the image, both vertical and horizontal center.
-     * @constant
-     */
-    CENTER : "c",
-    /**
-     * Focuses or aligns on the top of the image, horizontal center.
-     */
-    TOP : "t",
-    /**
-     * Focuses or aligns on top left side of the image.
-     */
-    TOP_LEFT : "tl",
-    /**
-     * Focuses or aligns on top right side of the image.
-     * @constant
-     */
-    TOP_RIGHT : "tr",
-    /**
-     * Focuses or aligns on the bottom of the image, horizontal center.
-     */
-    BOTTOM : "b",
-    /**
-     * Focuses or aligns on the bottom left side of the image.
-     */
-    BOTTOM_LEFT : "bl",
-    /**
-     * Focuses or aligns on the bottom right side of the image.
-     */
-    BOTTOM_RIGHT : "br",
-    /**
-     * Focuses or aligns on the left side of the image, horizontal center.
-     */
-    LEFT : "l",
-    /**
-     * Focuses or aligns on the right side of the image, horizontal center.
-     */
-    RIGHT : "r",
-    /**
-    * Focus on a face on the image. Detects a face in the picture and centers on it. When multiple faces are detected in the picture, the focus will be on one of them.
-    */
-    FACE_RECOGNITION : "f",
-    /**
-     * Focus on all faces in the image. Detects multiple faces and centers on them. Will do a best effort to have all the faces in the new image, depending on the size of the new canvas.     * @constant
-     */
-    ALL_FACES : "fs"
-};
-
-
 function sharpenParams(r, a, t) {
     if(a === undefined && t === undefined && (r === undefined || r === DEFAULT_AUTO)) {
         return { auto : true};
@@ -784,6 +728,110 @@ WixImage.prototype = {
         return new Filter(this.endpoint, this.imageId, data, adjust);
     }
 };
+
+/**
+ * Constants for use with image operations
+ * @class
+ */
+function Defaults() {
+    /**
+     * Alignments for use with srz and watermark
+     * @readonly
+     * @enum
+     */
+    this.Alignment = {
+        /**
+         * Focuses or aligns on the center of the image, both vertical and horizontal center.
+         * @constant
+         */
+        CENTER: "c",
+        /**
+         * Focuses or aligns on the top of the image, horizontal center.
+         */
+        TOP: "t",
+        /**
+         * Focuses or aligns on top left side of the image.
+         */
+        TOP_LEFT: "tl",
+        /**
+         * Focuses or aligns on top right side of the image.
+         * @constant
+         */
+        TOP_RIGHT: "tr",
+        /**
+         * Focuses or aligns on the bottom of the image, horizontal center.
+         */
+        BOTTOM: "b",
+        /**
+         * Focuses or aligns on the bottom left side of the image.
+         */
+        BOTTOM_LEFT: "bl",
+        /**
+         * Focuses or aligns on the bottom right side of the image.
+         */
+        BOTTOM_RIGHT: "br",
+        /**
+         * Focuses or aligns on the left side of the image, horizontal center.
+         */
+        LEFT: "l",
+        /**
+         * Focuses or aligns on the right side of the image, horizontal center.
+         */
+        RIGHT: "r",
+        /**
+         * Focus on a face on the image. Detects a face in the picture and centers on it. When multiple faces are detected in the picture, the focus will be on one of them.
+         */
+        FACE_RECOGNITION: "f",
+        /**
+         * Focus on all faces in the image. Detects multiple faces and centers on them. Will do a best effort to have all the faces in the new image, depending on the size of the new canvas.     * @constant
+         */
+        ALL_FACES: "fs"
+    };
+    /**
+     * Anchors for use with canvas
+     * @borrows Defaults#Alignment as Defaults#Anchor
+     */
+    this.Anchor = this.Alignment;
+
+    /**
+     * The default quality for jpgs
+     * @type {number}
+     * @readonly
+     * @member
+     */
+    this.QUALITY = DEFAULT_QUALITY;
+
+    /**
+     * The default unsharpen radius
+     * @type {number}
+     * @readonly
+     * @member
+     */
+    this.US_RADIUS = DEFAULT_US_RADIUS;
+
+    /**
+     * The default unsharpen threshold
+     * @type {number}
+     * @readonly
+     * @member
+     */
+    this.US_AMOUNT = DEFAULT_US_AMOUNT;
+
+    /**
+     * The default unsharpen amount
+     * @type {number}
+     * @readonly
+     * @member
+     */
+    this.US_THRESHOLD = DEFAULT_US_THRESHOLD;
+
+    /**
+     * Default value 'auto'
+     * @type {string}
+     */
+    this.AUTO = DEFAULT_AUTO;
+}
+
 /**
  * Entry point into the WixMedia service
  * @module WixMedia
@@ -807,61 +855,10 @@ module.exports = {
     WixImage : function(baseUrl, imageId) {
         return new WixImage(baseUrl, imageId);
     },
-    /**
-     * Constants for use with image operations
-     * @class
-     * @static
-     */
-    Defaults : {
-        /** @lends Defaults */
 
-        /**
-        * Alignments for use with srz and watermark
-        * @type Alignments
-         * @readonly
-         * @member
-        */
-        Alignment : Alignments,
-        /**
-         * Anchors for use with canvas
-         * @type Alignments
-         * @readonly
-         * @member
-         */
-        Anchors : Alignments,
-        /**
-         * The default quality for jpgs
-         * @type {number}
-         * @readonly
-         * @member
-         */
-        QUALITY: DEFAULT_QUALITY,
-        /**
-         * The default unsharpen radius
-         * @type {number}
-         * @readonly
-         * @member
-         */
-        US_RADIUS: DEFAULT_US_RADIUS,
-        /**
-         * The default unsharpen threshold
-         * @type {number}
-         * @readonly
-         * @member
-         */
-        US_AMOUNT: DEFAULT_US_AMOUNT,
-        /**
-         * The default unsharpen amount
-         * @type {number}
-         * @readonly
-         * @member
-         */
-        US_THRESHOLD: DEFAULT_US_THRESHOLD,
-        /**
-         * The value 'auto'
-         * @readonly
-         * @member
-         */
-        AUTO : DEFAULT_AUTO
-    }
+    /**
+     * Image constants for use with Wix Media Services
+     * @type {Defaults}
+     */
+    Defaults : new Defaults()
 };

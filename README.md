@@ -19,14 +19,7 @@ To begin working with Wix Media Services:
     $ bower install wixmedia-js
 
 
-## Wix Media Services API ##
-
-Wix Media Services provides web developers a versatile infrastructure for media file manipulations easily accessible through its RESTful API. 
-
-For more information about the RESTful API, please see the [Wix Media Services developer center](link)
-
 ## Usage ##
-
 ### Node ###
 ````js
 var BASE_URL = "<your base URL here>";
@@ -55,5 +48,11 @@ require(['WixMedia'], function(WixMedia) {
     //prints out the new URL for an image that has width of 1000px and height of 1000px
     console.log(image.toUrl());
 });
-
 ````
+## Read the docs ##
+[Read the API docs](http://wix.github.io/wixmedia-js/) to learn more about this library
+
+## Wix Media Services API ##
+Wix Media Services provides web developers a versatile infrastructure for media file manipulations easily accessible through its RESTful API.
+
+For more information about the RESTful API, please see the [Wix Media Services developer center](link)

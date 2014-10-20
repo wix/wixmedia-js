@@ -56,7 +56,7 @@ describe('Test Wix Media Services', function () {
     });
     it('Test canvas construction, (w,h), a', function () {
         var i = new WixImage("http://test.wix.com", "12345");
-        var url = i.canvas().size(100, 300).anchor(wms.Defaults.Anchors.LEFT).name("cat.jpg").toUrl();
+        var url = i.canvas().size(100, 300).anchor(wms.Defaults.Anchor.LEFT).name("cat.jpg").toUrl();
         expect(url).to.be("http://test.wix.com/12345/canvas/w_100,h_300,a_l/cat.jpg");
     });
     it('Test fill construction, (w,h)', function () {
