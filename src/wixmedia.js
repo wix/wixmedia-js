@@ -221,7 +221,7 @@ function FilterMixin(init) {
 }
 FilterMixin.prototype = {
     /**
-     * Applies an oil paint effect on the image.
+     * Applies an oil paint effect to the image.
      * @param {Number} [oil=true] enabled
      * @returns {*} the operation
      */
