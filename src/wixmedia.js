@@ -1,35 +1,15 @@
 var extend = require("./utils").extend;
 var parser = require("./parser");
 
-/**
- * The default quality for jpgs
- * @type {number}
- * @constant
- */
 var DEFAULT_QUALITY = 75;
-/**
- * The default unsharpen radius
- * @type {number}
- * @constant
- */
 var DEFAULT_US_RADIUS = 0.50;
-/**
- * The default unsharpen threshold
- * @type {number}
- * @constant
- */
 var DEFAULT_US_THRESHOLD = 0.00;
-/**
- * The default unsharpen amount
- * @type {number}
- * @constant
- */
 var DEFAULT_US_AMOUNT = 0.20;
-
 var DEFAULT_AUTO = "auto";
 
 /**
  * Alignments and Anchors used in different operations
+ * @alias Alignments
  * @enum
  * @readonly
  */
@@ -206,8 +186,7 @@ AdjustMixin.prototype.vib = AdjustMixin.prototype.vibrance;
 /**
  * This provides methods used for filter APIs. It's not meant to
  * be used directly.
- * @alias FilterMixin
- * @mixin
+ * @mixin FilterMixin
  */
 function FilterMixin(init) {
     this.filters = {};
@@ -302,6 +281,11 @@ FilterMixin.prototype.pix = FilterMixin.prototype.pixelate;
 FilterMixin.prototype.neg = FilterMixin.prototype.negative;
 FilterMixin.prototype.pixfs = FilterMixin.prototype.pixelateFaces;
 
+/**
+ * This provides methods used for filter APIs. It's not meant to
+ * be used directly.
+ * @mixin BaseMixin
+ */
 function BaseMixin(endpoint, imageId, opName) {
     this.endpoint = endpoint;
     this.imageId = imageId;
@@ -309,9 +293,21 @@ function BaseMixin(endpoint, imageId, opName) {
 }
 
 BaseMixin.prototype = {
+    /**
+     * Sets the name of the image to return
+     * @param {string} name the name of the image
+     * @returns {*} the operation
+     */
     name : function(name) {
         this.imageName = name;
         return this;
+    },
+    /**
+     * Returns the URL of the configured image
+     * @returns {String} the URL of the image
+     */
+    toUrl : function() {
+        throw "Not implemented";
     }
 };
 
@@ -335,14 +331,14 @@ extend(OperationMixin.prototype, AdjustMixin.prototype);
 extend(OperationMixin.prototype, FilterMixin.prototype);
 
 OperationMixin.prototype.toUrl = function() {
-        var out = this.endpoint + "/" + this.imageId + "/" + outputParams(this.operations, this.opName);
-        if(this.hasAdjustments()) {
-            out += "/" + outputParams(this.adjustments, "adjust");
-        }
-        if(this.hasFilters()) {
-            out += "/" + outputParams(this.filters, "filter");
-        }
-        return out + "/" + this.imageName;
+    var out = this.endpoint + "/" + this.imageId + "/" + outputParams(this.operations, this.opName);
+    if(this.hasAdjustments()) {
+        out += "/" + outputParams(this.adjustments, "adjust");
+    }
+    if(this.hasFilters()) {
+        out += "/" + outputParams(this.filters, "filter");
+    }
+    return out + "/" + this.imageName;
 };
 
 /**
@@ -440,55 +436,58 @@ AlignmentMixin.prototype.a = AlignmentMixin.prototype.alignment;
  * Scaled resize without crop. Most useful shortcut for simple image optimization,
  * while maintaining good balance between output size and quality
  * @constructor Srz
+ * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes WidthHeightQualityMixin
  * @mixes AlignmentMixin
  * @mixes UnsharpMaskMixin
  */
-function OpSrz(endpoint, imageId,  init, filter, adjust) {
+function Srz(endpoint, imageId,  init, filter, adjust) {
     OperationMixin.call(this, endpoint, imageId,  "srz", init, filter, adjust);
     WidthHeightQualityMixin.call(this);
     UnsharpMaskMixin.call(this);
 }
 
-extend(OpSrz.prototype, OperationMixin.prototype);
-extend(OpSrz.prototype, WidthHeightQualityMixin.prototype);
-extend(OpSrz.prototype, AlignmentMixin.prototype);
-extend(OpSrz.prototype, UnsharpMaskMixin.prototype);
+extend(Srz.prototype, OperationMixin.prototype);
+extend(Srz.prototype, WidthHeightQualityMixin.prototype);
+extend(Srz.prototype, AlignmentMixin.prototype);
+extend(Srz.prototype, UnsharpMaskMixin.prototype);
 
 /**
  * Resizes the image to fit within the width and height boundaries without cropping or scaling the image,
  * but will not increase the size of the image if it is smaller than the output size.
  * The resulting image will maintain the same aspect ratio of the input image.
  * @constructor Srb
+ * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes WidthHeightQualityMixin
  * @mixes UnsharpMaskMixin
  */
-function OpSrb(endpoint, imageId,  filter, adjust) {
+function Srb(endpoint, imageId,  filter, adjust) {
     OperationMixin.call(this, endpoint, imageId,  "srb", filter, adjust);
 }
-extend(OpSrb.prototype, OperationMixin.prototype);
-extend(OpSrb.prototype, WidthHeightQualityMixin.prototype);
-extend(OpSrb.prototype, UnsharpMaskMixin.prototype);
+extend(Srb.prototype, OperationMixin.prototype);
+extend(Srb.prototype, WidthHeightQualityMixin.prototype);
+extend(Srb.prototype, UnsharpMaskMixin.prototype);
 
 /**
  * Resizes the image canvas, filling the width and height boundaries and crops any excess image data.
  * The resulting image will match the width and height constraints without scaling the image.
  * @constructor Canvas
+ * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes WidthHeightQualityMixin
  */
-function OpCanvas(endpoint, imageId,  filter, adjust) {
+function Canvas(endpoint, imageId,  filter, adjust) {
     OperationMixin.call(this, endpoint, imageId,  "canvas", filter, adjust);
 }
 
-extend(OpCanvas.prototype, OperationMixin.prototype);
-extend(OpCanvas.prototype, WidthHeightQualityMixin.prototype);
-extend(OpCanvas.prototype, AlignmentMixin.prototype);
+extend(Canvas.prototype, OperationMixin.prototype);
+extend(Canvas.prototype, WidthHeightQualityMixin.prototype);
+extend(Canvas.prototype, AlignmentMixin.prototype);
 
 /**
  * Sets the anchor value for this operation
@@ -496,43 +495,45 @@ extend(OpCanvas.prototype, AlignmentMixin.prototype);
  * @returns {*} the operation
  * @function
  */
-OpCanvas.prototype.anchor = OpCanvas.prototype.alignment;
+Canvas.prototype.anchor = Canvas.prototype.alignment;
 
 /**
  * Create an image with the exact given width and height while retaining original proportions.
  * Use only part of the image that fills the given dimensions. Only part of the original image
  * might be visible if the required proportions are different than the original ones.
  * @constructor Fill
+ * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes WidthHeightQualityMixin
  */
-function OpFill(endpoint, imageId,  filter, adjust) {
+function Fill(endpoint, imageId,  filter, adjust) {
     OperationMixin.call(this, endpoint, imageId,  "fill", filter, adjust);
 }
-extend(OpFill.prototype, OperationMixin.prototype);
-extend(OpFill.prototype, WidthHeightQualityMixin.prototype);
+extend(Fill.prototype, OperationMixin.prototype);
+extend(Fill.prototype, WidthHeightQualityMixin.prototype);
 
 /**
  * Crops the image based on the supplied coordinates, starting at the x, y pixel
  * coordinates along with the width and height parameters.
  * @constructor Crop
+ * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes WidthHeightQualityMixin
  */
-function OpCrop(endpoint, imageId,  filter, adjust) {
+function Crop(endpoint, imageId,  filter, adjust) {
     OperationMixin.call(this, endpoint, imageId,  "crop", filter, adjust);
 }
-extend(OpCrop.prototype, OperationMixin.prototype);
-extend(OpCrop.prototype, WidthHeightQualityMixin.prototype);
+extend(Crop.prototype, OperationMixin.prototype);
+extend(Crop.prototype, WidthHeightQualityMixin.prototype);
 
 /**
  * The x value of the crop
  * @param {number} x the x value
  * @returns {*} the operation
  */
-OpCrop.prototype.x = function(x) {
+Crop.prototype.x = function(x) {
     this.operations.x = x;
     return this;
 };
@@ -542,7 +543,7 @@ OpCrop.prototype.x = function(x) {
  * @param {number} y the y value
  * @returns {*} the operation
  */
-OpCrop.prototype.y = function(y) {
+Crop.prototype.y = function(y) {
     this.operations.y = y;
     return this;
 };
@@ -551,9 +552,9 @@ OpCrop.prototype.y = function(y) {
  * A shorthand for setting the x and y coordinates for this crop
  * @param {number} x the x value
  * @param {number} y the y value
- * @returns {OpCrop}
+ * @returns {Crop}
  */
-OpCrop.prototype.coords = function(x, y) {
+Crop.prototype.coords = function(x, y) {
     this.x(x);
     this.y(y);
     return this;
@@ -562,37 +563,38 @@ OpCrop.prototype.coords = function(x, y) {
 /**
  * Enables users to apply watermark such as copyright notice in order to protect their images.
  * @constructor Watermark
+ * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes AlignmentMixin
  */
-function OpWm(endpoint, imageId, filter, adjust) {
+function Watermark(endpoint, imageId, filter, adjust) {
     OperationMixin.call(this, endpoint, imageId, "wm", filter, adjust);
 }
 
-extend(OpWm.prototype, OperationMixin.prototype);
-extend(OpWm.prototype, AlignmentMixin.prototype);
+extend(Watermark.prototype, OperationMixin.prototype);
+extend(Watermark.prototype, AlignmentMixin.prototype);
 
 /**
  * The Watermark opacity.
  * @param {number} o a number between 0 and 100
- * @returns {OpWm}
+ * @returns {Watermark}
  */
-OpWm.prototype.opacity = function(o) {
+Watermark.prototype.opacity = function(o) {
     this.operations.op = o;
     return this;
 };
-OpWm.prototype.op = OpWm.prototype.opacity;
+Watermark.prototype.op = Watermark.prototype.opacity;
 /**
  * Watermark horizontal scaling as percents of the requested image width
  * @param {number} o a percent between 0 and 100
- * @returns {OpWm}
+ * @returns {Watermark}
  */
-OpWm.prototype.scale = function(s) {
+Watermark.prototype.scale = function(s) {
     this.operations.scl = s;
     return this;
 };
-OpWm.prototype.scl = OpWm.prototype.scale;
+Watermark.prototype.scl = Watermark.prototype.scale;
 
 /**
  * Applies an adjustment to an image. Parameters values can be either specific or set to “auto”.
@@ -655,17 +657,17 @@ function handleUrl(url) {
     }
 
     if(data.api.hasOwnProperty('srz')) {
-        target = new OpSrz(data.endpoint, data.imageId, data.api.srz, fOptions, aOptions).name(data.imageName);
+        target = new Srz(data.endpoint, data.imageId, data.api.srz, fOptions, aOptions).name(data.imageName);
     } else if(data.api.hasOwnProperty('srb')) {
-        target = new OpSrb(data.endpoint, data.imageId, data.api.srb, fOptions, aOptions).name(data.imageName);
+        target = new Srb(data.endpoint, data.imageId, data.api.srb, fOptions, aOptions).name(data.imageName);
     } else if(data.api.hasOwnProperty('canvas')) {
-        target = new OpCanvas(data.endpoint, data.imageId, data.api.canvas, fOptions, aOptions).name(data.imageName);
+        target = new Canvas(data.endpoint, data.imageId, data.api.canvas, fOptions, aOptions).name(data.imageName);
     } else if(data.api.hasOwnProperty('fill')) {
-        target = new OpFill(data.endpoint, data.imageId, data.api.fill, fOptions, aOptions).name(data.imageName);
+        target = new Fill(data.endpoint, data.imageId, data.api.fill, fOptions, aOptions).name(data.imageName);
     } else if(data.api.hasOwnProperty('wm')) {
-        target = new OpWm(data.endpoint, data.imageId, data.api.wm, fOptions, aOptions).name(data.imageName);
+        target = new Watermark(data.endpoint, data.imageId, data.api.wm, fOptions, aOptions).name(data.imageName);
     } else if(data.api.hasOwnProperty('crop')) {
-        target = new OpCrop(data.endpoint, data.imageId, data.api.crop, fOptions, aOptions).name(data.imageName);
+        target = new Crop(data.endpoint, data.imageId, data.api.crop, fOptions, aOptions).name(data.imageName);
     }
     if(target === null) {
         return filter !== null ? filter : adjust;
@@ -673,58 +675,193 @@ function handleUrl(url) {
     return target;
 }
 
-function WixImage(endpoint, imageId) {
+/**
+ * a WixImage is a configurable object that supports all the operations, filters and adjustments supported by Wix Media Services
+ * @param {String} baseUrl the base URL where the image is hosted
+ * @param {String} imageId the id of the image to manipulate
+ * @constructor WixImage
+ */
+function WixImage(baseUrl, imageId) {
     this.imageId = imageId;
-    this.endpoint = endpoint;
+    this.endpoint = baseUrl;
 }
 
 WixImage.prototype = {
+    /** @lends WixImage */
+
+    /**
+     * Configures this image using the 'srz' operation.
+     * @param {Object} [data=null] optional configuration data for this operation
+     * @param {Object} [filter=null] optional configuration data for image adjustments
+     * @param {Object} [adjust=null] optional configuration data for image filters
+     * @returns {Srz}
+     * @memberOf WixImage#
+     * @method
+     */
     srz : function(data, filter, adjust) {
-        return new OpSrz(this.endpoint, this.imageId, data, filter, adjust);
+        return new Srz(this.endpoint, this.imageId, data, filter, adjust);
     },
+    /**
+     * Configures this image using the 'srb' operation.
+     * @param {Object} [data=null] optional configuration data for this operation
+     * @param {Object} [filter=null] optional configuration data for image adjustments
+     * @param {Object} [adjust=null] optional configuration data for image filters
+     * @returns {Srb}
+     * @memberOf WixImage#
+     * @method
+     */
     srb : function(data, filter, adjust) {
-        return new OpSrb(this.endpoint, this.imageId, data, filter, adjust);
+        return new Srb(this.endpoint, this.imageId, data, filter, adjust);
     },
+    /**
+     * Configures this image using the 'canvas' operation.
+     * @param {Object} [data=null] optional configuration data for this operation
+     * @param {Object} [filter=null] optional configuration data for image adjustments
+     * @param {Object} [adjust=null] optional configuration data for image filters
+     * @returns {Canvas}
+     * @memberOf WixImage#
+     * @method
+     */
     canvas : function(data, filter, adjust) {
-        return new OpCanvas(this.endpoint, this.imageId, data, filter, adjust);
+        return new Canvas(this.endpoint, this.imageId, data, filter, adjust);
     },
+    /**
+     * Configures this image using the 'fill' operation.
+     * @param {Object} [data=null] optional configuration data for this operation
+     * @param {Object} [filter=null] optional configuration data for image adjustments
+     * @param {Object} [adjust=null] optional configuration data for image filters
+     * @returns {Fill}
+     * @memberOf WixImage#
+     * @method
+     */
     fill : function(data, filter, adjust) {
-        return new OpFill(this.endpoint, this.imageId, data, filter, adjust);
+        return new Fill(this.endpoint, this.imageId, data, filter, adjust);
     },
+    /**
+     * Configures this image using the 'crop' operation.
+     * @param {Object} [data=null] optional configuration data for this operation
+     * @param {Object} [filter=null] optional configuration data for image adjustments
+     * @param {Object} [adjust=null] optional configuration data for image filters
+     * @returns {Crop}
+     * @memberOf WixImage#
+     * @method
+     */
     crop : function(data, filter, adjust) {
-        return new OpCrop(this.endpoint, this.imageId, data, filter, adjust);
+        return new Crop(this.endpoint, this.imageId, data, filter, adjust);
     },
+    /**
+     * Configures this image using the 'wm' operation.
+     * @param {Object} [data=null] optional configuration data for this operation
+     * @param {Object} [filter=null] optional configuration data for image adjustments
+     * @param {Object} [adjust=null] optional configuration data for image filters
+     * @returns {Watermark}
+     * @memberOf WixImage#
+     * @method
+     */
     wm : function(data, filter, adjust) {
-        return new OpWm(this.endpoint, this.imageId, data, filter, adjust);
+        return new Watermark(this.endpoint, this.imageId, data, filter, adjust);
     },
+    /**
+     * Applies adjustments to this image
+     * @param {Object} [data=null] optional configuration data for image adjustments
+     * @param {Object} [filter=null] optional configuration data for image filters
+     * @returns {Adjustment}
+     * @memberOf WixImage#
+     * @method
+     */
     adjust : function(data, filter) {
         return new Adjustment(this.endpoint, this.imageId, data, filter);
     },
+    /**
+     * Applies filters to this image
+     * @param {Object} [data=null] optional configuration data for this image's filters
+     * @param {Object} [adjust=null] optional configuration data for image adjustments
+     * @returns {Filter}
+     * @memberOf WixImage#
+     * @method
+     */
     filter : function(data, adjust) {
         return new Filter(this.endpoint, this.imageId, data, adjust);
     }
 };
-
-
+/**
+ * Entry point into the WixMedia service
+ * @module WixMedia
+ */
 module.exports = {
+    /**
+     * Creates a {@link WixImage} object from a passed in URL
+     * @param {string} url The URL to parse
+     * @returns {WixImage} a WixImage
+     * @throws An exception if the URL was invalid
+     */
     fromUrl : function(url) {
         return handleUrl(url);
     },
-    WixImage : WixImage,
-    SRZ : {
-        Alignment : Alignments
+    /**
+     * Creates a new {@link WixImage}
+     * @param {String} baseUrl the base URL where the image is hosted
+     * @param {String} imageId the id of the image to manipulate
+     * @returns {WixImage} a new {@link WixImage}
+     */
+    WixImage : function(baseUrl, imageId) {
+        return new WixImage(baseUrl, imageId);
     },
-    WM : {
-        Alignment : Alignments
-    },
-    CANVAS : {
-        ANCHORS : Alignments
-    },
+    /**
+     * Constants for use with image operations
+     * @class
+     * @static
+     */
     Defaults : {
+        /** @lends Defaults */
+
+        /**
+        * Alignments for use with srz and watermark
+        * @type Alignments
+         * @readonly
+         * @member
+        */
+        Alignment : Alignments,
+        /**
+         * Anchors for use with canvas
+         * @type Alignments
+         * @readonly
+         * @member
+         */
+        Anchors : Alignments,
+        /**
+         * The default quality for jpgs
+         * @type {number}
+         * @readonly
+         * @member
+         */
         QUALITY: DEFAULT_QUALITY,
+        /**
+         * The default unsharpen radius
+         * @type {number}
+         * @readonly
+         * @member
+         */
         US_RADIUS: DEFAULT_US_RADIUS,
+        /**
+         * The default unsharpen threshold
+         * @type {number}
+         * @readonly
+         * @member
+         */
         US_AMOUNT: DEFAULT_US_AMOUNT,
+        /**
+         * The default unsharpen amount
+         * @type {number}
+         * @readonly
+         * @member
+         */
         US_THRESHOLD: DEFAULT_US_THRESHOLD,
+        /**
+         * The value 'auto'
+         * @readonly
+         * @member
+         */
         AUTO : DEFAULT_AUTO
     }
 };
