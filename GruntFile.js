@@ -76,7 +76,7 @@ module.exports = function(grunt) {
         },
         jsdoc : {
             dist : {
-                src: ['src/wixmedia.js', 'README.md'],
+                src: ['src/images.js', 'src/wixmedia.js', 'README.md'],
                 options: {
                     destination: 'docs',
                     private : false,
@@ -90,7 +90,7 @@ module.exports = function(grunt) {
                 base: 'docs'
             },
             src: ['**']
-        },
+        }
 
     });
 
