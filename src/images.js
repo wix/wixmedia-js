@@ -395,7 +395,6 @@ AlignmentMixin.prototype.a = AlignmentMixin.prototype.alignment;
  * Resizes the image canvas, filling the width and height boundaries and crops any excess image data.
  * The resulting image will match the width and height constraints without scaling the image.
  * @constructor Canvas
- * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes WidthHeightQualityMixin
@@ -423,7 +422,6 @@ Canvas.prototype.c = function (c) {
  * Use only part of the image that fills the given dimensions. Only part of the original image
  * might be visible if the required proportions are different than the original ones.
  * @constructor Fill
- * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes AlignmentMixin
@@ -442,7 +440,6 @@ extend(Fill.prototype, ResizeFillMixin.prototype);
  * Resizes the image to fit to the specified width and height while retaining original image proportion.
  * The entire image will be visible but not necessarily fill the area specified by the width and height.
  * @constructor Fit
- * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes WidthHeightQualityMixin
@@ -459,7 +456,6 @@ extend(Fit.prototype, ResizeFillMixin.prototype);
  * Crops the image based on the supplied coordinates, starting at the x, y pixel
  * coordinates along with the width and height parameters.
  * @constructor Crop
- * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes WidthHeightQualityMixin
@@ -505,7 +501,6 @@ Crop.prototype.coords = function (x, y) {
 /**
  * Enables users to apply watermark such as copyright notice in order to protect their images.
  * @constructor Watermark
- * @mixes BaseMixin
  * @mixes AdjustMixin
  * @mixes FilterMixin
  * @mixes AlignmentMixin
