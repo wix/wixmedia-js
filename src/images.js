@@ -121,7 +121,7 @@ FilterMixin.prototype = {
   /** @lends FilterMixin */
   /**
    * Applies an oil paint effect to the image.
-   * @param {Number} [oil=true] enabled
+   * @param {boolean} [oil=true] enabled
    * @returns {*} the operation
    */
   oil: function (oil) {
@@ -134,7 +134,7 @@ FilterMixin.prototype = {
   },
   /**
    * Negates the colors of the image.
-   * @param {Number} [neg=true] enabled
+   * @param {boolean} [neg=true] enabled
    * @returns {*} the operation
    */
   negative: function (neg) {
@@ -328,8 +328,22 @@ WidthHeightQualityMixin.prototype = {
   quality: function (q) {
     this.operations.q = q || 75;
     return this;
+  },
+  /**
+   * An option for JPEGs only.
+   * Applies baseline encoding on the image, instead of progressive encoding.
+   * @param {boolean} [bl=true] enable progressive encoding
+   * @returns {*} the operation
+   */
+  bl : function(bl) {
+    if (bl !== undefined && bl === false) {
+      delete this.operations.bl;
+    } else {
+      this.operations.bl = null;
+    }
+    return this;
   }
-};
+ };
 //add shorthand properties
 WidthHeightQualityMixin.prototype.w = WidthHeightQualityMixin.prototype.width;
 WidthHeightQualityMixin.prototype.h = WidthHeightQualityMixin.prototype.height;
@@ -344,9 +358,10 @@ function ResizeFillMixin() {
 }
 
 /**
- *
- * @param rf
+ * The resize filter
+ * @param {number} rf the filter to use, from {@link Defaults#ResizeFilters}
  * @returns {*} the operation
+ *
  */
 ResizeFillMixin.prototype.resizeFill = function (rf) {
   this.operations.rf = rf;
@@ -365,7 +380,7 @@ function AlignmentMixin() {
 
 AlignmentMixin.prototype = {
   /**
-   * Sets the alignment value for this operation
+   * Sets the alignment value for this operation {@link Defaults#Alignment}
    * @param {Alignments} a the alignment value
    * @returns {*} the operation
    */
@@ -637,7 +652,7 @@ WixImage.prototype = {
  */
 function Defaults() {
   /**
-   * Alignments for use with srz and watermark
+   * Alignments for use with image manipulations
    * @readonly
    * @enum
    */
@@ -689,6 +704,11 @@ function Defaults() {
      */
     ALL_FACES: "fs"
   };
+  /**
+   * Resize filters for use with resize operations
+   * @readonly
+   * @enum
+   */
   this.ResizeFilters = {
     POINT:1,
     BOX:2,
