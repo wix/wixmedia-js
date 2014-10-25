@@ -43,10 +43,6 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
-							<a href="Adjustment.html">Adjustment</a>
-						</li>
-						
-						<li>
 							<a href="Canvas.html">Canvas</a>
 						</li>
 						
@@ -55,23 +51,15 @@
 						</li>
 						
 						<li>
+							<a href="Defaults.html">Defaults</a>
+						</li>
+						
+						<li>
 							<a href="Fill.html">Fill</a>
 						</li>
 						
 						<li>
-							<a href="Filter.html">Filter</a>
-						</li>
-						
-						<li>
-							<a href="module-WixMedia-Defaults.html">Defaults</a>
-						</li>
-						
-						<li>
-							<a href="Srb.html">Srb</a>
-						</li>
-						
-						<li>
-							<a href="Srz.html">Srz</a>
+							<a href="Fit.html">Fit</a>
 						</li>
 						
 						<li>
@@ -101,15 +89,11 @@
 						</li>
 						
 						<li>
-							<a href="BaseMixin.html">BaseMixin</a>
-						</li>
-						
-						<li>
 							<a href="FilterMixin.html">FilterMixin</a>
 						</li>
 						
 						<li>
-							<a href="UnsharpMaskMixin.html">UnsharpMaskMixin</a>
+							<a href="ResizeFillMixin.html">ResizeFillMixin</a>
 						</li>
 						
 						<li>
@@ -176,7 +160,7 @@ be used directly.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        wixmedia.js
+        images.js
     </li></ul></dd>
     
 
@@ -300,7 +284,7 @@ be used directly.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        wixmedia.js
+        images.js
     </li></ul></dd>
     
 
@@ -392,7 +376,7 @@ be used directly.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        wixmedia.js
+        images.js
     </li></ul></dd>
     
 
@@ -495,7 +479,7 @@ be used directly.</p></div>
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -553,7 +537,7 @@ be used directly.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        wixmedia.js
+        images.js
     </li></ul></dd>
     
 
@@ -656,7 +640,7 @@ be used directly.</p></div>
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -714,7 +698,7 @@ be used directly.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        wixmedia.js
+        images.js
     </li></ul></dd>
     
 
@@ -855,7 +839,7 @@ be used directly.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        wixmedia.js
+        images.js
     </li></ul></dd>
     
 
@@ -996,7 +980,7 @@ be used directly.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        wixmedia.js
+        images.js
     </li></ul></dd>
     
 
@@ -1047,7 +1031,148 @@ be used directly.</p></div>
         
             
 <dt>
-    <h4 class="name" id="sharpen"><span class="type-signature"></span>sharpen<span class="signature">(radius, amount, amount)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    <h4 class="name" id="sharpen"><span class="type-signature"></span>sharpen<span class="signature">(radius)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sharpens the image using radius</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>radius</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>sharpening mask radius, 0 to image size</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        images.js
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>the operation</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">*</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="unsharpMask"><span class="type-signature"></span>unsharpMask<span class="signature">(radius, amount, amount)</span><span class="type-signature"> &rarr; {*}</span></h4>
     
     
 </dt>
@@ -1105,7 +1230,7 @@ be used directly.</p></div>
 
             
 
-            <td class="description last"><p>sharpening mask radius, 0 to image size</p></td>
+            <td class="description last"><p>the unsharp mask radius. default value: 0.50</p></td>
         </tr>
 
 	
@@ -1128,7 +1253,7 @@ be used directly.</p></div>
 
             
 
-            <td class="description last"><p>sharpening mask amount, 0 to 100</p></td>
+            <td class="description last"><p>the unsharp mask amount. default value: 0.20.</p></td>
         </tr>
 
 	
@@ -1151,7 +1276,7 @@ be used directly.</p></div>
 
             
 
-            <td class="description last"><p>shapening mask threshold, 0 to 255</p></td>
+            <td class="description last"><p>the unsharp mask threshold. default value: 0.00.</p></td>
         </tr>
 
 	
@@ -1183,7 +1308,7 @@ be used directly.</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        wixmedia.js
+        images.js
     </li></ul></dd>
     
 
@@ -1260,7 +1385,7 @@ be used directly.</p></div>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Mon Oct 20 2014 18:13:14 GMT+0300 (IDT) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sat Oct 25 2014 20:28:49 GMT+0300 (IDT) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

@@ -43,10 +43,6 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
-							<a href="Adjustment.html">Adjustment</a>
-						</li>
-						
-						<li>
 							<a href="Canvas.html">Canvas</a>
 						</li>
 						
@@ -55,23 +51,15 @@
 						</li>
 						
 						<li>
+							<a href="Defaults.html">Defaults</a>
+						</li>
+						
+						<li>
 							<a href="Fill.html">Fill</a>
 						</li>
 						
 						<li>
-							<a href="Filter.html">Filter</a>
-						</li>
-						
-						<li>
-							<a href="module-WixMedia-Defaults.html">Defaults</a>
-						</li>
-						
-						<li>
-							<a href="Srb.html">Srb</a>
-						</li>
-						
-						<li>
-							<a href="Srz.html">Srz</a>
+							<a href="Fit.html">Fit</a>
 						</li>
 						
 						<li>
@@ -101,15 +89,11 @@
 						</li>
 						
 						<li>
-							<a href="BaseMixin.html">BaseMixin</a>
-						</li>
-						
-						<li>
 							<a href="FilterMixin.html">FilterMixin</a>
 						</li>
 						
 						<li>
-							<a href="UnsharpMaskMixin.html">UnsharpMaskMixin</a>
+							<a href="ResizeFillMixin.html">ResizeFillMixin</a>
 						</li>
 						
 						<li>
@@ -192,7 +176,7 @@ coordinates along with the width and height parameters.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        wixmedia.js
+        images.js
     </li></ul></dd>
     
 
@@ -226,7 +210,7 @@ coordinates along with the width and height parameters.</p>
         <h3 class="subsection-title">Mixes In</h3>
 
         <ul>
-            <li><a href="BaseMixin.html">BaseMixin</a></li>
+            <li>BaseMixin</li>
         
             <li><a href="AdjustMixin.html">AdjustMixin</a></li>
         
@@ -244,6 +228,452 @@ coordinates along with the width and height parameters.</p>
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="coords"><span class="type-signature"></span>coords<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="Crop.html">Crop</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>A shorthand for setting the x and y coordinates for this crop</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the x value</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the y value</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        images.js
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="Crop.html">Crop</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="x"><span class="type-signature"></span>x<span class="signature">(x)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The x value of the crop</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the x value</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        images.js
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>the operation</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">*</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="y"><span class="type-signature"></span>y<span class="signature">(y)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The y value of the crop</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the y value</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        images.js
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>the operation</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">*</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        </dl>
     
 
     
@@ -272,7 +702,7 @@ coordinates along with the width and height parameters.</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Mon Oct 20 2014 18:13:14 GMT+0300 (IDT) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sat Oct 25 2014 20:28:48 GMT+0300 (IDT) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
