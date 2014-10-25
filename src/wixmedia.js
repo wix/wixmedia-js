@@ -16,15 +16,16 @@ module.exports = {
      * Creates a new {@link WixImage}
      * @param {String} baseUrl the base URL where the image is hosted
      * @param {String} imageId the id of the image to manipulate
+     * @param {String} [version="v1"] the optional version number.
      * @returns {WixImage} a new {@link WixImage}
      */
-    WixImage : function(baseUrl, imageId) {
-        return new Images.WixImage(baseUrl, imageId);
+    WixImage : function(baseUrl, imageId, version) {
+        return new Images.WixImage(baseUrl,imageId,version);
     },
 
     /**
      * Image constants for use with Wix Media Services
      * @type {Defaults}
      */
-    Defaults : new Images.Defaults()
+    Defaults : Images.Defaults
 };

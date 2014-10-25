@@ -1,56 +1,59 @@
 var extend = require("./utils").extend;
 
 var adjustMap = {
-    "br" : {auto : true, params: 1},
-    "con" : {auto : true, params: 1},
-    "sat" : {auto : true, params: 1},
-    "hue" : {auto : true, params: 1},
-    "vib" : {auto : true, params: 1},
-    "auto" : {standalone : true, params: 0}
+    "br" : {auto : true, params: 1, adjust : true},
+    "con" : {auto : true, params: 1, adjust : true},
+    "sat" : {auto : true, params: 1, adjust : true},
+    "hue" : {auto : true, params: 1, adjust : true},
+    "vib" : {auto : true, params: 1, adjust : true},
+    "auto_adj" : {standalone : true, params: 0, adjust : true}
 };
 var filterMap = {
-    "oil" : {standalone : true, params: 0},
-    "neg" : {standalone : true, params: 0},
-    "pix" : {params: 1},
-    "pixfs" : {params: 1},
-    "blur" : {params: 1},
-    "sharpen" : {params: 3}
+    "oil" : {standalone : true, params: 0, filter : true},
+    "neg" : {standalone : true, params: 0, filter : true},
+    "pix" : {params: 1, filter : true},
+    "pixfs" : {params: 1, filter : true},
+    "blur" : {params: 1, filter : true},
+    "shrp" : {params: 1, filter : true},
+    "us" : {auto : true, params: 3, filter : true}
 };
 var a = {auto : true, params: 1};
-var us = {auto : true, params: 3};
+var rf = {params: 1};
+
 var whq = {
     "w" : {params: 1},
     "h" : {params: 1},
     "q" : {params: 1, auto : true}
 };
 
-var srzMap = {
-    "a" : a,
-    "us" : us
-};
-extend(srzMap, whq);
+var canvasMap = {"a" : a, "c" : {params : 1}};
+extend(canvasMap, whq);
+extend(canvasMap, filterMap);
+extend(canvasMap, adjustMap);
 
-var srbMap = {"us" : us};
-extend(srbMap, whq);
+var fillMap = {"rf" : rf, "a" : a};
+extend(fillMap, whq);
+extend(fillMap, filterMap);
+extend(fillMap, adjustMap);
 
-var canvasMap = {"a" : a};
-extend(canvasMap, srzMap);
-
-var fillMap = {};
-extend(fillMap, srzMap);
+var fitMap = {"rf" : rf};
+extend(fitMap, whq);
+extend(fitMap, filterMap);
+extend(fitMap, adjustMap);
 
 var cropMap = {"x" : {params: 1}, "y" : {params: 1}};
-extend(cropMap, srzMap);
+extend(cropMap, whq);
+extend(cropMap, filterMap);
+extend(cropMap, adjustMap);
 
-var wmMap = {"a" : a, "scl" : {params: 1}, "op" : {params: 1}};
-extend(wmMap, srzMap);
+var wmMap = {"a" : a, "scl" : {params: 1}, "op" : {params: 1}, "wmid" : {params: 1}};
+extend(wmMap, whq);
+extend(wmMap, filterMap);
+extend(wmMap, adjustMap);
 
 var keywords = {
-    "adjust" : true,
-    "filter" : true,
     "crop" : true,
-    "srz" : true,
-    "srb" : true,
+    "fit" : true,
     "fill" : true,
     "canvas" : true,
     "wm" : true
@@ -195,14 +198,9 @@ ImageURLTokenizer.prototype.nextToken = function() {
     };
 };
 
-
-
 function ImageURLParser() {
     this.table = {};
-    this.table.adjust = adjustMap;
-    this.table.filter = filterMap;
-    this.table.srz = srzMap;
-    this.table.srb = srbMap;
+    this.table.fit = fitMap;
     this.table.canvas = canvasMap;
     this.table.fill = fillMap;
     this.table.crop = cropMap;
@@ -211,8 +209,10 @@ function ImageURLParser() {
 
 ImageURLParser.prototype.parse = function(url) {
     var tk = new ImageURLTokenizer(url), token, keyword, valueTable, param,
-        rules, paramCount, paramBuffer, isAuto;
+        rules, paramCount, paramBuffer, isAuto, isFilter, isAdjust;
     var api = {}, start = -1, last = -1, loop = true;
+    api["filter"] = {};
+    api["adjust"] = {};
     do {
         token = tk.nextToken();
         switch(token.type) {
@@ -245,13 +245,21 @@ ImageURLParser.prototype.parse = function(url) {
                 param = token.text;
                 paramCount = rules.params;
                 isAuto = rules.auto;
+                isFilter = rules.filter;
+                isAdjust = rules.adjust;
                 paramBuffer = [];
                 break;
             case tokenTypes.VALUE:
                 paramCount--;
                 paramBuffer.push(token.value);
                 if(paramCount === 0) {
+                  if(isFilter) {
+                    api["filter"][param] = paramBuffer.join('_');
+                  } else if(isAdjust) {
+                    api["adjust"][param] = paramBuffer.join('_');
+                  } else {
                     api[keyword][param] = paramBuffer.join('_');
+                  }
                 }
                 last = token.end;
                 break;
@@ -268,11 +276,13 @@ ImageURLParser.prototype.parse = function(url) {
 
     //now, let's get the pieces
     var prefixes = url.substring(0, start - 1).split('/');
+    var version = prefixes.pop();
     var imageId = prefixes.pop();
     var endpoint = prefixes.join('/');
 
     return {
         imageId : imageId,
+        version : version,
         imageName : url.substring(last + 1),
         endpoint : endpoint,
         api : api
