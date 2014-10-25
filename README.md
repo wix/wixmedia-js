@@ -25,7 +25,7 @@ To begin working with Wix Media Services:
 var BASE_URL = "<your base URL here>";
 var WixImage = require('wixmedia').WixImage;
 var image = new WixImage(BASE_URL, "<your image ID here>");
-image.srz().w(1000).h(1000).name("cats.jpg");
+image.fit().w(1000).h(1000).name("cats.jpg");
 //prints out the new URL for an image that has width of 1000px and height of 1000px
 console.log(image.toUrl());
 
@@ -34,7 +34,7 @@ console.log(image.toUrl());
 ````js
 var BASE_URL = "<your base URL here>";
 var image = WixMedia.WixImage(BASE_URL, "<your image ID here>");
-image.srz().w(1000).h(1000).name("cats.jpg");
+image.fit().w(1000).h(1000).name("cats.jpg");
 //prints out the new URL for an image that has width of 1000px and height of 1000px
 console.log(image.toUrl());
 ````
@@ -44,7 +44,7 @@ console.log(image.toUrl());
 require(['WixMedia'], function(WixMedia) {
     var BASE_URL = "<your base URL here>";
     var image = WixMedia.WixImage(BASE_URL, "<your image ID here>");
-    image.srz().w(1000).h(1000).name("cats.jpg");
+    image.fit().w(1000).h(1000).name("cats.jpg");
     //prints out the new URL for an image that has width of 1000px and height of 1000px
     console.log(image.toUrl());
 });
