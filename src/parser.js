@@ -211,8 +211,8 @@ ImageURLParser.prototype.parse = function(url) {
     var tk = new ImageURLTokenizer(url), token, keyword, valueTable, param,
         rules, paramCount, paramBuffer, isAuto, isFilter, isAdjust;
     var api = {}, start = -1, last = -1, loop = true;
-    api["filter"] = {};
-    api["adjust"] = {};
+    api.filter = {};
+    api.adjust = {};
     do {
         token = tk.nextToken();
         switch(token.type) {
@@ -254,9 +254,9 @@ ImageURLParser.prototype.parse = function(url) {
                 paramBuffer.push(token.value);
                 if(paramCount === 0) {
                   if(isFilter) {
-                    api["filter"][param] = paramBuffer.join('_');
+                    api.filter[param] = paramBuffer.join('_');
                   } else if(isAdjust) {
-                    api["adjust"][param] = paramBuffer.join('_');
+                    api.adjust[param] = paramBuffer.join('_');
                   } else {
                     api[keyword][param] = paramBuffer.join('_');
                   }

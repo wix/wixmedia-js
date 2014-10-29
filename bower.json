@@ -6,7 +6,7 @@
     "David Zuckerman <davidz@wix.com>"
   ],
   "description": "isomorphic library for Wix Media Services",
-  "main": "dist/wixmedia.dist.js",
+  "main": "dist/wixmedia.min.js",
   "keywords": [
 
   ],

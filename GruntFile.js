@@ -54,11 +54,11 @@ module.exports = function(grunt) {
             },
             dist: {
                 options: distOptions,
-                src: ['src/wixmedia.js'],
+                src: ['src/wixmedia-browser.js'],
                 dest: 'dist/wixmedia.min.js'
             },
             build : {
-                src: ['src/wixmedia.js'],
+                src: ['src/wixmedia-browser.js'],
                 dest: 'dist/wixmedia.js'
             },
             specs: {

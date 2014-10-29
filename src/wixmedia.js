@@ -1,4 +1,5 @@
 var Images = require("./images.js");
+var Uploader = require("./node/upload.js");
 
 /**
  * Entry point into the WixMedia service
@@ -27,5 +28,9 @@ module.exports = {
      * Image constants for use with Wix Media Services
      * @type {Defaults}
      */
-    Defaults : Images.Defaults
+    Defaults : Images.Defaults,
+
+	uploader : function(apiKey, secretKey) {
+		return Uploader.client(apiKey, secretKey);
+	}
 };
