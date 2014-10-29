@@ -102,7 +102,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-gh-pages');
 
     // Default task(s).
-    grunt.registerTask('web', ['clean:dist', 'jshint', 'browserify:dist']);
+    grunt.registerTask('web', ['clean:dist', 'jshint', 'browserify:dist', 'browserify:build']);
     grunt.registerTask('web-tests', ['clean:build', 'browserify:build', 'browserify:specs', 'mocha']);
     grunt.registerTask('docs', ['clean:jsdoc', 'jsdoc']);
 

@@ -1,7 +1,7 @@
 var Q = require("q");
 var WixAuth = require("wix-auth-hmac");
 var HMACAuthRequest = WixAuth.HMACAuthRequest;
-var rest = require("./rest.js");
+var rest = require("restler");
 var secureRandom = require("secure-random");
 var FS = require('fs');
 
