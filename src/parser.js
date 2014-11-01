@@ -5,33 +5,34 @@ var adjustMap = {
     "con" : {auto : true, params: 1, adjust : true},
     "sat" : {auto : true, params: 1, adjust : true},
     "hue" : {auto : true, params: 1, adjust : true},
-    "vib" : {auto : true, params: 1, adjust : true},
+    //"vib" : {auto : true, params: 1, adjust : true},
     "auto_adj" : {standalone : true, params: 0, adjust : true}
 };
 var filterMap = {
     "oil" : {standalone : true, params: 0, filter : true},
     "neg" : {standalone : true, params: 0, filter : true},
     "pix" : {params: 1, filter : true},
-    "pixfs" : {params: 1, filter : true},
+    //"pixfs" : {params: 1, filter : true},
     "blur" : {params: 1, filter : true},
     "shrp" : {params: 1, filter : true},
     "us" : {auto : true, params: 3, filter : true}
 };
-var a = {auto : true, params: 1};
+var al = {auto : true, params: 1};
 var rf = {params: 1};
 
 var whq = {
     "w" : {params: 1},
     "h" : {params: 1},
-    "q" : {params: 1, auto : true}
+    "q" : {params: 1, auto : true},
+	"bl" : {standalone : true}
 };
 
-var canvasMap = {"a" : a, "c" : {params : 1}};
+var canvasMap = {"al" : al, "c" : {params : 1}};
 extend(canvasMap, whq);
 extend(canvasMap, filterMap);
 extend(canvasMap, adjustMap);
 
-var fillMap = {"rf" : rf, "a" : a};
+var fillMap = {"rf" : rf, "al" : al};
 extend(fillMap, whq);
 extend(fillMap, filterMap);
 extend(fillMap, adjustMap);
@@ -46,17 +47,17 @@ extend(cropMap, whq);
 extend(cropMap, filterMap);
 extend(cropMap, adjustMap);
 
-var wmMap = {"a" : a, "scl" : {params: 1}, "op" : {params: 1}, "wmid" : {params: 1}};
-extend(wmMap, whq);
-extend(wmMap, filterMap);
-extend(wmMap, adjustMap);
+//var wmMap = {"al" : al, "scl" : {params: 1}, "op" : {params: 1}, "wmid" : {params: 1}};
+//extend(wmMap, whq);
+//extend(wmMap, filterMap);
+//extend(wmMap, adjustMap);
 
 var keywords = {
     "crop" : true,
     "fit" : true,
     "fill" : true,
-    "canvas" : true,
-    "wm" : true
+    "canvas" : true
+    //"wm" : true
 };
 
 var tokenTypes = {
@@ -204,7 +205,7 @@ function ImageURLParser() {
     this.table.canvas = canvasMap;
     this.table.fill = fillMap;
     this.table.crop = cropMap;
-    this.table.wm = wmMap;
+    //this.table.wm = wmMap;
 }
 
 ImageURLParser.prototype.parse = function(url) {

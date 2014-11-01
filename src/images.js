@@ -61,28 +61,28 @@ AdjustMixin.prototype = {
     this.adjustments.hue = h || DEFAULT_AUTO;
     return this;
   },
-  /**
-   * vibrance of the image. supports 'auto' or a numeric value between -100 and 100
-   * @param {string|number} v a Number between -100 and 100 or 'auto'
-   * @returns {*} the operation
-   */
-  vibrance: function (v) {
-    this.adjustments.vib = v || DEFAULT_AUTO;
-    return this;
-  },
-  /**
-   * Automatically adjusts the brightness, contrast, hue, vibrance and saturation
-   * @param {boolean} [auto=true] enabled
-   * @returns {*} the operation
-   */
-  autoAdjust: function (auto) {
-    if (auto !== undefined && auto === false) {
-      delete this.adjustments.auto_adj;
-      return this;
-    }
-    this.adjustments.auto_adj = null;
-    return this;
-  },
+  ///**
+  // * vibrance of the image. supports 'auto' or a numeric value between -100 and 100
+  // * @param {string|number} v a Number between -100 and 100 or 'auto'
+  // * @returns {*} the operation
+  // */
+  //vibrance: function (v) {
+  //  this.adjustments.vib = v || DEFAULT_AUTO;
+  //  return this;
+  //},
+  ///**
+  // * Automatically adjusts the brightness, contrast, hue, vibrance and saturation
+  // * @param {boolean} [auto=true] enabled
+  // * @returns {*} the operation
+  // */
+  //autoAdjust: function (auto) {
+  //  if (auto !== undefined && auto === false) {
+  //    delete this.adjustments.auto_adj;
+  //    return this;
+  //  }
+  //  this.adjustments.auto_adj = null;
+  //  return this;
+  //},
   /**
    * Indicates that this operation has adjustment parameters
    * @returns {boolean} true if adjustments are set
@@ -154,15 +154,15 @@ FilterMixin.prototype = {
     this.filters.pix = pixels;
     return this;
   },
-  /**
-   * Applies a pixelate effect to faces in the image.
-   * @param {number} pixels the width of pixelation squares, in pixels
-   * @returns {*} the operation
-   */
-  pixelateFaces: function (pixels) {
-    this.filters.pixfs = pixels;
-    return this;
-  },
+  ///**
+  // * Applies a pixelate effect to faces in the image.
+  // * @param {number} pixels the width of pixelation squares, in pixels
+  // * @returns {*} the operation
+  // */
+  //pixelateFaces: function (pixels) {
+  //  this.filters.pixfs = pixels;
+  //  return this;
+  //},
   /**
    * Applies a blur effect to the image.
    * @param {number} blur percent to blur the image
@@ -335,7 +335,7 @@ WidthHeightQualityMixin.prototype = {
    * @param {boolean} [bl=true] enable progressive encoding
    * @returns {*} the operation
    */
-  bl : function(bl) {
+  baseline : function(bl) {
     if (bl !== undefined && bl === false) {
       delete this.operations.bl;
     } else {
@@ -348,6 +348,7 @@ WidthHeightQualityMixin.prototype = {
 WidthHeightQualityMixin.prototype.w = WidthHeightQualityMixin.prototype.width;
 WidthHeightQualityMixin.prototype.h = WidthHeightQualityMixin.prototype.height;
 WidthHeightQualityMixin.prototype.q = WidthHeightQualityMixin.prototype.quality;
+WidthHeightQualityMixin.prototype.bl = WidthHeightQualityMixin.prototype.baseline;
 
 /**
  * This provides methods used for operation APIs. It's not meant to be used directly.
@@ -385,11 +386,11 @@ AlignmentMixin.prototype = {
    * @returns {*} the operation
    */
   alignment: function (a) {
-    this.operations.a = a;
+    this.operations.al = a;
     return this;
   }
 };
-AlignmentMixin.prototype.a = AlignmentMixin.prototype.alignment;
+AlignmentMixin.prototype.al = AlignmentMixin.prototype.alignment;
 
 /**
  * Resizes the image canvas, filling the width and height boundaries and crops any excess image data.
@@ -498,49 +499,49 @@ Crop.prototype.coords = function (x, y) {
   return this;
 };
 
-/**
- * Enables users to apply watermark such as copyright notice in order to protect their images.
- * @constructor Watermark
- * @mixes AdjustMixin
- * @mixes FilterMixin
- * @mixes AlignmentMixin
- */
-function Watermark(endpoint, imageId, version, data, filter, adjust) {
-  OperationMixin.call(this, endpoint, imageId, version, "wm", data, filter, adjust);
-}
-
-extend(Watermark.prototype, OperationMixin.prototype);
-extend(Watermark.prototype, AlignmentMixin.prototype);
-
-/**
- * The watermark image id. Please notice that the wmid format is similar to the file_id format used earlier in the URL. Must be url-plus encoded.
- * @param {String} wmid a string identifier
- * @returns {Watermark}
- */
-Watermark.prototype.wmid = function (wmid) {
-  this.operations.wmid = wmid;
-  return this;
-};
-/**
- * The Watermark opacity.
- * @param {number} o a number between 0 and 100
- * @returns {Watermark}
- */
-Watermark.prototype.opacity = function (o) {
-  this.operations.op = o;
-  return this;
-};
-Watermark.prototype.op = Watermark.prototype.opacity;
-/**
- * Watermark horizontal scaling as percents of the requested image width
- * @param {number} o a percent between 0 and 100
- * @returns {Watermark}
- */
-Watermark.prototype.scale = function (s) {
-  this.operations.scl = s;
-  return this;
-};
-Watermark.prototype.scl = Watermark.prototype.scale;
+///**
+// * Enables users to apply watermark such as copyright notice in order to protect their images.
+// * @constructor Watermark
+// * @mixes AdjustMixin
+// * @mixes FilterMixin
+// * @mixes AlignmentMixin
+// */
+//function Watermark(endpoint, imageId, version, data, filter, adjust) {
+//  OperationMixin.call(this, endpoint, imageId, version, "wm", data, filter, adjust);
+//}
+//
+//extend(Watermark.prototype, OperationMixin.prototype);
+//extend(Watermark.prototype, AlignmentMixin.prototype);
+//
+///**
+// * The watermark image id. Please notice that the wmid format is similar to the file_id format used earlier in the URL. Must be url-plus encoded.
+// * @param {String} wmid a string identifier
+// * @returns {Watermark}
+// */
+//Watermark.prototype.wmid = function (wmid) {
+//  this.operations.wmid = wmid;
+//  return this;
+//};
+///**
+// * The Watermark opacity.
+// * @param {number} o a number between 0 and 100
+// * @returns {Watermark}
+// */
+//Watermark.prototype.opacity = function (o) {
+//  this.operations.op = o;
+//  return this;
+//};
+//Watermark.prototype.op = Watermark.prototype.opacity;
+///**
+// * Watermark horizontal scaling as percents of the requested image width
+// * @param {number} o a percent between 0 and 100
+// * @returns {Watermark}
+// */
+//Watermark.prototype.scale = function (s) {
+//  this.operations.scl = s;
+//  return this;
+//};
+//Watermark.prototype.scl = Watermark.prototype.scale;
 
 function fromUrl(url) {
   var data = parser.parse(url);
@@ -552,8 +553,8 @@ function fromUrl(url) {
       target = new Canvas(data.endpoint, data.imageId, data.version, data.api.canvas, data.api.filter, data.api.adjust).name(data.imageName);
     } else if (data.api.hasOwnProperty('fill')) {
       target = new Fill(data.endpoint, data.imageId, data.version, data.api.fill, data.api.filter, data.api.adjust).name(data.imageName);
-    } else if (data.api.hasOwnProperty('wm')) {
-      target = new Watermark(data.endpoint, data.imageId, data.version, data.api.wm, data.api.filter, data.api.adjust).name(data.imageName);
+    //} else if (data.api.hasOwnProperty('wm')) {
+    //  target = new Watermark(data.endpoint, data.imageId, data.version, data.api.wm, data.api.filter, data.api.adjust).name(data.imageName);
     } else if (data.api.hasOwnProperty('crop')) {
       target = new Crop(data.endpoint, data.imageId, data.version, data.api.crop, data.api.filter, data.api.adjust).name(data.imageName);
     }
@@ -627,18 +628,18 @@ WixImage.prototype = {
   crop: function (data, filter, adjust) {
     return new Crop(this.endpoint, this.imageId, this.version, data, filter, adjust);
   },
-  /**
-   * Configures this image using the 'wm' operation.
-   * @param {Object} [data=null] optional configuration data for this operation
-   * @param {Object} [filter=null] optional configuration data for image adjustments
-   * @param {Object} [adjust=null] optional configuration data for image filters
-   * @returns {Watermark}
-   * @memberOf WixImage#
-   * @method
-   */
-  wm: function (data, filter, adjust) {
-    return new Watermark(this.endpoint, this.imageId, this.version, data, filter, adjust);
-  }
+  ///**
+  // * Configures this image using the 'wm' operation.
+  // * @param {Object} [data=null] optional configuration data for this operation
+  // * @param {Object} [filter=null] optional configuration data for image adjustments
+  // * @param {Object} [adjust=null] optional configuration data for image filters
+  // * @returns {Watermark}
+  // * @memberOf WixImage#
+  // * @method
+  // */
+  //wm: function (data, filter, adjust) {
+  //  return new Watermark(this.endpoint, this.imageId, this.version, data, filter, adjust);
+  //}
 };
 
 /**
