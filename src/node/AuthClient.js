@@ -4,12 +4,11 @@ var HMACAuthRequest = WixAuth.HMACAuthRequest;
 var Q = require("q");
 var mediaHttp = require("./mediaHttp.js");
 
-var AUTH_URL_PATH = '/auth/get-token';
+var AUTH_URL_PATH = '/auth/token';
 var WIX_NONCE = 'x-wix-auth-nonce';
 var WIX_TS = 'x-wix-auth-ts';
 var HEADER_KEY = "Authorization";
 var WIX_AUTH_SERVICE  = "WIX";
-var AUTH_ALGORITHM = 'MCLOUDTOKEN';
 
 function nonce() {
 	return secureRandom(6, {type: 'Buffer'}).toString('hex');
@@ -48,6 +47,7 @@ function AuthClient(apiKey, secretKey) {
 
 AuthClient.prototype.getAuthToken = function() {
 	var deferred = Q.defer();
+	var that = this;
 	if(this.authToken !== null) {
 		deferred.resolve(this.authToken);
 	} else {
@@ -59,20 +59,16 @@ AuthClient.prototype.getAuthToken = function() {
 		var apiRequest = new MediaHMACRequest(mediaHttp.CLOUD_URL, "GET", this.apiKey, this.secretKey);
 		var options = apiRequest.toHttpsOptions(HEADER_KEY);
 		mediaHttp.request(options).then(function(data) {
-			var key = data.response.headers[HEADER_KEY.toLowerCase()];
-			if(key === undefined) {
+			if(typeof data.data !== 'object') {
 				deferred.reject("Bad authorization");
 			} else {
-				var pieces = key.split(' ');
-				if(pieces[0] !== AUTH_ALGORITHM) {
-					deferred.reject(null);
-				}
-				this.authToken = pieces[1];
-				this.authPromise = null;
-				deferred.resolve(this.authToken);
+				that.authToken = data.data.token;
+				that.authScheme = data.data.scheme;
+				that.authPromise = null;
+				deferred.resolve(that.authToken);
 			}
 		}, function(error) {
-			this.authPromise = null;
+			that.authPromise = null;
 			deferred.reject("Bad authorization :" + JSON.stringify(error));
 		});
 	}
@@ -81,7 +77,7 @@ AuthClient.prototype.getAuthToken = function() {
 
 AuthClient.prototype.getAuthHeaders = function(authToken) {
 	return {
-		'Authorization' : AUTH_ALGORITHM + ' ' + authToken || this.authToken
+		'Authorization' : this.authScheme + ' ' + authToken || this.authToken
 	};
 };
 

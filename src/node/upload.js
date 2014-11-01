@@ -40,7 +40,7 @@ UploadClient.prototype.upload = function (path, success, failure) {
 		Q.nfcall(FS.stat, path).then(function(stats) {
 			rest.post(uploadUrl, {
 				multipart: true,
-				headers : that.getAuthHeaders(this.authToken),
+				headers : that.getAuthHeaders(that.authToken),
 				data : {
 					"media_type" : "picture",
 					"file" : rest.file(path, null, stats.size)
