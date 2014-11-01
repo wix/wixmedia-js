@@ -20,7 +20,9 @@ To begin working with Wix Media Services:
 
 
 ## Usage ##
-### Node ###
+
+### Image Manipulation ###
+#### Node.js
 ````js
 var BASE_URL = "<your base URL here>";
 var WixImage = require('wixmedia').WixImage;
@@ -30,7 +32,8 @@ image.fit().w(1000).h(1000).name("cats.jpg");
 console.log(image.toUrl());
 
 ````
-### Browser, no AMD ###
+
+#### Browser, no AMD
 ````js
 var BASE_URL = "<your base URL here>";
 var image = WixMedia.WixImage(BASE_URL, "<your image ID here>");
@@ -39,7 +42,7 @@ image.fit().w(1000).h(1000).name("cats.jpg");
 console.log(image.toUrl());
 ````
 
-### Browser, using require.js ###
+#### Browser, using require.js
 ````js
 require(['WixMedia'], function(WixMedia) {
     var BASE_URL = "<your base URL here>";
@@ -49,6 +52,39 @@ require(['WixMedia'], function(WixMedia) {
     console.log(image.toUrl());
 });
 ````
+
+###Image Uploading, Node only
+
+####Node.js with Callbacks
+```js
+var API_KEY = "<API KEY>";
+var API_SECRET = "<SECRET_KEY>";
+var wixmedia = require("wixmedia");
+
+var uploader = wixmedia.uploader(API_KEY, API_SECRET);
+uploader.uploadFromFile("files/images/wixLogo.jpg", function(imageId) {
+  console.log("New image created:" + imageId);
+}, function(error) {
+  console.log(error);
+});
+
+```
+
+####Node.js with Promises
+```js
+var API_KEY = "<API KEY>";
+var API_SECRET = "<SECRET_KEY>";
+var wixmedia = require("wixmedia");
+
+var uploader = wixmedia.uploader(API_KEY, API_SECRET);
+uploader.uploadFromFile("files/images/wixLogo.jpg").then(function(imageId) {
+  console.log("New image created:" + imageId);
+}, function(error) {
+  console.log(error);
+});
+
+```
+
 ## Read the docs ##
 [Read the API docs](http://wix.github.io/wixmedia-js/) to learn more about this library
 
