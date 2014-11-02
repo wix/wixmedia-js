@@ -1,6 +1,6 @@
 {
     "name": "wixmedia",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "An SDK to access Wix Media Platform image manipulation APIs and upload capabilities",
     "main": "./src/wixmedia.js",
     "devDependencies": {
@@ -14,7 +14,8 @@
         "uglifyify": "latest",
         "grunt-jsdoc": "0.5.4",
         "ink-docstrap": "latest",
-        "grunt-gh-pages": "latest"
+        "grunt-gh-pages": "latest",
+        "wix-auth-hmac": "latest"
     },
 
     "engines": {
