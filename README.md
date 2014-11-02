@@ -1,15 +1,14 @@
 wixmedia-js SDK
 ===================
 
-Wix Media Services are a collection of tools and APIs that enable storing, serving, uploading, managing, manipulating and transcoding image, audio and video files.
+Wix Media Platform is a collection of services for storing, serving, uploading, and managing image, audio, and video files.
 
-This package is an isomorphic JavaScript library (works in Node and in the browser) that provides a convenient API to access Wix Media Services image manipulation APIs.
+This package is an isomorphic JavaScript library (works in Node and in the browser) that provides a convenient API to access Wix Media Platform image manipulation APIs.
 
 ## Prerequisites
-To begin working with Wix Media Services:
+To begin working with Wix Media Platform:
 
-- [Create a Google Computer Engine application](link) or use an existing app. 
-- [Create a Wix Media Services account](link)
+- [Get started with Wix Media Platform](http://mediacloud.wix.com/dashboard/index.html)
 
 
 ## Installation
@@ -88,7 +87,7 @@ uploader.uploadFromFile("files/images/wixLogo.jpg").then(function(imageId) {
 ## Read the docs ##
 [Read the API docs](http://wix.github.io/wixmedia-js/) to learn more about this library
 
-## Wix Media Services API ##
-Wix Media Services provides web developers a versatile infrastructure for media file manipulations easily accessible through its RESTful API.
+## Wix Media Platform ##
+Wix Media Platform provides powerful image-processing services that support resizing, cropping, rotating, sharpening, watermarking, and face-detection, as well as offer a number of filters and adjustments.
 
-For more information about the RESTful API, please see the [Wix Media Services developer center](link)
+Learn more about image manipulation here: [Wix Media Platform - Images](http://mediacloud.wix.com/docs/images.html).
