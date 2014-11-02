@@ -1,17 +1,17 @@
 {
   "name": "wixmedia",
-  "version": "0.0.1",
-  "homepage": "https://github.com/wix/mediaservicesjs",
+  "version": "1.0.0",
+  "homepage": "https://github.com/wix/wixmedia-js",
   "authors": [
     "David Zuckerman <davidz@wix.com>"
   ],
-  "description": "isomorphic library for Wix Media Services",
+  "description": "isomorphic library for Wix Media Platform",
   "main": "dist/wixmedia.min.js",
   "keywords": [
 
   ],
-  "license": "MIT",
-  "private": true,
+  "license": "Apache 2",
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",
