@@ -1,13 +1,13 @@
 {
     "name": "wixmedia",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "An SDK to access Wix Media Platform image manipulation APIs and upload capabilities",
     "main": "./src/wixmedia.js",
     "dependencies" : {
-        "q" : "latest",
-        "restler" : "latest",
-        "secure-random" : "latest",
-        "wix-auth-hmac" : "latest"
+        "q" : "1.0.1",
+        "restler" : "3.2.2",
+        "secure-random" : "1.1.1",
+        "wix-auth-hmac" : "1.0.0"
     },
     "devDependencies": {
         "grunt": "~0.4.5",
