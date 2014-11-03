@@ -76,7 +76,7 @@ module.exports = function(grunt) {
         },
         jsdoc : {
             dist : {
-                src: ['src/images.js', 'src/wixmedia.js', 'README.md'],
+                src: ['src/images.js', 'src/wixmedia.js', 'src/node/upload.js', 'README.md'],
                 options: {
                     destination: 'docs',
                     private : false,

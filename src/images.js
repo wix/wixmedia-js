@@ -627,7 +627,7 @@ WixImage.prototype = {
    */
   crop: function (data, filter, adjust) {
     return new Crop(this.endpoint, this.imageId, this.version, data, filter, adjust);
-  },
+  }
   ///**
   // * Configures this image using the 'wm' operation.
   // * @param {Object} [data=null] optional configuration data for this operation

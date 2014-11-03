@@ -7,9 +7,23 @@ var AuthClient = require("./AuthClient.js");
 
 var WIX_MEDIA_UPLOAD_URL_PATH = '/files/upload/url';
 
+/**
+ * Information about media that was uploaded
+ * @alias UploadedMedia
+ * @constructor
+ * @property {string} fileId - The id of the uploaded file
+ * @property {string} imageId - The id of the uploaded image, if an image
+ * @property {string} fileUrl - The url of the uploaded file. This is the same as the fileId
+ * @property {string} fileSize - The size of the uploaded file
+ * @property {string} fileName - The name of the uploaded file
+ * @property {string} originalFileName - The original file name of the uploaded file
+ * @property {string} width - If an image, the width of the image
+ * @property {string} height - If an image, the height of the image
+ */
 function UploadedMedia(data) {
 	Object.defineProperty(this, "fileId", { get: function () { return data.file_url; } });
 	Object.defineProperty(this, "fileUrl", { get: function () { return data.file_url; } });
+	Object.defineProperty(this, "imageId", { get: function () { return data.file_url; } });
 	Object.defineProperty(this, "fileSize", { get: function () { return data.file_size; } });
 	Object.defineProperty(this, "fileName", { get: function () { return data.file_name; } });
 	Object.defineProperty(this, "originalFileName", { get: function () { return data.original_file_name; } });
@@ -85,11 +99,37 @@ UploadClient.prototype.upload = function (path, success, failure) {
 	}
 };
 
+/**
+ * Callback for a successful file upload
+ *
+ * @callback UploadSuccess
+ * @param {UploadedData} data - Information about the uploaded data
+ */
+
+/**
+ * Callback for a failing file upload
+ *
+ * @callback UploadFailure
+ * @param {Object} error - Information about the error that occurred
+ */
 
 module.exports = {
+	/**
+	 * Client to upload media to the Wix Media Platform
+	 * @constructor
+	 * @alias UploadClient
+	 */
 	client : function(apiKey, secretKey) {
 		var c = new UploadClient(apiKey, secretKey);
 		return {
+			/**
+			 * Uploads a file to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
+			 * @memberOf UploadClient
+			 * @param {string} path - The local path to the image
+			 * @param {UploadSuccess} [success=null] - An optional callback triggered on success
+			 * @param {UploadFailure} [failure=null] - An optional callback triggered on failure
+			 * @returns {Promise<UploadedMedia>} A promise that will yield an {@link UploadedData} object, or null if using callbacks
+			 */
 			uploadFromFile : function(path, success, failure) {
 				return c.upload(path, success, failure);
 			}

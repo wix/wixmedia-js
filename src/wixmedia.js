@@ -30,6 +30,12 @@ module.exports = {
      */
     Defaults : Images.Defaults,
 
+	/**
+	 * Returns a new UploadClient. Only available in Node.js
+	 * @param {string} apiKey - your API key
+	 * @param {string} secretKey - your secret key
+	 * @returns {UploadClient} an upload client
+	 */
 	uploader : function(apiKey, secretKey) {
 		return Uploader.client(apiKey, secretKey);
 	}

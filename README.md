@@ -26,9 +26,9 @@ To begin working with Wix Media Platform:
 var BASE_URL = "<your base URL here>";
 var WixImage = require('wixmedia').WixImage;
 var image = new WixImage(BASE_URL, "<your image ID here>");
-image.fit().w(1000).h(1000).name("cats.jpg");
+var fit = image.fit().w(1000).h(1000).name("cats.jpg");
 //prints out the new URL for an image that has width of 1000px and height of 1000px
-console.log(image.toUrl());
+console.log(fit.toUrl());
 
 ````
 
@@ -36,9 +36,9 @@ console.log(image.toUrl());
 ````js
 var BASE_URL = "<your base URL here>";
 var image = WixMedia.WixImage(BASE_URL, "<your image ID here>");
-image.fit().w(1000).h(1000).name("cats.jpg");
+var fit = image.fit().w(1000).h(1000).name("cats.jpg");
 //prints out the new URL for an image that has width of 1000px and height of 1000px
-console.log(image.toUrl());
+console.log(fit.toUrl());
 ````
 
 #### Browser, using require.js
@@ -46,9 +46,9 @@ console.log(image.toUrl());
 require(['WixMedia'], function(WixMedia) {
     var BASE_URL = "<your base URL here>";
     var image = WixMedia.WixImage(BASE_URL, "<your image ID here>");
-    image.fit().w(1000).h(1000).name("cats.jpg");
+    var fit = image.fit().w(1000).h(1000).name("cats.jpg");
     //prints out the new URL for an image that has width of 1000px and height of 1000px
-    console.log(image.toUrl());
+    console.log(fit.toUrl());
 });
 ````
 
@@ -61,8 +61,8 @@ var API_SECRET = "<SECRET_KEY>";
 var wixmedia = require("wixmedia");
 
 var uploader = wixmedia.uploader(API_KEY, API_SECRET);
-uploader.uploadFromFile("files/images/wixLogo.jpg", function(imageId) {
-  console.log("New image created:" + imageId);
+uploader.uploadFromFile("files/images/wixLogo.jpg", function(data) {
+  console.log("New image created:" + data.imageId);
 }, function(error) {
   console.log(error);
 });
@@ -77,7 +77,7 @@ var wixmedia = require("wixmedia");
 
 var uploader = wixmedia.uploader(API_KEY, API_SECRET);
 uploader.uploadFromFile("files/images/wixLogo.jpg").then(function(data) {
-  console.log("New image created:" + data.file_url);
+  console.log("New image created:" + data.imageId);
 }, function(error) {
   console.log(error);
 });
