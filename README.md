@@ -76,8 +76,8 @@ var API_SECRET = "<SECRET_KEY>";
 var wixmedia = require("wixmedia");
 
 var uploader = wixmedia.uploader(API_KEY, API_SECRET);
-uploader.uploadFromFile("files/images/wixLogo.jpg").then(function(imageId) {
-  console.log("New image created:" + imageId);
+uploader.uploadFromFile("files/images/wixLogo.jpg").then(function(data) {
+  console.log("New image created:" + data.file_url);
 }, function(error) {
   console.log(error);
 });

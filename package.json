@@ -5,7 +5,9 @@
     "main": "./src/wixmedia.js",
     "dependencies" : {
         "q" : "latest",
-        "restler" : "latest"
+        "restler" : "latest",
+        "secure-random" : "latest",
+        "wix-auth-hmac" : "latest"
     },
     "devDependencies": {
         "grunt": "~0.4.5",

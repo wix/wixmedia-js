@@ -7,6 +7,16 @@ var AuthClient = require("./AuthClient.js");
 
 var WIX_MEDIA_UPLOAD_URL_PATH = '/files/upload/url';
 
+function UploadedMedia(data) {
+	Object.defineProperty(this, "fileId", { get: function () { return data.file_url; } });
+	Object.defineProperty(this, "fileUrl", { get: function () { return data.file_url; } });
+	Object.defineProperty(this, "fileSize", { get: function () { return data.file_size; } });
+	Object.defineProperty(this, "fileName", { get: function () { return data.file_name; } });
+	Object.defineProperty(this, "originalFileName", { get: function () { return data.original_file_name; } });
+	Object.defineProperty(this, "width", { get: function () { return data.width; } });
+	Object.defineProperty(this, "height", { get: function () { return data.height; } });
+}
+
 function UploadClient(apiKey, secretKey) {
 	AuthClient.call(this, apiKey, secretKey);
 }
@@ -47,22 +57,32 @@ UploadClient.prototype.upload = function (path, success, failure) {
 				}
 
 			}).on('complete', function(data) {
-				if(typeof success === Function) {
-					success(data);
+				var retVal = new UploadedMedia(data[0]);
+				if(typeof success === "function") {
+					success(retVal);
 				}
-				deferred.resolve(data);
+				deferred.resolve(retVal);
 			}).on('error', function(data) {
 				deferred.reject(data);
 			});
 		});
 
 	}, function(error) {
-		if(typeof failure === Function) {
+		if(typeof failure === "function") {
 			failure(error);
 		}
 		deferred.reject(error);
 	});
-	return deferred.promise;
+	if(typeof success === "function") {
+		var ref = setInterval(function() {
+			if(deferred.promise.isFulfilled() || deferred.promise.isRejected()) {
+				clearInterval(ref);
+				return;
+			}
+		}, 100);
+	} else {
+		return deferred.promise;
+	}
 };
 
 
