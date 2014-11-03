@@ -15,7 +15,7 @@ var filterMap = {
     //"pixfs" : {params: 1, filter : true},
     "blur" : {params: 1, filter : true},
     "shrp" : {params: 1, filter : true},
-    "us" : {auto : true, params: 3, filter : true}
+    "usm" : {auto : true, params: 3, filter : true}
 };
 var al = {auto : true, params: 1};
 var rf = {params: 1};

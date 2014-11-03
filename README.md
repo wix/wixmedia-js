@@ -25,8 +25,8 @@ To begin working with Wix Media Platform:
 ````js
 var BASE_URL = "<your base URL here>";
 var WixImage = require('wixmedia').WixImage;
-var image = new WixImage(BASE_URL, "<your image ID here>");
-var fit = image.fit().w(1000).h(1000).name("cats.jpg");
+var image = new WixImage(BASE_URL, "<your image ID here>", "<image_name>");
+var fit = image.fit().w(1000).h(1000);
 //prints out the new URL for an image that has width of 1000px and height of 1000px
 console.log(fit.toUrl());
 
@@ -35,8 +35,8 @@ console.log(fit.toUrl());
 #### Browser, no AMD
 ````js
 var BASE_URL = "<your base URL here>";
-var image = WixMedia.WixImage(BASE_URL, "<your image ID here>");
-var fit = image.fit().w(1000).h(1000).name("cats.jpg");
+var image = wixmedia.WixImage(BASE_URL, "<your image ID here>", "<image_name>");
+var fit = image.fit().w(1000).h(1000);
 //prints out the new URL for an image that has width of 1000px and height of 1000px
 console.log(fit.toUrl());
 ````
@@ -45,8 +45,8 @@ console.log(fit.toUrl());
 ````js
 require(['WixMedia'], function(WixMedia) {
     var BASE_URL = "<your base URL here>";
-    var image = WixMedia.WixImage(BASE_URL, "<your image ID here>");
-    var fit = image.fit().w(1000).h(1000).name("cats.jpg");
+    var image = wixmedia.WixImage(BASE_URL, "<your image ID here>", "<image_name>");
+    var fit = image.fit().w(1000).h(1000);
     //prints out the new URL for an image that has width of 1000px and height of 1000px
     console.log(fit.toUrl());
 });

@@ -569,12 +569,14 @@ function fromUrl(url) {
  * a WixImage is a configurable object that supports all the operations, filters and adjustments supported by Wix Media Services
  * @param {String} baseUrl the base URL where the image is hosted
  * @param {String} imageId the id of the image to manipulate
+ * @param {String} name the name of the image to manipulate
  * @constructor WixImage
  */
-function WixImage(baseUrl, imageId, version) {
-  this.imageId = imageId;
-  this.endpoint = baseUrl;
-  this.version = version || "v1";
+function WixImage(baseUrl, imageId, name, version) {
+	this.imageId = imageId;
+	this.endpoint = baseUrl;
+	this.name = name;
+	this.version = version || "v1";
 }
 
 WixImage.prototype = {
@@ -590,7 +592,7 @@ WixImage.prototype = {
    * @method
    */
   canvas: function (data, filter, adjust) {
-    return new Canvas(this.endpoint, this.imageId, this.version, data, filter, adjust);
+    return new Canvas(this.endpoint, this.imageId, this.version, data, filter, adjust).name(this.name);
   },
   /**
    * Configures this image using the 'fill' operation.
@@ -602,7 +604,7 @@ WixImage.prototype = {
    * @method
    */
   fill: function (data, filter, adjust) {
-    return new Fill(this.endpoint, this.imageId, this.version, data, filter, adjust);
+    return new Fill(this.endpoint, this.imageId, this.version, data, filter, adjust).name(this.name);
   },
   /**
    * Configures this image using the 'fit' operation.
@@ -614,7 +616,7 @@ WixImage.prototype = {
    * @method
    */
   fit: function (data, filter, adjust) {
-    return new Fit(this.endpoint, this.imageId, this.version, data, filter, adjust);
+    return new Fit(this.endpoint, this.imageId, this.version, data, filter, adjust).name(this.name);
   },
   /**
    * Configures this image using the 'crop' operation.
@@ -626,7 +628,7 @@ WixImage.prototype = {
    * @method
    */
   crop: function (data, filter, adjust) {
-    return new Crop(this.endpoint, this.imageId, this.version, data, filter, adjust);
+    return new Crop(this.endpoint, this.imageId, this.version, data, filter, adjust).name(this.name);
   }
   ///**
   // * Configures this image using the 'wm' operation.
@@ -638,7 +640,7 @@ WixImage.prototype = {
   // * @method
   // */
   //wm: function (data, filter, adjust) {
-  //  return new Watermark(this.endpoint, this.imageId, this.version, data, filter, adjust);
+  //  return new Watermark(this.endpoint, this.imageId, this.version, data, filter, adjust).name(this.name);
   //}
 };
 
