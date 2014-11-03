@@ -13,9 +13,9 @@ To begin working with Wix Media Platform:
 
 ## Installation
 ### Using npm ###
-    $ npm install wixmedia-js
+    $ npm install wixmedia
 ### Using bower ###
-    $ bower install wixmedia-js
+    $ bower install wixmedia
 
 
 ## Usage ##
