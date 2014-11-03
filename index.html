@@ -63,6 +63,14 @@
 						</li>
 						
 						<li>
+							<a href="UploadClient.html">UploadClient</a>
+						</li>
+						
+						<li>
+							<a href="UploadedMedia.html">UploadedMedia</a>
+						</li>
+						
+						<li>
 							<a href="WixImage.html">WixImage</a>
 						</li>
 						
@@ -138,41 +146,40 @@
 
     <section>
         <article><h1>wixmedia-js SDK</h1>
-<p>Wix Media Services are a collection of tools and APIs that enable storing, serving, uploading, managing, manipulating and transcoding image, audio and video files.</p>
-<p>This package is an isomorphic JavaScript library (works in Node and in the browser) that provides a convenient API to access Wix Media Services image manipulation APIs.</p>
+<p>Wix Media Platform is a collection of services for storing, serving, uploading, and managing image, audio, and video files.</p>
+<p>This package is an isomorphic JavaScript library (works in Node and in the browser) that provides a convenient API to access Wix Media Platform image manipulation APIs.</p>
 <h2>Prerequisites</h2>
-<p>To begin working with Wix Media Services:</p>
+<p>To begin working with Wix Media Platform:</p>
 <ul>
-<li><a href="link">Create a Google Computer Engine application</a> or use an existing app. </li>
-<li><a href="link">Create a Wix Media Services account</a></li>
+<li><a href="http://mediacloud.wix.com/dashboard/index.html">Get started with Wix Media Platform</a></li>
 </ul>
 <h2>Installation</h2>
 <h3>Using npm</h3>
-<pre><code>$ npm install wixmedia-js</code></pre>
+<pre><code>$ npm install wixmedia</code></pre>
 <h3>Using bower</h3>
-<pre><code>$ bower install wixmedia-js</code></pre>
+<pre><code>$ bower install wixmedia</code></pre>
 <h2>Usage</h2>
 <h3>Image Manipulation</h3>
 <h4>Node.js</h4>
 <pre><code class="lang-js">var BASE_URL = &quot;&lt;your base URL here&gt;&quot;;
 var WixImage = require('wixmedia').WixImage;
 var image = new WixImage(BASE_URL, &quot;&lt;your image ID here&gt;&quot;);
-image.fit().w(1000).h(1000).name(&quot;cats.jpg&quot;);
+var fit = image.fit().w(1000).h(1000).name(&quot;cats.jpg&quot;);
 //prints out the new URL for an image that has width of 1000px and height of 1000px
-console.log(image.toUrl());</code></pre>
+console.log(fit.toUrl());</code></pre>
 <h4>Browser, no AMD</h4>
 <pre><code class="lang-js">var BASE_URL = &quot;&lt;your base URL here&gt;&quot;;
 var image = WixMedia.WixImage(BASE_URL, &quot;&lt;your image ID here&gt;&quot;);
-image.fit().w(1000).h(1000).name(&quot;cats.jpg&quot;);
+var fit = image.fit().w(1000).h(1000).name(&quot;cats.jpg&quot;);
 //prints out the new URL for an image that has width of 1000px and height of 1000px
-console.log(image.toUrl());</code></pre>
+console.log(fit.toUrl());</code></pre>
 <h4>Browser, using require.js</h4>
 <pre><code class="lang-js">require(['WixMedia'], function(WixMedia) {
     var BASE_URL = &quot;&lt;your base URL here&gt;&quot;;
     var image = WixMedia.WixImage(BASE_URL, &quot;&lt;your image ID here&gt;&quot;);
-    image.fit().w(1000).h(1000).name(&quot;cats.jpg&quot;);
+    var fit = image.fit().w(1000).h(1000).name(&quot;cats.jpg&quot;);
     //prints out the new URL for an image that has width of 1000px and height of 1000px
-    console.log(image.toUrl());
+    console.log(fit.toUrl());
 });</code></pre>
 <h3>Image Uploading, Node only</h3>
 <h4>Node.js with Callbacks</h4>
@@ -181,8 +188,8 @@ var API_SECRET = &quot;&lt;SECRET_KEY&gt;&quot;;
 var wixmedia = require(&quot;wixmedia&quot;);
 
 var uploader = wixmedia.uploader(API_KEY, API_SECRET);
-uploader.uploadFromFile(&quot;files/images/wixLogo.jpg&quot;, function(imageId) {
-  console.log(&quot;New image created:&quot; + imageId);
+uploader.uploadFromFile(&quot;files/images/wixLogo.jpg&quot;, function(data) {
+  console.log(&quot;New image created:&quot; + data.imageId);
 }, function(error) {
   console.log(error);
 });</code></pre>
@@ -192,16 +199,16 @@ var API_SECRET = &quot;&lt;SECRET_KEY&gt;&quot;;
 var wixmedia = require(&quot;wixmedia&quot;);
 
 var uploader = wixmedia.uploader(API_KEY, API_SECRET);
-uploader.uploadFromFile(&quot;files/images/wixLogo.jpg&quot;).then(function(imageId) {
-  console.log(&quot;New image created:&quot; + imageId);
+uploader.uploadFromFile(&quot;files/images/wixLogo.jpg&quot;).then(function(data) {
+  console.log(&quot;New image created:&quot; + data.imageId);
 }, function(error) {
   console.log(error);
 });</code></pre>
 <h2>Read the docs</h2>
 <p><a href="http://wix.github.io/wixmedia-js/">Read the API docs</a> to learn more about this library</p>
-<h2>Wix Media Services API</h2>
-<p>Wix Media Services provides web developers a versatile infrastructure for media file manipulations easily accessible through its RESTful API.</p>
-<p>For more information about the RESTful API, please see the <a href="link">Wix Media Services developer center</a></p></article>
+<h2>Wix Media Platform</h2>
+<p>Wix Media Platform provides powerful image-processing services that support resizing, cropping, rotating, sharpening, watermarking, and face-detection, as well as offer a number of filters and adjustments.</p>
+<p>Learn more about image manipulation here: <a href="http://mediacloud.wix.com/docs/images.html">Wix Media Platform - Images</a>.</p></article>
     </section>
 
 
@@ -226,7 +233,7 @@ uploader.uploadFromFile(&quot;files/images/wixLogo.jpg&quot;).then(function(imag
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Sat Nov 01 2014 16:55:37 GMT+0200 (IST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Mon Nov 03 2014 15:19:28 GMT+0200 (IST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

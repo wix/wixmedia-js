@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Wix Media Class: Canvas</title>
+	<title>Wix Media Class: UploadClient</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -121,12 +121,12 @@
 					
 
 
-	<h1 class="page-title">Class: Canvas</h1>
+	<h1 class="page-title">Class: UploadClient</h1>
 <section>
 
 <header>
     <h2>
-    Canvas
+    UploadClient
     </h2>
     
 </header>
@@ -138,7 +138,7 @@
     
         
 <dt>
-    <h4 class="name" id="Canvas"><span class="type-signature"></span>new Canvas<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="UploadClient"><span class="type-signature"></span>new UploadClient<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -146,8 +146,7 @@
     
     
     <div class="description">
-        <p>Resizes the image canvas, filling the width and height boundaries and crops any excess image data.
-The resulting image will match the width and height constraints without scaling the image.</p>
+        <p>Client to upload media to the Wix Media Platform</p>
     </div>
     
 
@@ -180,7 +179,7 @@ The resulting image will match the width and height constraints without scaling 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        images.js
+        node/upload.js
     </li></ul></dd>
     
 
@@ -211,16 +210,6 @@ The resulting image will match the width and height constraints without scaling 
     
 
     
-        <h3 class="subsection-title">Mixes In</h3>
-
-        <ul>
-            <li><a href="AdjustMixin.html">AdjustMixin</a></li>
-        
-            <li><a href="FilterMixin.html">FilterMixin</a></li>
-        
-            <li><a href="WidthHeightQualityMixin.html">WidthHeightQualityMixin</a></li>
-        </ul>
-    
 
     
 
@@ -236,7 +225,7 @@ The resulting image will match the width and height constraints without scaling 
         <dl>
             
 <dt>
-    <h4 class="name" id="c"><span class="type-signature"></span>c<span class="signature">(c)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    <h4 class="name" id="uploadFromFile"><span class="type-signature">&lt;static> </span>uploadFromFile<span class="signature">(path, <span class="optional">success</span>, <span class="optional">failure</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="UploadedMedia.html">UploadedMedia</a>>}</span></h4>
     
     
 </dt>
@@ -244,7 +233,7 @@ The resulting image will match the width and height constraints without scaling 
     
     
     <div class="description">
-        <p>The background color, in case the canvas size is larger than the image itself.</p>
+        <p>Uploads a file to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned</p>
     </div>
     
 
@@ -266,7 +255,11 @@ The resulting image will match the width and height constraints without scaling 
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
+		
+		<th>Default</th>
 		
 
 		<th class="last">Description</th>
@@ -278,7 +271,7 @@ The resulting image will match the width and height constraints without scaling 
 
         <tr>
             
-                <td class="name"><code>c</code></td>
+                <td class="name"><code>path</code></td>
             
 
             <td class="type">
@@ -291,10 +284,100 @@ The resulting image will match the width and height constraints without scaling 
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>an RGB value, of form rrggbb</p></td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The local path to the image</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>success</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#UploadSuccess">UploadSuccess</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"><p>An optional callback triggered on success</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>failure</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#UploadFailure">UploadFailure</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"><p>An optional callback triggered on failure</p></td>
         </tr>
 
 	
@@ -326,7 +409,7 @@ The resulting image will match the width and height constraints without scaling 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        images.js
+        node/upload.js
     </li></ul></dd>
     
 
@@ -351,7 +434,7 @@ The resulting image will match the width and height constraints without scaling 
     
             
 <div class="param-desc">
-    <p>the operation</p>
+    <p>A promise that will yield an <code>UploadedData</code> object, or null if using callbacks</p>
 </div>
 
 
@@ -362,7 +445,7 @@ The resulting image will match the width and height constraints without scaling 
 	</dt>
 	<dd>
 		
-<span class="param-type">*</span>
+<span class="param-type">Promise.&lt;<a href="UploadedMedia.html">UploadedMedia</a>></span>
 
 
 	</dd>
