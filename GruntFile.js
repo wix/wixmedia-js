@@ -8,6 +8,12 @@ module.exports = function(grunt) {
             standalone: "wixmedia"
         }
     };
+	var buildOptions = {
+		debug: false,
+		bundleOptions : {
+			standalone: "wixmedia"
+		}
+	};
 
     grunt.initConfig({
         clean : {
@@ -58,7 +64,7 @@ module.exports = function(grunt) {
                 dest: 'dist/wixmedia.min.js'
             },
             build : {
-				options: distOptions,
+				options: buildOptions,
                 src: ['src/wixmedia-browser.js'],
                 dest: 'dist/wixmedia.js'
             },
