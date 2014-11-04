@@ -19,6 +19,9 @@
     "app/bower_components",
     "test",
     "tests",
-    "src"
+    "src",
+    "GruntFile.js",
+    "jsdoc.conf.json",
+    "package.json"
   ]
 }
