@@ -263,7 +263,14 @@ OperationMixin.prototype.name = function(name) {
  * @returns {String} the URL of the image
  */
 OperationMixin.prototype.toUrl = function () {
-  var out = this.endpoint + "/" + this.imageId + "/" + this.version + "/" + this.opName + "/";
+   var prefix = "";
+   if(this.endpoint !== null && this.endpoint.length > 4 && this.endpoint.substring(0, 4) !== "http") {
+	   if(this.endpoint.substring(0,2) !== "//") {
+		   prefix = "//";
+	   }
+   }
+
+	var out = prefix + this.endpoint + "/" + this.imageId + "/" + this.version + "/" + this.opName + "/";
 
   var params = outputParams(this.operations);
   if (this.hasAdjustments()) {
@@ -574,9 +581,9 @@ function fromUrl(url) {
  * @constructor WixImage
  */
 function WixImage(baseUrl, imageId, name, version) {
-	this.imageId = imageId;
-	this.endpoint = baseUrl;
-	this.name = name;
+	this.imageId = imageId.trim();
+	this.endpoint = baseUrl.trim();
+	this.name = name !== undefined ? name.trim() : name;
 	this.version = version || "v1";
 }
 

@@ -19,6 +19,11 @@ describe('Test Wix Media Services', function () {
 		var url = i.fill().size(100, 300).alignment(wms.Defaults.Alignment.LEFT).name("cat.jpg").toUrl();
 		expect(url).to.be("//test.wix.com/12345/v1/fill/w_100,h_300,al_l/cat.jpg");
 	});
+	it('Test fill construction, w, h, al', function () {
+		var i = new WixImage("//test.wix.com", "12345");
+		var url = i.fill().size(100, 300).alignment(wms.Defaults.Alignment.LEFT).name("cat.jpg").toUrl();
+		expect(url).to.be("//test.wix.com/12345/v1/fill/w_100,h_300,al_l/cat.jpg");
+	});
     it('Test fill construction, w, h, al shorthand', function () {
         var i = new WixImage("http://test.wix.com", "12345");
         var url = i.fill().w(100).h(300).alignment(wms.Defaults.Alignment.LEFT).name("cat.jpg").toUrl();
