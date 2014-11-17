@@ -8,9 +8,9 @@
   "description": "isomorphic library for Wix Media Platform",
   "main": "dist/wixmedia.min.js",
   "keywords": [
-
+    "wix", "wixmedia", "image manipulation", "image hosting", "image storage"
   ],
-  "license": "Apache 2",
+  "license": "MIT",
   "private": false,
   "ignore": [
     "**/.*",
