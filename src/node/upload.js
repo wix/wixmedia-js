@@ -57,36 +57,79 @@ UploadClient.prototype.getUploadUrl = function() {
 	return deferred.promise;
 };
 
-UploadClient.prototype.upload = function (path, success, failure) {
+function ImageFile(path) {
+	this.path = path;
+}
+
+ImageFile.prototype.getUploadData = function() {
 	var deferred = Q.defer();
 	var that = this;
-	this.getUploadUrl().then(function(uploadUrl) {
-		Q.nfcall(FS.stat, path).then(function(stats) {
-			rest.post(uploadUrl, {
-				multipart: true,
-				headers : that.getAuthHeaders(that.authToken),
-				data : {
-					"media_type" : "picture",
-					"file" : rest.file(path, null, stats.size)
-				}
-
-			}).on('complete', function(data) {
-				var retVal = new UploadedMedia(data[0]);
-				if(typeof success === "function") {
-					success(retVal);
-				}
-				deferred.resolve(retVal);
-			}).on('error', function(data) {
-				deferred.reject(data);
-			});
-		});
-
+	Q.nfcall(FS.stat, this.path).then(function(stats) {
+		deferred.resolve(rest.file(that.path, null, stats.size));
 	}, function(error) {
-		if(typeof failure === "function") {
-			failure(error);
-		}
 		deferred.reject(error);
 	});
+	return deferred.promise;
+};
+
+function B64Data(imageName, data) {
+	this.data = data;
+	this.imageName = imageName;
+}
+
+B64Data.prototype.getUploadData = function() {
+	var deferred = Q.defer();
+	var matches = this.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+
+	if(matches === null || matches.length < 2) {
+		deferred.reject('Bad image Base64 header');
+	} else {
+		deferred.resolve(rest.data(this.imageName, null, new Buffer(matches[2], 'base64')));
+	}
+	return deferred.promise;
+};
+
+function handleReject(error, callback, deferred) {
+	if(typeof callback === "function") {
+		callback(error);
+	}
+	deferred.reject(error);
+}
+
+function uploadImage(client, imageData, success, failure) {
+	var deferred = Q.defer();
+
+	client.getUploadUrl().then(function(uploadUrl) {
+		imageData.getUploadData().then(function (uploadData) {
+			"use strict";
+			rest.post(uploadUrl, {
+				multipart: true,
+				headers: client.getAuthHeaders(client.authToken),
+				data: {
+					"media_type": "picture",
+					"file": uploadData
+				}
+
+			}).on('complete', function (data) {
+				if(data.hasOwnProperty('error_code')) {
+					handleReject(data, failure, deferred);
+				} else {
+					var retVal = new UploadedMedia(data[0]);
+					if (typeof success === "function") {
+						success(retVal);
+					}
+					deferred.resolve(retVal);
+				}
+			}).on('error', function (data) {
+				handleReject(data, failure, deferred);
+			});
+		}, function (error) {
+			handleReject(error, failure, deferred);
+		});
+	}, function(error) {
+		handleReject(error, failure, deferred);
+	});
+
 	if(typeof success === "function") {
 		var ref = setInterval(function() {
 			if(deferred.promise.isFulfilled() || deferred.promise.isRejected()) {
@@ -97,6 +140,14 @@ UploadClient.prototype.upload = function (path, success, failure) {
 	} else {
 		return deferred.promise;
 	}
+}
+
+UploadClient.prototype.uploadFile = function (path, success, failure) {
+	return uploadImage(this, new ImageFile(path), success, failure);
+};
+
+UploadClient.prototype.uploadB64 = function (imageName, data, success, failure) {
+	return uploadImage(this, new B64Data(imageName, data), success, failure);
 };
 
 /**
@@ -131,7 +182,19 @@ module.exports = {
 			 * @returns {Promise<UploadedMedia>} A promise that will yield an {@link UploadedData} object, or null if using callbacks
 			 */
 			uploadFromFile : function(path, success, failure) {
-				return c.upload(path, success, failure);
+				return c.uploadFile(path, success, failure);
+			},
+			/**
+			 * Uploads a base64 encoded image to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
+			 * @memberOf UploadClient
+			 * @param {string} name - The name of the image
+			 * @param {string} data - The data of the image. Data must start with data:image/{jpg|png|gif|..};base64,
+			 * @param {UploadSuccess} [success=null] - An optional callback triggered on success
+			 * @param {UploadFailure} [failure=null] - An optional callback triggered on failure
+			 * @returns {Promise<UploadedMedia>} A promise that will yield an {@link UploadedData} object, or null if using callbacks
+			 */
+			uploadB64Image : function(imageName, data, success, failure) {
+				return c.uploadB64(imageName, data, success, failure);
 			}
 		};
 	}
