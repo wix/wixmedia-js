@@ -15,6 +15,20 @@ module.exports = function(grunt) {
 		}
 	};
 
+	var distImageApiOptions = {
+		debug: false,
+		transform : ['uglifyify'],
+		bundleOptions : {
+			standalone: "imageApi"
+		}
+	};
+	var buildImageApiOptions = {
+		debug: false,
+		bundleOptions : {
+			standalone: "imageApi"
+		}
+	};
+
     grunt.initConfig({
         clean : {
             dist : {
@@ -68,6 +82,16 @@ module.exports = function(grunt) {
                 src: ['src/wixmedia-browser.js'],
                 dest: 'dist/wixmedia.js'
             },
+			distImageApi : {
+				options: distImageApiOptions,
+				src: ['image-api.js'],
+				dest: 'dist/image-api.min.js'
+			},
+			buildImageApi : {
+				options: buildImageApiOptions,
+				src: ['image-api.js'],
+				dest: 'dist/image-api.js'
+			},
             specs: {
                 src: ["tests/specs/**/*Spec.js"],
                 dest: "build/specs.js"
@@ -109,8 +133,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-gh-pages');
 
     // Default task(s).
-    grunt.registerTask('web', ['clean:dist', 'jshint', 'browserify:dist', 'browserify:build']);
-    grunt.registerTask('web-tests', ['clean:build', 'browserify:build', 'browserify:specs', 'mocha']);
+    grunt.registerTask('web', ['clean:dist', 'jshint', 'browserify:dist', 'browserify:build', 'browserify:distImageApi', 'browserify:buildImageApi']);
+    grunt.registerTask('web-tests', ['clean:build', 'browserify:build', 'browserify:buildImageApi', 'browserify:specs', 'mocha']);
     grunt.registerTask('docs', ['clean:jsdoc', 'jsdoc']);
 
     grunt.registerTask('publish', ['docs', 'gh-pages']);
