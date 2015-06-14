@@ -1,4 +1,5 @@
 var Images = require("./images.js");
+var crophelpers = require("./crophelpers.js");
 var Uploader = require("./node/upload.js");
 
 /**
@@ -38,5 +39,8 @@ module.exports = {
 	 */
 	uploader : function(apiKey, secretKey) {
 		return Uploader.client(apiKey, secretKey);
-	}
+	},
+
+	getContainLayout: crophelpers.getContainLayout,
+	getCoverLayout: crophelpers.getCoverLayout
 };

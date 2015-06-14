@@ -1,4 +1,42 @@
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.wixmedia=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+function getContainLayout(imageWidth, imageHeight, boxWidth, boxHeight){
+	var layout = { x:0, y:0 };
+	var imageRatio = imageWidth / imageHeight;
+	var boxRatio = boxWidth / boxHeight;
+	if(imageRatio < boxRatio){
+		layout.w = boxHeight * imageRatio;
+		layout.h = boxHeight;
+		layout.x = Math.round(boxWidth/2 - layout.w/2);
+	} else {
+		layout.w = boxWidth;
+		layout.h = boxWidth / imageRatio;
+		layout.y = Math.round(boxHeight/2 - layout.h/2);
+	}
+	return layout;
+}
+function getCoverLayout(imageWidth, imageHeight, boxWidth, boxHeight){
+	var layout = { x:0, y:0 };
+	var imageRatio = imageWidth / imageHeight;
+	var boxRatio = boxWidth / boxHeight;
+	if(imageRatio < boxRatio){
+		layout.w = boxWidth;
+		layout.h = Math.round(boxWidth / imageRatio);
+		layout.y = Math.round(boxHeight/2 - layout.h/2);
+	} else {
+		layout.w = Math.round(boxHeight * imageRatio);
+		layout.h = boxHeight;
+		layout.x = Math.round(boxWidth/2 - layout.w/2);
+	}
+	return layout;
+}
+
+module.exports = {
+	getContainLayout: getContainLayout,
+	getCoverLayout: getCoverLayout
+};
+
+
+},{}],2:[function(_dereq_,module,exports){
 var extend = _dereq_("./utils").extend;
 var parser = _dereq_("./parser");
 
@@ -796,7 +834,7 @@ module.exports = {
   fromUrl: fromUrl
 };
 
-},{"./parser":2,"./utils":3}],2:[function(_dereq_,module,exports){
+},{"./parser":3,"./utils":4}],3:[function(_dereq_,module,exports){
 var extend = _dereq_("./utils").extend;
 
 var adjustMap = {
@@ -1094,7 +1132,7 @@ module.exports.parse = function(url) {
     return parser.parse(url);
 };
 
-},{"./utils":3}],3:[function(_dereq_,module,exports){
+},{"./utils":4}],4:[function(_dereq_,module,exports){
 module.exports.extend = function(destination, source) {
     for (var k in source) {
         if (source.hasOwnProperty(k)) {
@@ -1104,8 +1142,9 @@ module.exports.extend = function(destination, source) {
     return destination;
 };
 
-},{}],4:[function(_dereq_,module,exports){
+},{}],5:[function(_dereq_,module,exports){
 var Images = _dereq_("./images.js");
+var crophelpers = _dereq_("./crophelpers.js");
 
 /**
  * Entry point into the WixMedia service
@@ -1134,8 +1173,11 @@ module.exports = {
 	 * Image constants for use with Wix Media Services
 	 * @type {Defaults}
 	 */
-	Defaults : Images.Defaults
+	Defaults : Images.Defaults,
+
+	getContainLayout: crophelpers.getContainLayout,
+	getCoverLayout: crophelpers.getCoverLayout
 };
-},{"./images.js":1}]},{},[4])
-(4)
+},{"./crophelpers.js":1,"./images.js":2}]},{},[5])
+(5)
 });

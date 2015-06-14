@@ -1,4 +1,5 @@
 var Images = require("./images.js");
+var crophelpers = require("./crophelpers.js");
 
 /**
  * Entry point into the WixMedia service
@@ -27,5 +28,8 @@ module.exports = {
 	 * Image constants for use with Wix Media Services
 	 * @type {Defaults}
 	 */
-	Defaults : Images.Defaults
+	Defaults : Images.Defaults,
+
+	getContainLayout: crophelpers.getContainLayout,
+	getCoverLayout: crophelpers.getCoverLayout
 };
