@@ -31,7 +31,7 @@ AdjustMixin.prototype = {
    * @returns {*} the operation
    */
   brightness: function (b) {
-    this.adjustments.br = b || DEFAULT_AUTO;
+    this.adjustments.br = typeof b !== "undefined" ? b : DEFAULT_AUTO;
     return this;
   },
   /**
@@ -40,7 +40,7 @@ AdjustMixin.prototype = {
    * @returns {*} the operation
    */
   contrast: function (c) {
-    this.adjustments.con = c || DEFAULT_AUTO;
+    this.adjustments.con = typeof c !== "undefined" ? c : DEFAULT_AUTO;
     return this;
   },
   /**
@@ -49,7 +49,7 @@ AdjustMixin.prototype = {
    * @returns {*} the operation
    */
   saturation: function (s) {
-    this.adjustments.sat = s || DEFAULT_AUTO;
+    this.adjustments.sat = typeof s !== "undefined" ? s : DEFAULT_AUTO;
     return this;
   },
   /**
@@ -58,7 +58,7 @@ AdjustMixin.prototype = {
    * @returns {*} the operation
    */
   hue: function (h) {
-    this.adjustments.hue = h || DEFAULT_AUTO;
+    this.adjustments.hue = typeof h !== "undefined" ? h : DEFAULT_AUTO;
     return this;
   },
   ///**
