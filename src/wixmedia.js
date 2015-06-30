@@ -41,6 +41,8 @@ module.exports = {
 		return Uploader.client(apiKey, secretKey);
 	},
 
-	getContainLayout: crophelpers.getContainLayout,
-	getCoverLayout: crophelpers.getCoverLayout
+	crop:{
+		getContainLayout: crophelpers.getContainLayout,
+		getCoverLayout: crophelpers.getCoverLayout
+	}
 };

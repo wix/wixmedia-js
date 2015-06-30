@@ -19,7 +19,7 @@ describe("Media server crop utils", function(){
 			var boxHeight = 200;
 			var expectedOffset = { w:100, h:50, x:0, y:75 };
 
-			var layout = wms.getContainLayout(imageWidth, imageHeight, boxWidth, boxHeight);
+			var layout = wms.crop.getContainLayout(imageWidth, imageHeight, boxWidth, boxHeight);
 
 			expect(layout).to.eql(expectedOffset);
 		});
@@ -37,7 +37,7 @@ describe("Media server crop utils", function(){
 			var boxHeight = 50;
 			var expectedOffset = { w:25, h:50, x:38, y:0 };
 
-			var layout = wms.getContainLayout(imageWidth, imageHeight, boxWidth, boxHeight);
+			var layout = wms.crop.getContainLayout(imageWidth, imageHeight, boxWidth, boxHeight);
 
 			expect(layout).to.eql(expectedOffset);
 		});
@@ -59,7 +59,7 @@ describe("Media server crop utils", function(){
 			var boxHeight = 200;
 			var expectedOffset = { w:400, h:200, x:-150, y:0 };
 
-			var layout = wms.getCoverLayout(imageWidth, imageHeight, boxWidth, boxHeight);
+			var layout = wms.crop.getCoverLayout(imageWidth, imageHeight, boxWidth, boxHeight);
 
 			expect(layout).to.eql(expectedOffset);
 		});
@@ -80,7 +80,7 @@ describe("Media server crop utils", function(){
 			var boxHeight = 80;
 			var expectedOffset = { w:200, h:400, x:0, y:-160 };
 
-			var layout = wms.getCoverLayout(imageWidth, imageHeight, boxWidth, boxHeight);
+			var layout = wms.crop.getCoverLayout(imageWidth, imageHeight, boxWidth, boxHeight);
 
 			expect(layout).to.eql(expectedOffset);
 		});

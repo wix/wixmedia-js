@@ -30,6 +30,8 @@ module.exports = {
 	 */
 	Defaults : Images.Defaults,
 
-	getContainLayout: crophelpers.getContainLayout,
-	getCoverLayout: crophelpers.getCoverLayout
+	crop:{
+		getContainLayout: crophelpers.getContainLayout,
+		getCoverLayout: crophelpers.getCoverLayout
+	}
 };

@@ -1,4 +1,15 @@
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.wixmedia=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+/**
+ * Takes image and box dimensions, and return the result layout
+ * that the image should be in order to be contained and centered
+ * inside the box.
+ *
+ * @param {number} imageWidth original image width
+ * @param {number} imageHeight original image height
+ * @param {number} boxWidth box width to fit image into
+ * @param {number} boxHeight box height to fit image into
+ * @returns {{x:number, y:number, w:number, h:number }}
+ */
 function getContainLayout(imageWidth, imageHeight, boxWidth, boxHeight){
 	var layout = { x:0, y:0 };
 	var imageRatio = imageWidth / imageHeight;
@@ -14,6 +25,16 @@ function getContainLayout(imageWidth, imageHeight, boxWidth, boxHeight){
 	}
 	return layout;
 }
+/**
+ * Takes image and box dimensions, and return the result layout
+ * that the image should be in order to cover (center) the box.
+ *
+ * @param {number} imageWidth original image width
+ * @param {number} imageHeight original image height
+ * @param {number} boxWidth box width that the image should cover
+ * @param {number} boxHeight box height that the image should cover
+ * @returns {{x:number, y:number, w:number, h:number }}
+ */
 function getCoverLayout(imageWidth, imageHeight, boxWidth, boxHeight){
 	var layout = { x:0, y:0 };
 	var imageRatio = imageWidth / imageHeight;
@@ -1175,8 +1196,10 @@ module.exports = {
 	 */
 	Defaults : Images.Defaults,
 
-	getContainLayout: crophelpers.getContainLayout,
-	getCoverLayout: crophelpers.getCoverLayout
+	crop:{
+		getContainLayout: crophelpers.getContainLayout,
+		getCoverLayout: crophelpers.getCoverLayout
+	}
 };
 },{"./crophelpers.js":1,"./images.js":2}]},{},[5])
 (5)
