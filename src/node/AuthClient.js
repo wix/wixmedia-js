@@ -48,14 +48,20 @@ function AuthClient(config) {
 	this.authPromise = null;
 }
 
-AuthClient.prototype.getAuthToken = function() {
+AuthClient.prototype.getAuthToken = function(callback) {
 	var deferred = Q.defer();
 	var that = this;
 	if(this.authToken !== null) {
+		if (typeof callback === "function") {
+			callback(null, this.authToken);
+		}
 		deferred.resolve(this.authToken);
 	} else {
 		//[dz] avoid sending multiple auth requests
 		if(this.authPromise !== null) {
+			if (typeof callback === "function") {
+				callback(null, this.authPromise);
+			}
 			return this.authPromise;
 		}
 		this.authPromise = deferred.promise;
@@ -63,19 +69,39 @@ AuthClient.prototype.getAuthToken = function() {
 		var options = apiRequest.toHttpsOptions(HEADER_KEY);
 		mediaHttp.request(options).then(function(data) {
 			if(typeof data.data !== 'object') {
-				deferred.reject("Bad authorization");
+				var errorString = "Bad authorization";
+				if (typeof callback === "function") {
+					callback(errorString, null);
+				}
+				deferred.reject(errorString);
 			} else {
 				that.authToken = data.data.token;
 				that.authScheme = data.data.scheme;
 				that.authPromise = null;
+				if (typeof callback === "function") {
+					callback(null, that.authToken);
+				}
 				deferred.resolve(that.authToken);
 			}
 		}, function(error) {
 			that.authPromise = null;
-			deferred.reject("Bad authorization :" + JSON.stringify(error));
+			var e2 = "Bad authorization :" + JSON.stringify(error);
+			if (typeof callback === "function") {
+				callback(e2, null);
+			}
+			deferred.reject(e2);
 		});
 	}
-	return deferred.promise;
+	if(typeof callback === "function") {
+		var ref = setInterval(function() {
+			if(deferred.promise.isFulfilled() || deferred.promise.isRejected()) {
+				clearInterval(ref);
+				return;
+			}
+		}, 100);
+	} else {
+		return deferred.promise;
+	}
 };
 
 AuthClient.prototype.getAuthHeaders = function(authToken) {
