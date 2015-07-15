@@ -93,18 +93,24 @@ module.exports = function(grunt) {
 				dest: 'dist/image-api.js'
 			},
             specs: {
-                src: ["tests/specs/**/*Spec.js"],
+                src: ["tests/specs/**/cropHelpersSpec.js", "tests/specs/**/imageAPISpec.js"],
                 dest: "build/specs.js"
             }
         },
         mocha: {
-            test: {
+            'test-browser': {
                 src: ['tests/SpecRunner.html'],
                 options: {
                     run: true
                 }
-            }
+            },
         },
+		mochacli : {
+			options: {
+				reporter: 'nyan'
+			},
+			node : ['tests/specs/*Spec.js']
+		},
         jsdoc : {
             dist : {
                 src: ['src/images.js', 'src/wixmedia.js', 'src/node/upload.js', 'README.md'],
@@ -129,7 +135,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha');
-    grunt.loadNpmTasks('grunt-jsdoc');
+	grunt.loadNpmTasks('grunt-mocha-cli');
+	grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('grunt-gh-pages');
 
     // Default task(s).

@@ -1,6 +1,8 @@
 var Images = require("./images.js");
 var crophelpers = require("./crophelpers.js");
 var Uploader = require("./node/upload.js");
+var authconfig = require("./node/authconfig.js");
+var AuthClient = require("./node/AuthClient.js");
 
 /**
  * Entry point into the WixMedia service
@@ -36,9 +38,44 @@ module.exports = {
 	 * @param {string} apiKey - your API key
 	 * @param {string} secretKey - your secret key
 	 * @returns {UploadClient} an upload client
+	 * @throws
 	 */
 	uploader : function(apiKey, secretKey) {
-		return Uploader.client(apiKey, secretKey);
+		if(secretKey !== undefined) {
+			config = authconfig.authConfig(authconfig.AuthModes.WIX).apiKey(apiKey).secretKey(secretKey);
+		} else if(typeof apiKey !== 'string') {
+			config = apiKey;
+		} else {
+			throw 'Bad config';
+		}
+		return Uploader.client(config);
+	},
+
+	/**
+	 * Methods dealing with authentication when authenticating against wixmp
+	 * @namespace
+	 * @memberof module:WixMedia
+	 */
+	auth : {
+		/**
+		 * Config factory to create configurations
+		 * @param {AuthModes} mode The auth mode
+		 * @return {WixConfig|TenantConfig} A config object for use with AuthClient and uploader
+		 */
+		config : authconfig.authConfig,
+
+		/**
+		 * Authentication modes used with uploading
+		 */
+		modes: authconfig.AuthModes,
+		/**
+		 * Creates a new AuthClient. Only available in Node.js
+		 * @param config {AuthConfig}
+		 * @returns {AuthClient}
+		 */
+		client: function(config) {
+			return new AuthClient(config);
+		}
 	},
 
 	crop:{

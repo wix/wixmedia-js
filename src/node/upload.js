@@ -31,8 +31,8 @@ function UploadedMedia(data) {
 	Object.defineProperty(this, "height", { get: function () { return data.height; } });
 }
 
-function UploadClient(apiKey, secretKey) {
-	AuthClient.call(this, apiKey, secretKey);
+function UploadClient(config) {
+	AuthClient.call(this, config);
 }
 
 UploadClient.prototype = AuthClient.prototype;
@@ -79,24 +79,28 @@ function B64Data(imageName, data) {
 
 B64Data.prototype.getUploadData = function() {
 	var deferred = Q.defer();
-	var matches = this.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+	try {
+		var matches = this.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
-	if(matches === null || matches.length < 2) {
+		if (matches === null || matches.length < 2) {
+			deferred.reject('Bad image Base64 header');
+		} else {
+			deferred.resolve(rest.data(this.imageName, null, new Buffer(matches[2], 'base64')));
+		}
+	}catch(e) {
 		deferred.reject('Bad image Base64 header');
-	} else {
-		deferred.resolve(rest.data(this.imageName, null, new Buffer(matches[2], 'base64')));
 	}
 	return deferred.promise;
 };
 
 function handleReject(error, callback, deferred) {
 	if(typeof callback === "function") {
-		callback(error);
+		callback(error, null);
 	}
 	deferred.reject(error);
 }
 
-function uploadImage(client, imageData, success, failure) {
+function uploadImage(client, imageData, callback) {
 	var deferred = Q.defer();
 
 	client.getUploadUrl().then(function(uploadUrl) {
@@ -112,25 +116,25 @@ function uploadImage(client, imageData, success, failure) {
 
 			}).on('complete', function (data) {
 				if(data.hasOwnProperty('error_code')) {
-					handleReject(data, failure, deferred);
+					handleReject(data, callback, deferred);
 				} else {
 					var retVal = new UploadedMedia(data[0]);
-					if (typeof success === "function") {
-						success(retVal);
+					if (typeof callback === "function") {
+						callback(null, retVal);
 					}
 					deferred.resolve(retVal);
 				}
 			}).on('error', function (data) {
-				handleReject(data, failure, deferred);
+				handleReject(data, callback, deferred);
 			});
 		}, function (error) {
-			handleReject(error, failure, deferred);
+			handleReject(error, callback, deferred);
 		});
 	}, function(error) {
-		handleReject(error, failure, deferred);
+		handleReject(error, callback, deferred);
 	});
 
-	if(typeof success === "function") {
+	if(typeof callback === "function") {
 		var ref = setInterval(function() {
 			if(deferred.promise.isFulfilled() || deferred.promise.isRejected()) {
 				clearInterval(ref);
@@ -142,18 +146,19 @@ function uploadImage(client, imageData, success, failure) {
 	}
 }
 
-UploadClient.prototype.uploadFile = function (path, success, failure) {
-	return uploadImage(this, new ImageFile(path), success, failure);
+UploadClient.prototype.uploadFile = function (path, callback) {
+	return uploadImage(this, new ImageFile(path), callback);
 };
 
-UploadClient.prototype.uploadB64 = function (imageName, data, success, failure) {
-	return uploadImage(this, new B64Data(imageName, data), success, failure);
+UploadClient.prototype.uploadB64 = function (imageName, data, callback) {
+	return uploadImage(this, new B64Data(imageName, data), callback);
 };
 
 /**
  * Callback for a successful file upload
  *
- * @callback UploadSuccess
+ * @callback UploadStatus
+ * @param {Object} error - Information about the error that occurred
  * @param {UploadedData} data - Information about the uploaded data
  */
 
@@ -161,7 +166,6 @@ UploadClient.prototype.uploadB64 = function (imageName, data, success, failure) 
  * Callback for a failing file upload
  *
  * @callback UploadFailure
- * @param {Object} error - Information about the error that occurred
  */
 
 module.exports = {
@@ -170,31 +174,29 @@ module.exports = {
 	 * @constructor
 	 * @alias UploadClient
 	 */
-	client : function(apiKey, secretKey) {
-		var c = new UploadClient(apiKey, secretKey);
+	client : function(config) {
+		var c = new UploadClient(config);
 		return {
 			/**
 			 * Uploads a file to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
 			 * @memberOf UploadClient
 			 * @param {string} path - The local path to the image
-			 * @param {UploadSuccess} [success=null] - An optional callback triggered on success
-			 * @param {UploadFailure} [failure=null] - An optional callback triggered on failure
+			 * @param {UploadStatus} [success=null] - An optional callback triggered on success
 			 * @returns {Promise<UploadedMedia>} A promise that will yield an {@link UploadedData} object, or null if using callbacks
 			 */
-			uploadFromFile : function(path, success, failure) {
-				return c.uploadFile(path, success, failure);
+			uploadFromFile : function(path, callback) {
+				return c.uploadFile(path, callback);
 			},
 			/**
 			 * Uploads a base64 encoded image to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
 			 * @memberOf UploadClient
 			 * @param {string} name - The name of the image
 			 * @param {string} data - The data of the image. Data must start with data:image/{jpg|png|gif|..};base64,
-			 * @param {UploadSuccess} [success=null] - An optional callback triggered on success
-			 * @param {UploadFailure} [failure=null] - An optional callback triggered on failure
+			 * @param {UploadStatus} [success=null] - An optional callback triggered on success
 			 * @returns {Promise<UploadedMedia>} A promise that will yield an {@link UploadedData} object, or null if using callbacks
 			 */
-			uploadB64Image : function(imageName, data, success, failure) {
-				return c.uploadB64(imageName, data, success, failure);
+			uploadB64Image : function(imageName, data, callback) {
+				return c.uploadB64(imageName, data, callback);
 			}
 		};
 	}

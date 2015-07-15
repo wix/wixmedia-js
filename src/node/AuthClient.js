@@ -4,11 +4,10 @@ var HMACAuthRequest = WixAuth.HMACAuthRequest;
 var Q = require("q");
 var mediaHttp = require("./mediaHttp.js");
 
-var AUTH_URL_PATH = '/auth/token';
+
 var WIX_NONCE = 'x-wix-auth-nonce';
 var WIX_TS = 'x-wix-auth-ts';
 var HEADER_KEY = "Authorization";
-var WIX_AUTH_SERVICE  = "WIX";
 
 function nonce() {
 	return secureRandom(6, {type: 'Buffer'}).toString('hex');
@@ -18,8 +17,9 @@ function utc() {
 	return new Date().toISOString();
 }
 
-function MediaHMACRequest(url, verb, apiKey, secretKey) {
-	HMACAuthRequest.call(this, url, verb, AUTH_URL_PATH, secretKey);
+function MediaHMACRequest(url, verb, config) {
+	this.config = config;
+	HMACAuthRequest.call(this, url, verb, config.path, config.secretKey);
 	this.options(WixAuth.Options.HMAC_SCHEMA,  WixAuth.Algorithms.SHA256);
 	this.options(WixAuth.Options.PATH_PRIORITY,  true);
 	this.options(WixAuth.Options.TRAILING_NEWLINE,  false);
@@ -29,18 +29,21 @@ function MediaHMACRequest(url, verb, apiKey, secretKey) {
 	this.asHeaders("x-wix-");
 	this.withHeader(WIX_NONCE, nonce());
 	this.withHeader(WIX_TS, utc());
-	this.apiKey = apiKey;
+	this.apiKey = this.config.idKey;
 }
 
 MediaHMACRequest.prototype = HMACAuthRequest.prototype;
 
 MediaHMACRequest.prototype.toRequestAuth = function(signature) {
-	return WIX_AUTH_SERVICE + " " + this.apiKey + ":" + signature;
+	return this.config.serviceName + " " + this.apiKey + ":" + signature;
 };
 
-function AuthClient(apiKey, secretKey) {
-	this.apiKey = apiKey;
-	this.secretKey = secretKey;
+function AuthClient(config) {
+	var c = config.toConfig();
+	if(!c.validate()) {
+		throw 'Bad config';
+	}
+	this.config = config.toConfig();
 	this.authToken = null;
 	this.authPromise = null;
 }
@@ -56,7 +59,7 @@ AuthClient.prototype.getAuthToken = function() {
 			return this.authPromise;
 		}
 		this.authPromise = deferred.promise;
-		var apiRequest = new MediaHMACRequest(mediaHttp.CLOUD_URL, "GET", this.apiKey, this.secretKey);
+		var apiRequest = new MediaHMACRequest(mediaHttp.CLOUD_URL, "GET", this.config);
 		var options = apiRequest.toHttpsOptions(HEADER_KEY);
 		mediaHttp.request(options).then(function(data) {
 			if(typeof data.data !== 'object') {
