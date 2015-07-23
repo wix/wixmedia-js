@@ -8,6 +8,7 @@ var mediaHttp = require("./mediaHttp.js");
 var WIX_NONCE = 'x-wix-auth-nonce';
 var WIX_TS = 'x-wix-auth-ts';
 var HEADER_KEY = "Authorization";
+var PROVISION_PATH = '/users/checkin';
 
 function nonce() {
 	return secureRandom(6, {type: 'Buffer'}).toString('hex');
@@ -108,6 +109,44 @@ AuthClient.prototype.getAuthHeaders = function(authToken) {
 	return {
 		'Authorization' : this.authScheme + ' ' + authToken || this.authToken
 	};
+};
+
+AuthClient.prototype.provision = function(callback) {
+	var deferred = Q.defer();
+	var that = this;
+	this.getAuthToken().then(function(authToken) {
+		var options = {
+			headers : that.getAuthHeaders(authToken),
+			path : PROVISION_PATH,
+			host : mediaHttp.CLOUD_URL
+		};
+		mediaHttp.request(options).then(function(data) {
+			deferred.resolve();
+			if (typeof callback === "function") {
+				callback(null, null);
+			}
+		}, function(error) {
+			if (typeof callback === "function") {
+				callback('Provision failed: ' + error, null);
+			}
+			deferred.reject(error);
+		});
+	}, function(error) {
+		if (typeof callback === "function") {
+			callback('Provision failed: ' + error, null);
+		}
+		deferred.reject(error);
+	});
+	if(typeof callback === "function") {
+		var ref = setInterval(function() {
+			if(deferred.promise.isFulfilled() || deferred.promise.isRejected()) {
+				clearInterval(ref);
+				return;
+			}
+		}, 100);
+	} else {
+		return deferred.promise;
+	}
 };
 
 module.exports = AuthClient;
