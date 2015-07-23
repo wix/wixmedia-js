@@ -56,7 +56,7 @@ TenantConfig.prototype.secretKey = function(secret) {
 	return this;
 };
 
-TenantConfig.prototype.tenantKey = function(key) {
+TenantConfig.prototype.userId = function(key) {
 	this.key = key;
 	return this;
 };

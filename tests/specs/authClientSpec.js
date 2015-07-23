@@ -40,13 +40,13 @@ describe('Test Wix Auth Client Config', function () {
 
 	it('tenant auth config should be valid', function () {
 		var config = wms.auth.config(wms.auth.modes.TENANT);
-		config.secretKey('').tenantKey('');
+		config.secretKey('').userId('');
 		expect(config.toConfig().validate()).to.be(true);
 	});
 
 	it('tenant auth config should have correct properties', function () {
 		var config = wms.auth.config(wms.auth.modes.TENANT);
-		config.secretKey('').tenantKey('');
+		config.secretKey('').userId('');
 		expect(config.toConfig().path).to.be('/auth/tenant/token');
 		expect(config.toConfig().serviceName).to.be('WIXTENANT');
 	});
@@ -68,7 +68,7 @@ describe('Test Wix Auth Client from config', function () {
 
 	it('tenant auth client should be valid', function () {
 		var config = wms.auth.config(wms.auth.modes.TENANT);
-		config.secretKey('').tenantKey('');
+		config.secretKey('').userId('');
 		try {
 			wms.auth.client(config);
 			expect(true).to.be(true);
