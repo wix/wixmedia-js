@@ -61,7 +61,7 @@ var API_SECRET = "<SECRET_KEY>";
 var wixmedia = require("wixmedia");
 
 var uploader = wixmedia.uploader(API_KEY, API_SECRET);
-uploader.uploadFromFile("files/images/wixLogo.jpg", function(data) {
+uploader.images.uploadFromFile("files/images/wixLogo.jpg", function(data) {
   console.log("New image created:" + data.imageId);
 }, function(error) {
   console.log(error);
@@ -76,7 +76,7 @@ var API_SECRET = "<SECRET_KEY>";
 var wixmedia = require("wixmedia");
 
 var uploader = wixmedia.uploader(API_KEY, API_SECRET);
-uploader.uploadFromFile("files/images/wixLogo.jpg").then(function(data) {
+uploader.images.uploadFromFile("files/images/wixLogo.jpg").then(function(data) {
   console.log("New image created:" + data.imageId);
 }, function(error) {
   console.log(error);
