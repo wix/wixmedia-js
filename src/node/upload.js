@@ -121,7 +121,7 @@ UploadClient.prototype.getUploadUrl = function(mode) {
 		var options = {
 			headers : that.getAuthHeaders(authToken),
 			path : mode.getUrl(),
-			host : mediaHttp.CLOUD_URL
+			host : that.config.url
 		};
 		mediaHttp.request(options).then(function(data) {
 			deferred.resolve(data.data.upload_url);

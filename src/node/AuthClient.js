@@ -18,9 +18,9 @@ function utc() {
 	return new Date().toISOString();
 }
 
-function MediaHMACRequest(url, verb, config) {
+function MediaHMACRequest(verb, config) {
 	this.config = config;
-	HMACAuthRequest.call(this, url, verb, config.path, config.secretKey);
+	HMACAuthRequest.call(this, config.url, verb, config.path, config.secretKey);
 	this.options(WixAuth.Options.HMAC_SCHEMA,  WixAuth.Algorithms.SHA256);
 	this.options(WixAuth.Options.PATH_PRIORITY,  true);
 	this.options(WixAuth.Options.TRAILING_NEWLINE,  false);
@@ -66,7 +66,7 @@ AuthClient.prototype.getAuthToken = function(callback) {
 			return this.authPromise;
 		}
 		this.authPromise = deferred.promise;
-		var apiRequest = new MediaHMACRequest(mediaHttp.CLOUD_URL, "GET", this.config);
+		var apiRequest = new MediaHMACRequest( "GET", this.config);
 		var options = apiRequest.toHttpsOptions(HEADER_KEY);
 		mediaHttp.request(options).then(function(data) {
 			if(typeof data.data !== 'object') {
@@ -118,7 +118,7 @@ AuthClient.prototype.provision = function(callback) {
 		var options = {
 			headers : that.getAuthHeaders(authToken),
 			path : PROVISION_PATH,
-			host : mediaHttp.CLOUD_URL
+			host : that.config.url
 		};
 		mediaHttp.request(options).then(function(data) {
 			deferred.resolve();

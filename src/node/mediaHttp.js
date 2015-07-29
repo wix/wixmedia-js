@@ -2,7 +2,6 @@ var Q = require("q");
 var rest = require("restler");
 
 module.exports = {
-	CLOUD_URL : 'mediacloud.wix.com',
 	request : function(options) {
 		"use strict";
 		var deferred = Q.defer();

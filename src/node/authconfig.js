@@ -3,11 +3,12 @@ var Modes = {
 	TENANT : 'TENANT'
 };
 
-function AuthConfig(path, serviceName, idKey, secretKey) {
+function AuthConfig(path, serviceName, idKey, secretKey, url) {
 	this.path = path;
 	this.serviceName = serviceName;
 	this.idKey = idKey;
 	this.secretKey = secretKey;
+	this.url = url;
 }
 
 AuthConfig.prototype.validate = function() {
@@ -40,7 +41,7 @@ WixConfig.prototype.apiKey = function(apiKey) {
 };
 
 WixConfig.prototype.toConfig = function() {
-	return new AuthConfig(this.path, this.serviceName, this.api, this.secret);
+	return new AuthConfig(this.path, this.serviceName, this.api, this.secret, 'mediacloud.wix.com');
 };
 
 function TenantConfig() {
@@ -49,6 +50,7 @@ function TenantConfig() {
 	this.mode = Modes.TENANT;
 	this.path = '/auth/tenant/token';
 	this.serviceName = 'WIXTENANT';
+	this.url = null;
 }
 
 TenantConfig.prototype.secretKey = function(secret) {
@@ -61,8 +63,13 @@ TenantConfig.prototype.userId = function(key) {
 	return this;
 };
 
+TenantConfig.prototype.endpointUrl = function(url) {
+	this.url = url;
+	return this;
+};
+
 TenantConfig.prototype.toConfig = function() {
-	return new AuthConfig(this.path, this.serviceName, this.key, this.secret);
+	return new AuthConfig(this.path, this.serviceName, this.key, this.secret, this.url);
 };
 
 module.exports = {
