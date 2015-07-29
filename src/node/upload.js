@@ -5,31 +5,108 @@ var mediaHttp = require("./mediaHttp.js");
 var AuthClient = require("./AuthClient.js");
 
 
-var WIX_MEDIA_UPLOAD_URL_PATH = '/files/upload/url';
+function decorate(context, data) {
+	Object.defineProperty(context, "fileId", { get: function () { return data.file_url; } });
+	Object.defineProperty(context, "iconUrl", { get: function () { return data.icon_url; } });
+	Object.defineProperty(context, "fileUrl", { get: function () { return data.file_url; } });
+	Object.defineProperty(context, "hash", { get: function () { return data.hash; } });
+	Object.defineProperty(context, "fileSize", { get: function () { return data.file_size; } });
+	Object.defineProperty(context, "fileName", { get: function () { return data.file_name; } });
+	Object.defineProperty(context, "originalFileName", { get: function () { return data.original_file_name; } });
+	Object.defineProperty(context, "rawData", { get: function () { return data; } });
+}
 
 /**
- * Information about media that was uploaded
- * @alias UploadedMedia
+ * Information about an image that was uploaded
+ * @alias ImageMedia
  * @constructor
  * @property {string} fileId - The id of the uploaded file
- * @property {string} imageId - The id of the uploaded image, if an image
+ * @property {string} imageId - The id of the uploaded image
  * @property {string} fileUrl - The url of the uploaded file. This is the same as the fileId
  * @property {string} fileSize - The size of the uploaded file
  * @property {string} fileName - The name of the uploaded file
  * @property {string} originalFileName - The original file name of the uploaded file
  * @property {string} width - If an image, the width of the image
  * @property {string} height - If an image, the height of the image
+ * @property {string} rawData - the raw metadata
  */
-function UploadedMedia(data) {
-	Object.defineProperty(this, "fileId", { get: function () { return data.file_url; } });
-	Object.defineProperty(this, "fileUrl", { get: function () { return data.file_url; } });
+function ImageMedia(data) {
+	decorate(this, data);
 	Object.defineProperty(this, "imageId", { get: function () { return data.file_url; } });
-	Object.defineProperty(this, "fileSize", { get: function () { return data.file_size; } });
-	Object.defineProperty(this, "fileName", { get: function () { return data.file_name; } });
-	Object.defineProperty(this, "originalFileName", { get: function () { return data.original_file_name; } });
 	Object.defineProperty(this, "width", { get: function () { return data.width; } });
 	Object.defineProperty(this, "height", { get: function () { return data.height; } });
 }
+
+/**
+ * Information about an audio file that was uploaded
+ * @alias AudioMedia
+ * @constructor
+ * @property {string} fileId - The id of the uploaded file
+ * @property {string} audioId - The id of the uploaded audio file
+ * @property {string} fileUrl - The url of the uploaded file. This is the same as the fileId
+ * @property {string} fileSize - The size of the uploaded file
+ * @property {string} fileName - The name of the uploaded file
+ * @property {string} originalFileName - The original file name of the uploaded file
+ * @property {string} rawData - the raw metadata
+ */
+function AudioMedia(data) {
+	decorate(this, data);
+	Object.defineProperty(this, "audioId", { get: function () { return data.file_url; } });
+}
+
+/**
+ * Information about a video file that was uploaded
+ * @alias AudioMedia
+ * @constructor
+ * @property {string} fileId - The id of the uploaded file
+ * @property {string} videoId - The id of the uploaded video file
+ * @property {string} fileUrl - The url of the uploaded file. This is the same as the fileId
+ * @property {string} fileSize - The size of the uploaded file
+ * @property {string} fileName - The name of the uploaded file
+ * @property {string} originalFileName - The original file name of the uploaded file
+ * @property {string} rawData - the raw metadata
+ */
+function VideoMedia(data) {
+	decorate(this, data);
+	Object.defineProperty(this, "videoId", { get: function () { return data.file_url; } });
+}
+
+var ImageMode = {
+	toMetadata : function(data) {
+		return new ImageMedia(data);
+	},
+	getUrl : function() {
+		return '/files/upload/url';
+	},
+	getMediaType : function() {
+		return 'picture';
+	}
+
+};
+
+var VideoMode = {
+	toMetadata : function(data) {
+		return new VideoMedia(data);
+	},
+	getUrl : function() {
+		return '/files/video/upload/url';
+	},
+	getMediaType: function() {
+		return 'video';
+	}
+};
+
+var AudioMode = {
+	toMetadata : function(data) {
+		return new AudioMedia(data);
+	},
+	getUrl : function() {
+		return '/files/upload/url';
+	},
+	getMediaType: function() {
+		return 'music';
+	}
+};
 
 function UploadClient(config) {
 	AuthClient.call(this, config);
@@ -37,13 +114,13 @@ function UploadClient(config) {
 
 UploadClient.prototype = AuthClient.prototype;
 
-UploadClient.prototype.getUploadUrl = function() {
+UploadClient.prototype.getUploadUrl = function(mode) {
 	var deferred = Q.defer();
 	var that = this;
 	this.getAuthToken().then(function(authToken) {
 		var options = {
 			headers : that.getAuthHeaders(authToken),
-			path : WIX_MEDIA_UPLOAD_URL_PATH,
+			path : mode.getUrl(),
 			host : mediaHttp.CLOUD_URL
 		};
 		mediaHttp.request(options).then(function(data) {
@@ -57,11 +134,11 @@ UploadClient.prototype.getUploadUrl = function() {
 	return deferred.promise;
 };
 
-function ImageFile(path) {
+function MediaFile(path) {
 	this.path = path;
 }
 
-ImageFile.prototype.getUploadData = function() {
+MediaFile.prototype.getUploadData = function() {
 	var deferred = Q.defer();
 	var that = this;
 	Q.nfcall(FS.stat, this.path).then(function(stats) {
@@ -100,17 +177,17 @@ function handleReject(error, callback, deferred) {
 	deferred.reject(error);
 }
 
-function uploadImage(client, imageData, callback) {
+function uploadMedia(client, mode, mediaData, callback) {
 	var deferred = Q.defer();
 
-	client.getUploadUrl().then(function(uploadUrl) {
-		imageData.getUploadData().then(function (uploadData) {
+	client.getUploadUrl(mode).then(function(uploadUrl) {
+		mediaData.getUploadData().then(function (uploadData) {
 			"use strict";
 			rest.post(uploadUrl, {
 				multipart: true,
 				headers: client.getAuthHeaders(client.authToken),
 				data: {
-					"media_type": "picture",
+					"media_type": mode.getMediaType(),
 					"file": uploadData
 				}
 
@@ -118,7 +195,7 @@ function uploadImage(client, imageData, callback) {
 				if(data.hasOwnProperty('error_code')) {
 					handleReject(data, callback, deferred);
 				} else {
-					var retVal = new UploadedMedia(data[0]);
+					var retVal = mode.toMetadata(data[0]);
 					if (typeof callback === "function") {
 						callback(null, retVal);
 					}
@@ -146,12 +223,20 @@ function uploadImage(client, imageData, callback) {
 	}
 }
 
-UploadClient.prototype.uploadFile = function (path, callback) {
-	return uploadImage(this, new ImageFile(path), callback);
+UploadClient.prototype.uploadImageFile = function (path, callback) {
+	return uploadMedia(this, ImageMode, new MediaFile(path), callback);
+};
+
+UploadClient.prototype.uploadVideoFile = function (path, callback) {
+	return uploadMedia(this, VideoMode, new MediaFile(path), callback);
+};
+
+UploadClient.prototype.uploadAudioFile = function (path, callback) {
+	return uploadMedia(this, AudioMode, new MediaFile(path), callback);
 };
 
 UploadClient.prototype.uploadB64 = function (imageName, data, callback) {
-	return uploadImage(this, new B64Data(imageName, data), callback);
+	return uploadMedia(this, ImageMode, new B64Data(imageName, data), callback);
 };
 
 /**
@@ -177,26 +262,52 @@ module.exports = {
 	client : function(config) {
 		var c = new UploadClient(config);
 		return {
-			/**
-			 * Uploads a file to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
-			 * @memberOf UploadClient
-			 * @param {string} path - The local path to the image
-			 * @param {UploadStatus} [success=null] - An optional callback triggered on success
-			 * @returns {Promise<UploadedMedia>} A promise that will yield an {@link UploadedData} object, or null if using callbacks
-			 */
-			uploadFromFile : function(path, callback) {
-				return c.uploadFile(path, callback);
+			images : {
+				/**
+				 * Uploads an image to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
+				 * @memberOf UploadClient
+				 * @param {string} path - The local path to the image
+				 * @param {UploadStatus} [success=null] - An optional callback triggered on success
+				 * @returns {Promise<UploadedMedia>} A promise that will yield an {@link UploadedData} object, or null if using callbacks
+				 */
+				uploadFromFile: function (path, callback) {
+					return c.uploadImageFile(path, callback);
+				},
+				/**
+				 * Uploads a base64 encoded image to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
+				 * @memberOf UploadClient
+				 * @param {string} name - The name of the image
+				 * @param {string} data - The data of the image. Data must start with data:image/{jpg|png|gif|..};base64,
+				 * @param {UploadStatus} [success=null] - An optional callback triggered on success
+				 * @returns {Promise<ImageMedia>} A promise that will yield an {@link ImageMedia} object, or null if using callbacks
+				 */
+				uploadFromB64: function (imageName, data, callback) {
+					return c.uploadB64(imageName, data, callback);
+				}
 			},
-			/**
-			 * Uploads a base64 encoded image to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
-			 * @memberOf UploadClient
-			 * @param {string} name - The name of the image
-			 * @param {string} data - The data of the image. Data must start with data:image/{jpg|png|gif|..};base64,
-			 * @param {UploadStatus} [success=null] - An optional callback triggered on success
-			 * @returns {Promise<UploadedMedia>} A promise that will yield an {@link UploadedData} object, or null if using callbacks
-			 */
-			uploadB64Image : function(imageName, data, callback) {
-				return c.uploadB64(imageName, data, callback);
+			video : {
+				/**
+				 * Uploads a video file to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
+				 * @memberOf UploadClient
+				 * @param {string} path - The local path to the video file
+				 * @param {UploadStatus} [success=null] - An optional callback triggered on success
+				 * @returns {Promise<VideoMedia>} A promise that will yield an {@link VideoMedia} object, or null if using callbacks
+				 */
+				uploadFromFile : function(path, callback) {
+					return c.uploadVideoFile(path, callback);
+				}
+			},
+			audio : {
+				/**
+				 * Uploads an audio file to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned
+				 * @memberOf UploadClient
+				 * @param {string} path - The local path to the audio file
+				 * @param {UploadStatus} [success=null] - An optional callback triggered on success
+				 * @returns {Promise<AudioMedia>} A promise that will yield an {@link AudioMedia} object, or null if using callbacks
+				 */
+				uploadFromFile : function(path, callback) {
+					return c.uploadAudioFile(path, callback);
+				}
 			}
 		};
 	}
