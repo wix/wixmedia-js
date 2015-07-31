@@ -1,6 +1,6 @@
-var Q = require("q");
+var Promise = require("bluebird");
 var rest = require("restler");
-var FS = require('fs');
+var fs = Promise.promisifyAll(require("fs"));
 var mediaHttp = require("./mediaHttp.js");
 var AuthClient = require("./AuthClient.js");
 
@@ -115,23 +115,23 @@ function UploadClient(config) {
 UploadClient.prototype = AuthClient.prototype;
 
 UploadClient.prototype.getUploadUrl = function(mode) {
-	var deferred = Q.defer();
 	var that = this;
-	this.getAuthToken().then(function(authToken) {
-		var options = {
-			headers : that.getAuthHeaders(authToken),
-			path : mode.getUrl(),
-			host : that.config.url
-		};
-		mediaHttp.request(options).then(function(data) {
-			deferred.resolve(data.data.upload_url);
-		}, function(error) {
-			deferred.reject(error);
+	return new Promise(function (resolve, reject) {
+		that.getAuthToken().then(function (authToken) {
+			var options = {
+				headers: that.getAuthHeaders(authToken),
+				path: mode.getUrl(),
+				host: that.config.url
+			};
+			mediaHttp.request(options).then(function (data) {
+				resolve(data.data.upload_url);
+			}, function (error) {
+				reject(error);
+			});
+		}, function (error) {
+			reject(error);
 		});
-	}, function(error) {
-		deferred.reject(error);
 	});
-	return deferred.promise;
 };
 
 function MediaFile(path) {
@@ -139,14 +139,14 @@ function MediaFile(path) {
 }
 
 MediaFile.prototype.getUploadData = function() {
-	var deferred = Q.defer();
 	var that = this;
-	Q.nfcall(FS.stat, this.path).then(function(stats) {
-		deferred.resolve(rest.file(that.path, null, stats.size));
-	}, function(error) {
-		deferred.reject(error);
+	return new Promise(function (resolve, reject) {
+		fs.statAsync(that.path).then(function (stats) {
+			resolve(rest.file(that.path, null, stats.size));
+		}, function (error) {
+			reject(error);
+		});
 	});
-	return deferred.promise;
 };
 
 function B64Data(imageName, data) {
@@ -155,72 +155,70 @@ function B64Data(imageName, data) {
 }
 
 B64Data.prototype.getUploadData = function() {
-	var deferred = Q.defer();
-	try {
-		var matches = this.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+	return new Promise(function (resolve, reject) {
+		try {
+			var matches = this.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
-		if (matches === null || matches.length < 2) {
-			deferred.reject('Bad image Base64 header');
-		} else {
-			deferred.resolve(rest.data(this.imageName, null, new Buffer(matches[2], 'base64')));
+			if (matches === null || matches.length < 2) {
+				reject('Bad image Base64 header');
+			} else {
+				resolve(rest.data(this.imageName, null, new Buffer(matches[2], 'base64')));
+			}
+		}catch(e) {
+			reject('Bad image Base64 header');
 		}
-	}catch(e) {
-		deferred.reject('Bad image Base64 header');
-	}
-	return deferred.promise;
+	});
 };
 
-function handleReject(error, callback, deferred) {
+function handleReject(error, callback, reject) {
 	if(typeof callback === "function") {
 		callback(error, null);
 	}
-	deferred.reject(error);
+	reject(error);
 }
 
 function uploadMedia(client, mode, mediaData, callback) {
-	var deferred = Q.defer();
-
-	client.getUploadUrl(mode).then(function(uploadUrl) {
-		mediaData.getUploadData().then(function (uploadData) {
-			"use strict";
-			rest.post(uploadUrl, {
-				multipart: true,
-				headers: client.getAuthHeaders(client.authToken),
-				data: {
-					"media_type": mode.getMediaType(),
-					"file": uploadData
-				}
-
-			}).on('complete', function (data) {
-				if(data.hasOwnProperty('error_code')) {
-					handleReject(data, callback, deferred);
-				} else {
-					var retVal = mode.toMetadata(data[0]);
-					if (typeof callback === "function") {
-						callback(null, retVal);
+	var p = new Promise(function (resolve, reject) {
+		client.getUploadUrl(mode).then(function (uploadUrl) {
+			mediaData.getUploadData().then(function (uploadData) {
+				"use strict";
+				rest.post(uploadUrl, {
+					multipart: true,
+					headers: client.getAuthHeaders(client.authToken),
+					data: {
+						"media_type": mode.getMediaType(),
+						"file": uploadData
 					}
-					deferred.resolve(retVal);
-				}
-			}).on('error', function (data) {
-				handleReject(data, callback, deferred);
+
+				}).on('complete', function (data) {
+					if (data.hasOwnProperty('error_code')) {
+						handleReject(data, callback, deferred);
+					} else {
+						var retVal = mode.toMetadata(data[0]);
+						if (typeof callback === "function") {
+							callback(null, retVal);
+						}
+						resolve(retVal);
+					}
+				}).on('error', function (data) {
+					handleReject(data, callback, reject);
+				});
+			}, function (error) {
+				handleReject(error, callback, reject);
 			});
 		}, function (error) {
-			handleReject(error, callback, deferred);
+			handleReject(error, callback, reject);
 		});
-	}, function(error) {
-		handleReject(error, callback, deferred);
 	});
-
-	if(typeof callback === "function") {
-		var ref = setInterval(function() {
-			if(deferred.promise.isFulfilled() || deferred.promise.isRejected()) {
+	if (typeof callback === "function") {
+		var ref = setInterval(function () {
+			if (p.isFulfilled() || p.isRejected()) {
 				clearInterval(ref);
 				return;
 			}
 		}, 100);
-	} else {
-		return deferred.promise;
 	}
+	return p;
 }
 
 UploadClient.prototype.uploadImageFile = function (path, callback) {

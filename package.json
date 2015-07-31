@@ -1,32 +1,31 @@
 {
-    "name": "wixmedia",
-    "version": "1.1.0",
-    "description": "An SDK to access Wix Media Platform image manipulation APIs and upload capabilities",
-    "main": "./src/wixmedia.js",
-    "dependencies" : {
-        "q" : "1.0.1",
-        "restler" : "3.2.2",
-        "wix-auth-hmac" : "1.0.0",
-        "secure-random" : "1.1.1"
-    },
-    "devDependencies": {
-        "grunt": "~0.4.5",
-        "grunt-browserify": "~2.1.4",
-        "grunt-contrib-clean": "~0.6.0",
-        "grunt-contrib-concat": "~0.3.0",
-        "grunt-mocha": "latest",
-        "mocha": "2.2.5",
-        "grunt-mocha-cli": "1.13.0",
-        "expect.js": "latest",
-        "uglifyify": "latest",
-        "grunt-jsdoc": "0.5.4",
-        "ink-docstrap": "latest",
-        "grunt-gh-pages": "latest"
-    },
-
-    "engines": {
-        "node": ">= 0.10.20"
-    },
-    "author": "David Zuckerman <davidz@wix.com>",
-    "license": "MIT"
+  "name": "wixmedia",
+  "version": "1.1.0",
+  "description": "An SDK to access Wix Media Platform image manipulation APIs and upload capabilities",
+  "main": "./src/wixmedia.js",
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "restler": "3.2.2",
+    "secure-random": "1.1.1",
+    "wix-auth-hmac": "1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-browserify": "~2.1.4",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-mocha": "latest",
+    "mocha": "2.2.5",
+    "grunt-mocha-cli": "1.13.0",
+    "expect.js": "latest",
+    "uglifyify": "latest",
+    "grunt-jsdoc": "0.5.4",
+    "ink-docstrap": "latest",
+    "grunt-gh-pages": "latest"
+  },
+  "engines": {
+    "node": ">= 0.10.20"
+  },
+  "author": "David Zuckerman <davidz@wix.com>",
+  "license": "MIT"
 }
