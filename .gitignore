@@ -4,3 +4,4 @@ docs/
 node_modules/
 .idea/
 tests/node
+npm-debug.log
