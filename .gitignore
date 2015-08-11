@@ -5,3 +5,4 @@ node_modules/
 .idea/
 tests/node
 npm-debug.log
+jsdoc/wixdocs
