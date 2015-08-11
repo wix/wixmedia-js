@@ -1,0 +1,1 @@
+var imageSource = image.contrast(image.Defaults.AUTO).toUrl();

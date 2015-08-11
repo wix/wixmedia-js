@@ -22,10 +22,10 @@ To begin working with Wix Media Platform:
 
 ### Image Manipulation ###
 #### Node.js
-````js
+````javascript
 var BASE_URL = "<your base URL here>";
 var WixImage = require('wixmedia').WixImage;
-var image = new WixImage(BASE_URL, "<your image ID here>", "<image_name>");
+var image = WixImage(BASE_URL, "<your image ID here>", "<image_name>");
 var fit = image.fit().w(1000).h(1000);
 //prints out the new URL for an image that has width of 1000px and height of 1000px
 console.log(fit.toUrl());

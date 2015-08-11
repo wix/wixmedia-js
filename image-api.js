@@ -1,9 +1,12 @@
-var ImageApi = require("./src/images.js");
+var Images = require("./src/images.js");
 var crophelpers = require("./src/crophelpers.js");
 
-module.exports = function(baseUrl, uri, title){
-	return new ImageApi(baseUrl, uri, title);
+module.exports = {
+	WixImage : function(baseUrl, imageId, version) {
+		return new Images.WixImage(baseUrl,imageId,version);
+	},
+	crop:{
+		getContainLayout: crophelpers.getContainLayout,
+		getCoverLayout: crophelpers.getCoverLayout
+	}
 };
-
-module.exports.getContainLayout = crophelpers.getContainLayout;
-module.exports.getCoverLayout = crophelpers.getCoverLayout;

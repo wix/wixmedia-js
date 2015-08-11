@@ -93,24 +93,18 @@ module.exports = function(grunt) {
 				dest: 'dist/image-api.js'
 			},
             specs: {
-                src: ["tests/specs/**/cropHelpersSpec.js", "tests/specs/**/imageAPISpec.js"],
+                src: ["tests/specs/**/*Spec.js"],
                 dest: "build/specs.js"
             }
         },
         mocha: {
-            'test-browser': {
+            test: {
                 src: ['tests/SpecRunner.html'],
                 options: {
                     run: true
                 }
-            },
+            }
         },
-		mochacli : {
-			options: {
-				reporter: 'nyan'
-			},
-			node : ['tests/specs/*Spec.js']
-		},
         jsdoc : {
             dist : {
                 src: ['src/images.js', 'src/wixmedia.js', 'src/node/upload.js', 'README.md'],
@@ -135,14 +129,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha');
-	grunt.loadNpmTasks('grunt-mocha-cli');
-	grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('grunt-gh-pages');
 
     // Default task(s).
     grunt.registerTask('web', ['clean:dist', 'jshint', 'browserify:dist', 'browserify:build', 'browserify:distImageApi', 'browserify:buildImageApi']);
     grunt.registerTask('web-tests', ['clean:build', 'browserify:build', 'browserify:buildImageApi', 'browserify:specs', 'mocha']);
-    grunt.registerTask('docs', ['clean:jsdoc', 'jsdoc']);
 
     grunt.registerTask('publish', ['docs', 'gh-pages']);
 
