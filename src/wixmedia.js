@@ -41,7 +41,6 @@ module.exports = {
 	 * @param {string} apiKey - your API key
 	 * @param {string} secretKey - your secret key
 	 * @returns {UploadClient} an upload client
-	 * @throws
 	 */
 	uploader : function(apiKey, secretKey) {
 		if(secretKey !== undefined) {
