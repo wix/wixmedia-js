@@ -18,13 +18,14 @@
         "mocha": "latest",
         "expect.js": "latest",
         "uglifyify": "latest",
-        "grunt-jsdoc": "0.5.4",
-        "ink-docstrap": "latest",
         "grunt-gh-pages": "latest"
     },
 
     "engines": {
         "node": ">= 0.10.20"
+    },
+    "scripts" : {
+        "serve": "node build.js --baseUrl=http://localhost:3001 --serve=3001"
     },
     "author": "David Zuckerman <davidz@wix.com>",
     "license": "MIT"

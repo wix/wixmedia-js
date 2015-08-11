@@ -1,0 +1,1 @@
+var imageSource = image.brightness(image.Defaults.AUTO).toUrl();
