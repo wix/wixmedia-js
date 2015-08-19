@@ -18,7 +18,8 @@
         "mocha": "latest",
         "expect.js": "latest",
         "uglifyify": "latest",
-        "grunt-gh-pages": "latest"
+        "grunt-gh-pages": "latest",
+        "wixdocs-static" : "latest"
     },
 
     "engines": {
