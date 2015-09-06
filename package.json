@@ -26,7 +26,7 @@
     },
     "scripts" : {
         "serve": "node build.js --baseUrl=http://localhost:3001 --serve=3001",
-        "prod": "node build.js --http://wix.github.io/wixmedia-js --production"
+        "prod": "node build.js --baseUrl=http://wix.github.io/wixmedia-js --production"
 
     },
     "author": "David Zuckerman <davidz@wix.com>",

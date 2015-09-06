@@ -90,4 +90,4 @@ uploader.images().uploadFromFile("files/images/wixLogo.jpg").then(function(data)
 ## Wix Media Platform ##
 Wix Media Platform provides powerful image-processing services that support resizing, cropping, rotating, sharpening, watermarking, and face-detection, as well as offer a number of filters and adjustments.
 
-Learn more about image manipulation here: [Wix Media Platform - Images](http://mediacloud.wix.com/docs/images.html).
+Learn more about image manipulation here: [Wix Media Platform - Images](http://mediacloud.wix.com/docs/working_with_wixmp.html#serving-media-files-with-wixmp).
