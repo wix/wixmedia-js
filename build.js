@@ -7,7 +7,8 @@ wixdocs({
         conf : __dirname + '/jsdoc.conf.json',
         filtering : false
     },
-    sourcePath : __dirname + "/jsdoc/content",
+	lessTarget : __dirname + '/jsdoc/stylesheet/main.less',
+	sourcePath : __dirname + "/jsdoc/content",
     distPath : "jsdoc/wixdocs",
 	logoPath : "images/wixmp.png",
 	logoText : "JavaScript API",
@@ -17,5 +18,10 @@ wixdocs({
     clean : true,
     headingLevel : 2,
     navLevel : 3,
-    debug: true
+    debug: true,
+	themeOptions: {
+		logoTitle : 'MP Documentation',
+		jumboTitle : 'Wix Media Platform',
+		jumboSubTitle: 'The Smartest Way to Host and Deliver Your Media Worldwide'
+	}
 });
