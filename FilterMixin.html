@@ -1,1295 +1,528 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
-	<title>Wix Media Mixin: FilterMixin</title>
-
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	
-	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
-	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FilterMixin - WixMP JavaScript API</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content=" " />
+	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
+	<link type="text/css" rel="stylesheet" href="http://wix.github.io/wixmedia-js/stylesheets/wixdocs.css" />
+	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body>
-<div class="container-fluid">
-	<div class="navbar navbar-fixed-top ">
-		<div class="navbar-inner">
-			<a class="brand" href="index.html">Wix Media</a>
-			<ul class="nav">
-				
-				<li class="dropdown">
-					<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b
-						class="caret"></b></a>
+<body data-entity-id="FilterMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+	<div class="fixed-header">
+		<div class="container">
+			<div class="docs-logo-container">
+				<a href="http://wix.github.io/wixmedia-js/index.html"><img class="docs-logo" src="http://wix.github.io/wixmedia-js/odin/logo_black.png" /><span class="docs-logo-title">MP Documentation</span></a>
+			</div>
+			<div class="search-box-wrapper">
+				<input class="typeahead form-control" type="text" placeholder="Search API">
+			</div>
+		</div>
 
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="module-WixMedia.html">WixMedia</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
-						class="caret"></b></a>
-
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="Canvas.html">Canvas</a>
-						</li>
-						
-						<li>
-							<a href="Crop.html">Crop</a>
-						</li>
-						
-						<li>
-							<a href="Defaults.html">Defaults</a>
-						</li>
-						
-						<li>
-							<a href="Fill.html">Fill</a>
-						</li>
-						
-						<li>
-							<a href="Fit.html">Fit</a>
-						</li>
-						
-						<li>
-							<a href="UploadClient.html">UploadClient</a>
-						</li>
-						
-						<li>
-							<a href="UploadedMedia.html">UploadedMedia</a>
-						</li>
-						
-						<li>
-							<a href="WixImage.html">WixImage</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">Mixins<b
-						class="caret"></b></a>
-
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="AdjustMixin.html">AdjustMixin</a>
-						</li>
-						
-						<li>
-							<a href="AlignmentMixin.html">AlignmentMixin</a>
-						</li>
-						
-						<li>
-							<a href="FilterMixin.html">FilterMixin</a>
-						</li>
-						
-						<li>
-							<a href="ResizeFillMixin.html">ResizeFillMixin</a>
-						</li>
-						
-						<li>
-							<a href="WidthHeightQualityMixin.html">WidthHeightQualityMixin</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-			</ul>
+	</div>
+	<div id="jumbo" class="pre-scroll">
+		<div class="jumbo-text">
+			<span class="title">Wix Media Platform</span>
+			<span class="subtitle">The Smartest Way to Host and Deliver Your Media Worldwide</span>
 		</div>
 	</div>
-
-	<div class="row-fluid">
-
-		
-		<div class="span8">
-			
-				<div id="main">
-					
-
-
-	<h1 class="page-title">Mixin: FilterMixin</h1>
-<section>
-
-<header>
-    <h2>
-    FilterMixin
-    </h2>
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-
-    
-        
-            <div class="description"><p>This provides methods used for filter APIs. It's not meant to
-be used directly.</p></div>
-        
-
-        
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-            
-<dt>
-    <h4 class="name" id="blur"><span class="type-signature"></span>blur<span class="signature">(blur)</span><span class="type-signature"> &rarr; {*}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Applies a blur effect to the image.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>blur</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>percent to blur the image</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>the operation</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">*</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="hasFilters"><span class="type-signature"></span>hasFilters<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Indicates that this operation has filter parameters</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>true if filters are set</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">boolean</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="negative"><span class="type-signature"></span>negative<span class="signature">(<span class="optional">neg</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Negates the colors of the image.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-		<th>Default</th>
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>neg</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    true
-                
-                </td>
-            
-
-            <td class="description last"><p>enabled</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>the operation</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">*</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="oil"><span class="type-signature"></span>oil<span class="signature">(<span class="optional">oil</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Applies an oil paint effect to the image.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-		<th>Default</th>
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>oil</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    true
-                
-                </td>
-            
-
-            <td class="description last"><p>enabled</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>the operation</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">*</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="pixelate"><span class="type-signature"></span>pixelate<span class="signature">(pixels)</span><span class="type-signature"> &rarr; {*}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Applies a pixelate effect to the image.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>pixels</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the width of pixelation squares, in pixels</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>the operation</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">*</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="sharpen"><span class="type-signature"></span>sharpen<span class="signature">(radius)</span><span class="type-signature"> &rarr; {*}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sharpens the image using radius</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>radius</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>sharpening mask radius, 0 to image size</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>the operation</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">*</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="unsharpMask"><span class="type-signature"></span>unsharpMask<span class="signature">(radius, amount, amount)</span><span class="type-signature"> &rarr; {*}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sharpens the image using radius, amount &amp; threshold parameters</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>radius</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the unsharp mask radius. default value: 0.50</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>amount</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the unsharp mask amount. default value: 0.20.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>amount</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the unsharp mask threshold. default value: 0.00.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>the operation</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">*</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        </dl>
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
+	<div class="left-nav">
+		<nav class="left-nav-items">
+			<ul class="nav nav-stacked">
+				<div class="nav-container"><span>WixMP JavaScript API</span></div>
+				<div class="nav-family nav-open">
+					<li class="item left-nav-item" data-entity-id="module:WixMedia">
+						<a href="http://wix.github.io/wixmedia-js/module-WixMedia.html" target="_self">WixMedia </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixUpload">
+						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.html" target="_self">WixUpload </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="Canvas">
+						<a href="http://wix.github.io/wixmedia-js/Canvas.html" target="_self">Canvas </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="Crop">
+						<a href="http://wix.github.io/wixmedia-js/Crop.html" target="_self">Crop </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="Defaults">
+						<a href="http://wix.github.io/wixmedia-js/Defaults.html" target="_self">Defaults </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="Fill">
+						<a href="http://wix.github.io/wixmedia-js/Fill.html" target="_self">Fill </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="Fit">
+						<a href="http://wix.github.io/wixmedia-js/Fit.html" target="_self">Fit </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="WixImage">
+						<a href="http://wix.github.io/wixmedia-js/WixImage.html" target="_self">WixImage </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth">
+						<a href="http://wix.github.io/wixmedia-js/auth.html" target="_self">auth </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth.AuthClient">
+						<a href="http://wix.github.io/wixmedia-js/auth.AuthClient.html" target="_self">auth.AuthClient </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth.AuthConfig">
+						<a href="http://wix.github.io/wixmedia-js/auth.AuthConfig.html" target="_self">auth.AuthConfig </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth.TenantConfig">
+						<a href="http://wix.github.io/wixmedia-js/auth.TenantConfig.html" target="_self">auth.TenantConfig </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth.WixConfig">
+						<a href="http://wix.github.io/wixmedia-js/auth.WixConfig.html" target="_self">auth.WixConfig </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixMedia.WixAuth">
+						<a href="http://wix.github.io/wixmedia-js/module-WixMedia.WixAuth.html" target="_self">WixMedia.WixAuth </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixUpload.AudioUploader">
+						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.AudioUploader.html" target="_self">WixUpload.AudioUploader </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixUpload.ImageUploader">
+						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.ImageUploader.html" target="_self">WixUpload.ImageUploader </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixUpload.VideoUploader">
+						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.VideoUploader.html" target="_self">WixUpload.VideoUploader </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload">
+						<a href="http://wix.github.io/wixmedia-js/upload.html" target="_self">upload </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload.data">
+						<a href="http://wix.github.io/wixmedia-js/upload.data.html" target="_self">upload.data </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload.data.AudioMedia">
+						<a href="http://wix.github.io/wixmedia-js/upload.data.AudioMedia.html" target="_self">upload.data.AudioMedia </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload.data.ImageMedia">
+						<a href="http://wix.github.io/wixmedia-js/upload.data.ImageMedia.html" target="_self">upload.data.ImageMedia </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload.data.VideoMedia">
+						<a href="http://wix.github.io/wixmedia-js/upload.data.VideoMedia.html" target="_self">upload.data.VideoMedia </a>
+					</li>
 				</div>
-
-				<div class="clearfix"></div>
-				<footer>
-					
-					<a href='http://media.wix.com/docs'>Wix Media Developer Center</a>
-					<br />
-					
-					
-		<span class="copyright">
-		2014, Wix
-		</span>
-					<br />
-					
-		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Mon Jan 26 2015 11:51:52 GMT+0200 (IST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-		</span>
-				</footer>
-			</div>
-
-			
-			<div class="span3">
-				<div id="toc"></div>
-			</div>
-			
-			<br clear="both">
-		</div>
+			</ul>
+		</nav>
 
 	</div>
-	<script src="scripts/sunlight.js"></script>
-	<script src="scripts/sunlight.javascript.js"></script>
-	<script src="scripts/sunlight-plugin.doclinks.js"></script>
-	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
-	<script src="scripts/sunlight-plugin.menu.js"></script>
-	<script src="scripts/jquery.min.js"></script>
-	<script src="scripts/jquery.scrollTo.js"></script>
-	<script src="scripts/jquery.localScroll.js"></script>
-	<script src="scripts/bootstrap-dropdown.js"></script>
-	<script src="scripts/toc.js"></script>
+	<main class="main-content">
+		<section>
+			<article class="content-holder">
+				<header class="section-header">
+					<div class="title">FilterMixin</div>
+					<div class="header-context"></div>
+				</header>
+				<section>
+					<h1 class="filtermixin">FilterMixin</h1>
+					<h3 class="contents">Contents</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td><a href="FilterMixin.html#.blur">blur( )</a></td>
+								<td>Applies a blur effect to the image.</td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.hasFilters">hasFilters( )</a></td>
+								<td>Indicates that this operation has filter parameters</td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.neg">neg( )</a></td>
+								<td>An alias for <code class="inline-code">negative</code></td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.negative">negative( )</a></td>
+								<td>Negates the colors of the image.</td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.oil">oil( )</a></td>
+								<td>Applies an oil paint effect to the image.</td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.pix">pix( )</a></td>
+								<td>An alias for <code class="inline-code">pixelate</code></td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.pixelate">pixelate( )</a></td>
+								<td>Applies a pixelate effect to the image.</td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.pixfs">pixfs( )</a></td>
+								<td>An alias for <code class="inline-code">pixelateFaces</code></td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.sharpen">sharpen( )</a></td>
+								<td>Sharpens the image using radius</td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.unsharpMask">unsharpMask( )</a></td>
+								<td>Sharpens the image using radius, amount &amp; threshold parameters</td>
+							</tr>
+							<tr>
+								<td><a href="FilterMixin.html#.us">us( )</a></td>
+								<td>An alias for <code class="inline-code">unsharpMask</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".blur" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="blur-">blur( )</span>
+						<h2>blur( )</h2></hgroup>
+					<p>Applies a blur effect to the image.</p>
+					<figure class="code-example">
 
+						<pre><code class="language-javascript">FilterMixin.blur(blur)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">blur</code>
+								</td>
+								<td>number</td>
+								<td>
+									percent to blur the image
+								</td>
+							</tr>
+						</tbody>
+					</table>
 
-	<script>  Sunlight.highlightAll({lineNumbers:false,  showMenu: true, enableDoclinks :true}); </script>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".hasFilters" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="hasfilters-">hasFilters( )</span>
+						<h2>hasFilters( )</h2></hgroup>
+					<p>Indicates that this operation has filter parameters</p>
+					<figure class="code-example">
 
-	<script>
-		$( function () {
-			$( "#toc" ).toc( {
-				selectors   : "h1,h2,h3,h4",
-				showAndHide : false,
-				scrollTo    : 60
-			} );
-			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+						<pre><code class="language-javascript">FilterMixin.hasFilters()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>boolean</td>
+								<td>true if filters are set</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".neg" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="neg-">neg( )</span>
+						<h2>neg( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">negative</code></p>
+					<figure class="code-example">
 
-		} );
-	</script>
+						<pre><code class="language-javascript">FilterMixin.neg()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".negative" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="negative-">negative( )</span>
+						<h2>negative( )</h2></hgroup>
+					<p>Negates the colors of the image.</p>
+					<figure class="code-example">
 
-	
+						<pre><code class="language-javascript">FilterMixin.negative([neg] = true)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">neg</code>
+									<span class="param-properties">(optional)</span>
+								</td>
+								<td>boolean</td>
+								<td>
+									enabled
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".oil" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="oil-">oil( )</span>
+						<h2>oil( )</h2></hgroup>
+					<p>Applies an oil paint effect to the image.</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">FilterMixin.oil([oil] = true)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">oil</code>
+									<span class="param-properties">(optional)</span>
+								</td>
+								<td>boolean</td>
+								<td>
+									enabled
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".pix" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="pix-">pix( )</span>
+						<h2>pix( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">pixelate</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">FilterMixin.pix()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".pixelate" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="pixelate-">pixelate( )</span>
+						<h2>pixelate( )</h2></hgroup>
+					<p>Applies a pixelate effect to the image.</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">FilterMixin.pixelate(pixels)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">pixels</code>
+								</td>
+								<td>number</td>
+								<td>
+									the width of pixelation squares, in pixels
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".pixfs" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="pixfs-">pixfs( )</span>
+						<h2>pixfs( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">pixelateFaces</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">FilterMixin.pixfs()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".sharpen" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="sharpen-">sharpen( )</span>
+						<h2>sharpen( )</h2></hgroup>
+					<p>Sharpens the image using radius</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">FilterMixin.sharpen(radius)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">radius</code>
+								</td>
+								<td>number</td>
+								<td>
+									sharpening mask radius, <code class="inline-code">0</code> to image size
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".unsharpMask" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="unsharpmask-">unsharpMask( )</span>
+						<h2>unsharpMask( )</h2></hgroup>
+					<p>Sharpens the image using radius, amount &amp; threshold parameters</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">FilterMixin.unsharpMask(radius, amount, amount)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">radius</code>
+								</td>
+								<td>number</td>
+								<td>
+									the unsharp mask radius. default value: <code class="inline-code">0.50</code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">amount</code>
+								</td>
+								<td>number</td>
+								<td>
+									the unsharp mask amount. default value: <code class="inline-code">0.20</code>.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">amount</code>
+								</td>
+								<td>number</td>
+								<td>
+									the unsharp mask threshold. default value: <code class="inline-code">0.00</code>.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id=".us" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="us-">us( )</span>
+						<h2>us( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">unsharpMask</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">FilterMixin.us()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<nav id="prev-next-nav">
+				</nav>
+			</article>
+		</section>
+	</main>
+
+	<script src="http://wix.github.io/wixmedia-js/scripts/wixdocs-app.js"></script>
 
 </body>
+
 </html>

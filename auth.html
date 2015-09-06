@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AlignmentMixin - WixMP JavaScript API</title>
+	<title>auth - WixMP JavaScript API</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content=" " />
 	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
@@ -13,7 +13,7 @@
 	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body data-entity-id="AlignmentMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+<body data-entity-id="auth" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
 	<div class="fixed-header">
 		<div class="container">
 			<div class="docs-logo-container">
@@ -60,8 +60,15 @@
 					<li class="item left-nav-item" data-entity-id="WixImage">
 						<a href="http://wix.github.io/wixmedia-js/WixImage.html" target="_self">WixImage </a>
 					</li>
-					<li class="item left-nav-item" data-entity-id="auth">
-						<a href="http://wix.github.io/wixmedia-js/auth.html" target="_self">auth </a>
+					<li class="item left-nav-item current-doc" data-entity-id="auth">
+						<a href="#" id="currentNavTarget">auth</a>
+						<nav id="onThisPage">
+							<ul class="nav nav-stacked otp-nav nav-open">
+								<li class="item otp-li">
+									<a class="otp" href="#modes">Modes</a>
+								</li>
+							</ul>
+						</nav>
 					</li>
 					<li class="item left-nav-item" data-entity-id="auth.AuthClient">
 						<a href="http://wix.github.io/wixmedia-js/auth.AuthClient.html" target="_self">auth.AuthClient </a>
@@ -111,54 +118,48 @@
 		<section>
 			<article class="content-holder">
 				<header class="section-header">
-					<div class="title">AlignmentMixin</div>
+					<div class="title">auth</div>
 					<div class="header-context"></div>
 				</header>
 				<section>
-					<h1 class="alignmentmixin">AlignmentMixin</h1>
+					<h1 class="auth">auth</h1>
 					<h3 class="contents">Contents</h3>
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td><a href="AlignmentMixin.html#.al">al( )</a></td>
-								<td>An alias for <code class="inline-code">alignment</code></td>
+								<td><a href="auth.AuthClient.html">AuthClient</a></td>
+								<td>Creates a client that can authenticate against WixMP</td>
 							</tr>
 							<tr>
-								<td><a href="AlignmentMixin.html#.alignment">alignment( )</a></td>
-								<td>Sets the alignment value for this operation Defaults#Alignment</td>
+								<td><a href="auth.AuthConfig.html">AuthConfig</a></td>
+								<td>An AuthConfig for use with an AuthClient</td>
+							</tr>
+							<tr>
+								<td><a href="auth.TenantConfig.html">TenantConfig</a></td>
+								<td>the config used to authenticate against WixMP as a tenant</td>
+							</tr>
+							<tr>
+								<td><a href="auth.WixConfig.html">WixConfig</a></td>
+								<td>the standard config used to authenticate against WixMP</td>
+							</tr>
+							<tr>
+								<td><a href="auth.html#.Modes">Modes</a></td>
+								<td>Authentication modes</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 				<section>
-					<p><span id=".al" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="al-">al( )</span>
-						<h2>al( )</h2></hgroup>
-					<p>An alias for <code class="inline-code">alignment</code></p>
+					<p><span id=".Modes" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="modes">Modes</span>
+						<h2>Modes</h2></hgroup>
+					<p>Authentication modes</p>
+					<h3 class="syntax">Syntax</h3>
 					<figure class="code-example">
 
-						<pre><code class="language-javascript">AlignmentMixin.al()</code></pre>
+						<pre><code class="language-javascript">auth.Modes</code></pre>
 					</figure>
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-				<section>
-					<p><span id=".alignment" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="alignment-">alignment( )</span>
-						<h2>alignment( )</h2></hgroup>
-					<p>Sets the alignment value for this operation Defaults#Alignment</p>
-					<figure class="code-example">
-
-						<pre><code class="language-javascript">AlignmentMixin.alignment(a)</code></pre>
-					</figure>
-					<h3 class="parameters">Parameters</h3>
+					<h3 class="properties">Properties</h3>
 					<table class="table table-condensed">
 						<colgroup>
 							<col class="col-xs-2">
@@ -168,25 +169,25 @@
 						<tbody>
 							<tr>
 								<td>
-									<code class="inline-code">a</code>
+									<code class="inline-code">WIX</code>
 								</td>
-								<td>Alignments</td>
+								<td>String</td>
 								<td>
-									the alignment value
+
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">TENANT</code>
+								</td>
+								<td>String</td>
+								<td>
+
 								</td>
 							</tr>
 						</tbody>
 					</table>
 
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
 				</section>
 				<nav id="prev-next-nav">
 				</nav>

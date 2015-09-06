@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AlignmentMixin - WixMP JavaScript API</title>
+	<title>auth.TenantConfig - WixMP JavaScript API</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content=" " />
 	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
@@ -13,7 +13,7 @@
 	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body data-entity-id="AlignmentMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+<body data-entity-id="auth.TenantConfig" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
 	<div class="fixed-header">
 		<div class="container">
 			<div class="docs-logo-container">
@@ -69,8 +69,24 @@
 					<li class="item left-nav-item" data-entity-id="auth.AuthConfig">
 						<a href="http://wix.github.io/wixmedia-js/auth.AuthConfig.html" target="_self">auth.AuthConfig </a>
 					</li>
-					<li class="item left-nav-item" data-entity-id="auth.TenantConfig">
-						<a href="http://wix.github.io/wixmedia-js/auth.TenantConfig.html" target="_self">auth.TenantConfig </a>
+					<li class="item left-nav-item current-doc" data-entity-id="auth.TenantConfig">
+						<a href="#" id="currentNavTarget">auth.TenantConfig</a>
+						<nav id="onThisPage">
+							<ul class="nav nav-stacked otp-nav nav-open">
+								<li class="item otp-li">
+									<a class="otp" href="#endpointurl-">endpointUrl( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#secretkey-">secretKey( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#toconfig-">toConfig( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#userid-">userId( )</a>
+								</li>
+							</ul>
+						</nav>
 					</li>
 					<li class="item left-nav-item" data-entity-id="auth.WixConfig">
 						<a href="http://wix.github.io/wixmedia-js/auth.WixConfig.html" target="_self">auth.WixConfig </a>
@@ -111,52 +127,41 @@
 		<section>
 			<article class="content-holder">
 				<header class="section-header">
-					<div class="title">AlignmentMixin</div>
+					<div class="title">auth.TenantConfig</div>
 					<div class="header-context"></div>
 				</header>
 				<section>
-					<h1 class="alignmentmixin">AlignmentMixin</h1>
+					<h1 class="auth-tenantconfig">auth.TenantConfig</h1>
 					<h3 class="contents">Contents</h3>
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td><a href="AlignmentMixin.html#.al">al( )</a></td>
-								<td>An alias for <code class="inline-code">alignment</code></td>
+								<td><a href="auth.TenantConfig.html#endpointUrl">endpointUrl( )</a></td>
+								<td>Sets your tenant&#39;s endpoint URL</td>
 							</tr>
 							<tr>
-								<td><a href="AlignmentMixin.html#.alignment">alignment( )</a></td>
-								<td>Sets the alignment value for this operation Defaults#Alignment</td>
+								<td><a href="auth.TenantConfig.html#secretKey">secretKey( )</a></td>
+								<td>Sets your secret key</td>
+							</tr>
+							<tr>
+								<td><a href="auth.TenantConfig.html#toConfig">toConfig( )</a></td>
+								<td>Creates an AuthConfig to use with uploading files to Wix</td>
+							</tr>
+							<tr>
+								<td><a href="auth.TenantConfig.html#userId">userId( )</a></td>
+								<td>Sets your tenant user ID</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 				<section>
-					<p><span id=".al" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="al-">al( )</span>
-						<h2>al( )</h2></hgroup>
-					<p>An alias for <code class="inline-code">alignment</code></p>
+					<p><span id="endpointUrl" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="endpointurl-">endpointUrl( )</span>
+						<h2>endpointUrl( )</h2></hgroup>
+					<p>Sets your tenant&#39;s endpoint URL</p>
 					<figure class="code-example">
 
-						<pre><code class="language-javascript">AlignmentMixin.al()</code></pre>
-					</figure>
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-				<section>
-					<p><span id=".alignment" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="alignment-">alignment( )</span>
-						<h2>alignment( )</h2></hgroup>
-					<p>Sets the alignment value for this operation Defaults#Alignment</p>
-					<figure class="code-example">
-
-						<pre><code class="language-javascript">AlignmentMixin.alignment(a)</code></pre>
+						<pre><code class="language-javascript">auth.TenantConfig.endpointUrl(url)</code></pre>
 					</figure>
 					<h3 class="parameters">Parameters</h3>
 					<table class="table table-condensed">
@@ -168,11 +173,11 @@
 						<tbody>
 							<tr>
 								<td>
-									<code class="inline-code">a</code>
+									<code class="inline-code">url</code>
 								</td>
-								<td>Alignments</td>
+								<td>String</td>
 								<td>
-									the alignment value
+									The endpoint URL
 								</td>
 							</tr>
 						</tbody>
@@ -182,8 +187,104 @@
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td>this</td>
-								<td>the operation</td>
+								<td><a href="auth.TenantConfig.html">TenantConfig</a></td>
+								<td>A config for a tenant</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="secretKey" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="secretkey-">secretKey( )</span>
+						<h2>secretKey( )</h2></hgroup>
+					<p>Sets your secret key</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">auth.TenantConfig.secretKey(secret)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">secret</code>
+								</td>
+								<td>String</td>
+								<td>
+									A secret key
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td><a href="auth.TenantConfig.html">TenantConfig</a></td>
+								<td>A config for a tenant</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="toConfig" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="toconfig-">toConfig( )</span>
+						<h2>toConfig( )</h2></hgroup>
+					<p>Creates an AuthConfig to use with uploading files to Wix</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">auth.TenantConfig.toConfig()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td><a href="auth.AuthConfig.html">AuthConfig</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="userId" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="userid-">userId( )</span>
+						<h2>userId( )</h2></hgroup>
+					<p>Sets your tenant user ID</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">auth.TenantConfig.userId(key)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">key</code>
+								</td>
+								<td>String</td>
+								<td>
+									The user iD
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td><a href="auth.TenantConfig.html">TenantConfig</a></td>
+								<td>A config for a tenant</td>
 							</tr>
 						</tbody>
 					</table>

@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AlignmentMixin - WixMP JavaScript API</title>
+	<title>module:WixMedia.WixAuth - WixMP JavaScript API</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content=" " />
 	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
@@ -13,7 +13,7 @@
 	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body data-entity-id="AlignmentMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+<body data-entity-id="module:WixMedia.WixAuth" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
 	<div class="fixed-header">
 		<div class="container">
 			<div class="docs-logo-container">
@@ -75,8 +75,21 @@
 					<li class="item left-nav-item" data-entity-id="auth.WixConfig">
 						<a href="http://wix.github.io/wixmedia-js/auth.WixConfig.html" target="_self">auth.WixConfig </a>
 					</li>
-					<li class="item left-nav-item" data-entity-id="module:WixMedia.WixAuth">
-						<a href="http://wix.github.io/wixmedia-js/module-WixMedia.WixAuth.html" target="_self">WixMedia.WixAuth </a>
+					<li class="item left-nav-item current-doc" data-entity-id="module:WixMedia.WixAuth">
+						<a href="#" id="currentNavTarget">WixMedia.WixAuth</a>
+						<nav id="onThisPage">
+							<ul class="nav nav-stacked otp-nav nav-open">
+								<li class="item otp-li">
+									<a class="otp" href="#config">config</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#modes">modes</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#client-">client( )</a>
+								</li>
+							</ul>
+						</nav>
 					</li>
 					<li class="item left-nav-item" data-entity-id="module:WixUpload.AudioUploader">
 						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.AudioUploader.html" target="_self">WixUpload.AudioUploader </a>
@@ -111,52 +124,66 @@
 		<section>
 			<article class="content-holder">
 				<header class="section-header">
-					<div class="title">AlignmentMixin</div>
+					<div class="title">module:WixMedia.WixAuth</div>
 					<div class="header-context"></div>
 				</header>
 				<section>
-					<h1 class="alignmentmixin">AlignmentMixin</h1>
+					<h1 class="wixmedia-wixauth">WixMedia.WixAuth</h1>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
 					<h3 class="contents">Contents</h3>
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td><a href="AlignmentMixin.html#.al">al( )</a></td>
-								<td>An alias for <code class="inline-code">alignment</code></td>
+								<td><a href="module-WixMedia.WixAuth.html#.config">config</a></td>
+								<td>Config factory to create configurations</td>
 							</tr>
 							<tr>
-								<td><a href="AlignmentMixin.html#.alignment">alignment( )</a></td>
-								<td>Sets the alignment value for this operation Defaults#Alignment</td>
+								<td><a href="module-WixMedia.WixAuth.html#.modes">modes</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="module-WixMedia.WixAuth.html#.client">client( )</a></td>
+								<td>Creates a new AuthClient. Only available in Node.js</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 				<section>
-					<p><span id=".al" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="al-">al( )</span>
-						<h2>al( )</h2></hgroup>
-					<p>An alias for <code class="inline-code">alignment</code></p>
+					<p><span id=".config" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="config">config</span>
+						<h2>config</h2></hgroup>
+					<p>Config factory to create configurations</p>
+					<h3 class="syntax">Syntax</h3>
 					<figure class="code-example">
 
-						<pre><code class="language-javascript">AlignmentMixin.al()</code></pre>
+						<pre><code class="language-javascript">module:WixMedia.WixAuth.config</code></pre>
 					</figure>
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
 				</section>
 				<section>
-					<p><span id=".alignment" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="alignment-">alignment( )</span>
-						<h2>alignment( )</h2></hgroup>
-					<p>Sets the alignment value for this operation Defaults#Alignment</p>
+					<p><span id=".modes" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="modes">modes</span>
+						<h2>modes</h2></hgroup>
+					<h3 class="syntax">Syntax</h3>
 					<figure class="code-example">
 
-						<pre><code class="language-javascript">AlignmentMixin.alignment(a)</code></pre>
+						<pre><code class="language-javascript">module:WixMedia.WixAuth.modes</code></pre>
+					</figure>
+					<h3 class="description">Description</h3>
+					<p>Authentication modes used with uploading</p>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
+				</section>
+				<section>
+					<p><span id=".client" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="client-">client( )</span>
+						<h2>client( )</h2></hgroup>
+					<p>Creates a new AuthClient. Only available in Node.js</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">module:WixMedia.WixAuth.client(config)</code></pre>
 					</figure>
 					<h3 class="parameters">Parameters</h3>
 					<table class="table table-condensed">
@@ -168,11 +195,11 @@
 						<tbody>
 							<tr>
 								<td>
-									<code class="inline-code">a</code>
+									<code class="inline-code">config</code>
 								</td>
-								<td>Alignments</td>
+								<td>AuthConfig</td>
 								<td>
-									the alignment value
+
 								</td>
 							</tr>
 						</tbody>
@@ -182,11 +209,12 @@
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td>this</td>
-								<td>the operation</td>
+								<td>AuthClient</td>
 							</tr>
 						</tbody>
 					</table>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
 				</section>
 				<nav id="prev-next-nav">
 				</nav>

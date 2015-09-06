@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AlignmentMixin - WixMP JavaScript API</title>
+	<title>upload.data.ImageMedia - WixMP JavaScript API</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content=" " />
 	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
@@ -13,7 +13,7 @@
 	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body data-entity-id="AlignmentMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+<body data-entity-id="upload.data.ImageMedia" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
 	<div class="fixed-header">
 		<div class="container">
 			<div class="docs-logo-container">
@@ -96,8 +96,8 @@
 					<li class="item left-nav-item" data-entity-id="upload.data.AudioMedia">
 						<a href="http://wix.github.io/wixmedia-js/upload.data.AudioMedia.html" target="_self">upload.data.AudioMedia </a>
 					</li>
-					<li class="item left-nav-item" data-entity-id="upload.data.ImageMedia">
-						<a href="http://wix.github.io/wixmedia-js/upload.data.ImageMedia.html" target="_self">upload.data.ImageMedia </a>
+					<li class="item left-nav-item current-doc" data-entity-id="upload.data.ImageMedia">
+						<a href="#" id="currentNavTarget">upload.data.ImageMedia</a>
 					</li>
 					<li class="item left-nav-item" data-entity-id="upload.data.VideoMedia">
 						<a href="http://wix.github.io/wixmedia-js/upload.data.VideoMedia.html" target="_self">upload.data.VideoMedia </a>
@@ -111,54 +111,13 @@
 		<section>
 			<article class="content-holder">
 				<header class="section-header">
-					<div class="title">AlignmentMixin</div>
+					<div class="title">upload.data.ImageMedia</div>
 					<div class="header-context"></div>
 				</header>
 				<section>
-					<h1 class="alignmentmixin">AlignmentMixin</h1>
-					<h3 class="contents">Contents</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td><a href="AlignmentMixin.html#.al">al( )</a></td>
-								<td>An alias for <code class="inline-code">alignment</code></td>
-							</tr>
-							<tr>
-								<td><a href="AlignmentMixin.html#.alignment">alignment( )</a></td>
-								<td>Sets the alignment value for this operation Defaults#Alignment</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-				<section>
-					<p><span id=".al" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="al-">al( )</span>
-						<h2>al( )</h2></hgroup>
-					<p>An alias for <code class="inline-code">alignment</code></p>
-					<figure class="code-example">
-
-						<pre><code class="language-javascript">AlignmentMixin.al()</code></pre>
-					</figure>
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-				<section>
-					<p><span id=".alignment" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="alignment-">alignment( )</span>
-						<h2>alignment( )</h2></hgroup>
-					<p>Sets the alignment value for this operation Defaults#Alignment</p>
-					<figure class="code-example">
-
-						<pre><code class="language-javascript">AlignmentMixin.alignment(a)</code></pre>
-					</figure>
-					<h3 class="parameters">Parameters</h3>
+					<h1 class="upload-data-imagemedia">upload.data.ImageMedia</h1>
+					<p>Information about an image that was uploaded</p>
+					<h3 class="properties">Properties</h3>
 					<table class="table table-condensed">
 						<colgroup>
 							<col class="col-xs-2">
@@ -168,25 +127,90 @@
 						<tbody>
 							<tr>
 								<td>
-									<code class="inline-code">a</code>
+									<code class="inline-code">fileId</code>
 								</td>
-								<td>Alignments</td>
+								<td>string</td>
 								<td>
-									the alignment value
+									The id of the uploaded file
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">imageId</code>
+								</td>
+								<td>string</td>
+								<td>
+									The id of the uploaded image
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">fileUrl</code>
+								</td>
+								<td>string</td>
+								<td>
+									The url of the uploaded file. This is the same as the fileId
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">fileSize</code>
+								</td>
+								<td>string</td>
+								<td>
+									The size of the uploaded file
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">fileName</code>
+								</td>
+								<td>string</td>
+								<td>
+									The name of the uploaded file
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">originalFileName</code>
+								</td>
+								<td>string</td>
+								<td>
+									The original file name of the uploaded file
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">width</code>
+								</td>
+								<td>string</td>
+								<td>
+									If an image, the width of the image
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">height</code>
+								</td>
+								<td>string</td>
+								<td>
+									If an image, the height of the image
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">rawData</code>
+								</td>
+								<td>string</td>
+								<td>
+									the raw metadata
 								</td>
 							</tr>
 						</tbody>
 					</table>
 
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
 				</section>
 				<nav id="prev-next-nav">
 				</nav>

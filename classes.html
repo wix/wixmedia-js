@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AlignmentMixin - WixMP JavaScript API</title>
+	<title>Classes - WixMP JavaScript API</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content=" " />
 	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
@@ -13,7 +13,7 @@
 	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body data-entity-id="AlignmentMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+<body data-entity-id="list" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
 	<div class="fixed-header">
 		<div class="container">
 			<div class="docs-logo-container">
@@ -111,83 +111,80 @@
 		<section>
 			<article class="content-holder">
 				<header class="section-header">
-					<div class="title">AlignmentMixin</div>
+					<div class="title">Classes</div>
 					<div class="header-context"></div>
 				</header>
-				<section>
-					<h1 class="alignmentmixin">AlignmentMixin</h1>
-					<h3 class="contents">Contents</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td><a href="AlignmentMixin.html#.al">al( )</a></td>
-								<td>An alias for <code class="inline-code">alignment</code></td>
-							</tr>
-							<tr>
-								<td><a href="AlignmentMixin.html#.alignment">alignment( )</a></td>
-								<td>Sets the alignment value for this operation Defaults#Alignment</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-				<section>
-					<p><span id=".al" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="al-">al( )</span>
-						<h2>al( )</h2></hgroup>
-					<p>An alias for <code class="inline-code">alignment</code></p>
-					<figure class="code-example">
+				<hgroup><span class="h_subheading" id="overview">Overview</span>
+					<h2>Overview</h2></hgroup>
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<td><a href="auth.AuthClient.html">auth.AuthClient</a></td>
+							<td>Creates a client that can authenticate against WixMP</td>
+						</tr>
+						<tr>
+							<td><a href="auth.AuthConfig.html">auth.AuthConfig</a></td>
+							<td>An AuthConfig for use with an AuthClient</td>
+						</tr>
+						<tr>
+							<td><a href="auth.TenantConfig.html">auth.TenantConfig</a></td>
+							<td>the config used to authenticate against WixMP as a tenant</td>
+						</tr>
+						<tr>
+							<td><a href="auth.WixConfig.html">auth.WixConfig</a></td>
+							<td>the standard config used to authenticate against WixMP</td>
+						</tr>
+						<tr>
+							<td><a href="Canvas.html">Canvas</a></td>
+							<td>Resizes the image canvas.</td>
+						</tr>
+						<tr>
+							<td><a href="Crop.html">Crop</a></td>
+							<td>Crops the image based on the supplied coordinates.</td>
+						</tr>
+						<tr>
+							<td><a href="Defaults.html">Defaults</a></td>
+							<td>Constants for use with image operations</td>
+						</tr>
+						<tr>
+							<td><a href="Fill.html">Fill</a></td>
+							<td>Create an image with the exact given width and height while retaining original proportions.</td>
+						</tr>
+						<tr>
+							<td><a href="Fit.html">Fit</a></td>
+							<td>Resizes the image to fit to the specified width and height while retaining original image proportion.</td>
+						</tr>
+						<tr>
+							<td><a href="module-WixUpload.AudioUploader.html">module:WixUpload.AudioUploader</a></td>
+							<td>The interface used to upload audio files to WixMP</td>
+						</tr>
+						<tr>
+							<td><a href="module-WixUpload.ImageUploader.html">module:WixUpload.ImageUploader</a></td>
+							<td>The interface used to upload images to WixMP</td>
+						</tr>
+						<tr>
+							<td><a href="module-WixUpload.VideoUploader.html">module:WixUpload.VideoUploader</a></td>
+							<td>The interface used to upload videos to WixMP</td>
+						</tr>
+						<tr>
+							<td><a href="upload.data.AudioMedia.html">upload.data.AudioMedia</a></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><a href="upload.data.ImageMedia.html">upload.data.ImageMedia</a></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><a href="upload.data.VideoMedia.html">upload.data.VideoMedia</a></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><a href="WixImage.html">WixImage</a></td>
+							<td>a WixImage is a configurable object that supports all the operations, filters and adjustments supported by Wix Media Platform</td>
+						</tr>
+					</tbody>
+				</table>
 
-						<pre><code class="language-javascript">AlignmentMixin.al()</code></pre>
-					</figure>
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-				<section>
-					<p><span id=".alignment" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="alignment-">alignment( )</span>
-						<h2>alignment( )</h2></hgroup>
-					<p>Sets the alignment value for this operation Defaults#Alignment</p>
-					<figure class="code-example">
-
-						<pre><code class="language-javascript">AlignmentMixin.alignment(a)</code></pre>
-					</figure>
-					<h3 class="parameters">Parameters</h3>
-					<table class="table table-condensed">
-						<colgroup>
-							<col class="col-xs-2">
-								<col class="col-xs-2">
-									<col class="col-xs-8">
-						</colgroup>
-						<tbody>
-							<tr>
-								<td>
-									<code class="inline-code">a</code>
-								</td>
-								<td>Alignments</td>
-								<td>
-									the alignment value
-								</td>
-							</tr>
-						</tbody>
-					</table>
-
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
 				<nav id="prev-next-nav">
 				</nav>
 			</article>

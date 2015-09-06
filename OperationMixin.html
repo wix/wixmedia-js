@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AlignmentMixin - WixMP JavaScript API</title>
+	<title>OperationMixin - WixMP JavaScript API</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content=" " />
 	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
@@ -13,7 +13,7 @@
 	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body data-entity-id="AlignmentMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+<body data-entity-id="OperationMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
 	<div class="fixed-header">
 		<div class="container">
 			<div class="docs-logo-container">
@@ -111,52 +111,48 @@
 		<section>
 			<article class="content-holder">
 				<header class="section-header">
-					<div class="title">AlignmentMixin</div>
+					<div class="title">OperationMixin</div>
 					<div class="header-context"></div>
 				</header>
 				<section>
-					<h1 class="alignmentmixin">AlignmentMixin</h1>
+					<h1 class="operationmixin">OperationMixin</h1>
 					<h3 class="contents">Contents</h3>
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td><a href="AlignmentMixin.html#.al">al( )</a></td>
-								<td>An alias for <code class="inline-code">alignment</code></td>
+								<td><a href="OperationMixin.html#.Defaults">Defaults</a></td>
+								<td>defaults for operations</td>
 							</tr>
 							<tr>
-								<td><a href="AlignmentMixin.html#.alignment">alignment( )</a></td>
-								<td>Sets the alignment value for this operation Defaults#Alignment</td>
+								<td><a href="OperationMixin.html#name">name( )</a></td>
+								<td>Sets the name of the image to return</td>
+							</tr>
+							<tr>
+								<td><a href="OperationMixin.html#toUrl">toUrl( )</a></td>
+								<td>Returns the URL of the configured image</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 				<section>
-					<p><span id=".al" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="al-">al( )</span>
-						<h2>al( )</h2></hgroup>
-					<p>An alias for <code class="inline-code">alignment</code></p>
+					<p><span id=".Defaults" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="defaults">Defaults</span>
+						<h2>Defaults</h2></hgroup>
+					<p>defaults for operations</p>
+					<h3 class="syntax">Syntax</h3>
 					<figure class="code-example">
 
-						<pre><code class="language-javascript">AlignmentMixin.al()</code></pre>
+						<pre><code class="language-javascript">OperationMixin.Defaults</code></pre>
 					</figure>
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
 				</section>
 				<section>
-					<p><span id=".alignment" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="alignment-">alignment( )</span>
-						<h2>alignment( )</h2></hgroup>
-					<p>Sets the alignment value for this operation Defaults#Alignment</p>
+					<p><span id="name" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="name-">name( )</span>
+						<h2>name( )</h2></hgroup>
+					<p>Sets the name of the image to return</p>
 					<figure class="code-example">
 
-						<pre><code class="language-javascript">AlignmentMixin.alignment(a)</code></pre>
+						<pre><code class="language-javascript">operationMixin.name(name)</code></pre>
 					</figure>
 					<h3 class="parameters">Parameters</h3>
 					<table class="table table-condensed">
@@ -168,11 +164,11 @@
 						<tbody>
 							<tr>
 								<td>
-									<code class="inline-code">a</code>
+									<code class="inline-code">name</code>
 								</td>
-								<td>Alignments</td>
+								<td>string</td>
 								<td>
-									the alignment value
+									the name of the image
 								</td>
 							</tr>
 						</tbody>
@@ -184,6 +180,25 @@
 							<tr>
 								<td>this</td>
 								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="toUrl" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="tourl-">toUrl( )</span>
+						<h2>toUrl( )</h2></hgroup>
+					<p>Returns the URL of the configured image</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">operationMixin.toUrl()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>String</td>
+								<td>the URL of the image</td>
 							</tr>
 						</tbody>
 					</table>

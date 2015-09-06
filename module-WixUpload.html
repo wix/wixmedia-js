@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AlignmentMixin - WixMP JavaScript API</title>
+	<title>module:WixUpload - WixMP JavaScript API</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content=" " />
 	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
@@ -13,7 +13,7 @@
 	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body data-entity-id="AlignmentMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+<body data-entity-id="module:WixUpload" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
 	<div class="fixed-header">
 		<div class="container">
 			<div class="docs-logo-container">
@@ -39,8 +39,21 @@
 					<li class="item left-nav-item" data-entity-id="module:WixMedia">
 						<a href="http://wix.github.io/wixmedia-js/module-WixMedia.html" target="_self">WixMedia </a>
 					</li>
-					<li class="item left-nav-item" data-entity-id="module:WixUpload">
-						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.html" target="_self">WixUpload </a>
+					<li class="item left-nav-item current-doc" data-entity-id="module:WixUpload">
+						<a href="#" id="currentNavTarget">WixUpload</a>
+						<nav id="onThisPage">
+							<ul class="nav nav-stacked otp-nav nav-open">
+								<li class="item otp-li">
+									<a class="otp" href="#audio-">audio( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#images-">images( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#video-">video( )</a>
+								</li>
+							</ul>
+						</nav>
 					</li>
 					<li class="item left-nav-item" data-entity-id="Canvas">
 						<a href="http://wix.github.io/wixmedia-js/Canvas.html" target="_self">Canvas </a>
@@ -111,82 +124,100 @@
 		<section>
 			<article class="content-holder">
 				<header class="section-header">
-					<div class="title">AlignmentMixin</div>
+					<div class="title">module:WixUpload</div>
 					<div class="header-context"></div>
 				</header>
 				<section>
-					<h1 class="alignmentmixin">AlignmentMixin</h1>
+					<h1 class="wixupload">WixUpload</h1>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
 					<h3 class="contents">Contents</h3>
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td><a href="AlignmentMixin.html#.al">al( )</a></td>
-								<td>An alias for <code class="inline-code">alignment</code></td>
+								<td><a href="module-WixUpload.AudioUploader.html">AudioUploader</a></td>
+								<td>The interface used to upload audio files to WixMP</td>
 							</tr>
 							<tr>
-								<td><a href="AlignmentMixin.html#.alignment">alignment( )</a></td>
-								<td>Sets the alignment value for this operation Defaults#Alignment</td>
+								<td><a href="module-WixUpload.ImageUploader.html">ImageUploader</a></td>
+								<td>The interface used to upload images to WixMP</td>
+							</tr>
+							<tr>
+								<td><a href="module-WixUpload.VideoUploader.html">VideoUploader</a></td>
+								<td>The interface used to upload videos to WixMP</td>
+							</tr>
+							<tr>
+								<td><a href="module-WixUpload.html#~audio">audio( )</a></td>
+								<td>Creates a new instance of an AudioUploader.</td>
+							</tr>
+							<tr>
+								<td><a href="module-WixUpload.html#~images">images( )</a></td>
+								<td>Creates a new instance of an ImageUploader.</td>
+							</tr>
+							<tr>
+								<td><a href="module-WixUpload.html#~video">video( )</a></td>
+								<td>Creates a new instance of a VideoUploader.</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 				<section>
-					<p><span id=".al" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="al-">al( )</span>
-						<h2>al( )</h2></hgroup>
-					<p>An alias for <code class="inline-code">alignment</code></p>
+					<p><span id="~audio" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="audio-">audio( )</span>
+						<h2>audio( )</h2></hgroup>
+					<p>Creates a new instance of an AudioUploader.</p>
 					<figure class="code-example">
 
-						<pre><code class="language-javascript">AlignmentMixin.al()</code></pre>
+						<pre><code class="language-javascript">module:WixUpload~audio()</code></pre>
 					</figure>
 					<h3 class="return-value">Return Value</h3>
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td>this</td>
-								<td>the operation</td>
+								<td><a href="module-WixUpload.AudioUploader.html">AudioUploader</a></td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 				<section>
-					<p><span id=".alignment" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="alignment-">alignment( )</span>
-						<h2>alignment( )</h2></hgroup>
-					<p>Sets the alignment value for this operation Defaults#Alignment</p>
+					<p><span id="~images" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="images-">images( )</span>
+						<h2>images( )</h2></hgroup>
+					<p>Creates a new instance of an ImageUploader.</p>
 					<figure class="code-example">
 
-						<pre><code class="language-javascript">AlignmentMixin.alignment(a)</code></pre>
+						<pre><code class="language-javascript">module:WixUpload~images()</code></pre>
 					</figure>
-					<h3 class="parameters">Parameters</h3>
-					<table class="table table-condensed">
-						<colgroup>
-							<col class="col-xs-2">
-								<col class="col-xs-2">
-									<col class="col-xs-8">
-						</colgroup>
-						<tbody>
-							<tr>
-								<td>
-									<code class="inline-code">a</code>
-								</td>
-								<td>Alignments</td>
-								<td>
-									the alignment value
-								</td>
-							</tr>
-						</tbody>
-					</table>
-
 					<h3 class="return-value">Return Value</h3>
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td>this</td>
-								<td>the operation</td>
+								<td><a href="module-WixUpload.ImageUploader.html">ImageUploader</a></td>
 							</tr>
 						</tbody>
 					</table>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
+				</section>
+				<section>
+					<p><span id="~video" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="video-">video( )</span>
+						<h2>video( )</h2></hgroup>
+					<p>Creates a new instance of a VideoUploader.</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">module:WixUpload~video()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td><a href="module-WixUpload.VideoUploader.html">VideoUploader</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
 				</section>
 				<nav id="prev-next-nav">
 				</nav>

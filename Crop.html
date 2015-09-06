@@ -1,751 +1,1407 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
-	<title>Wix Media Class: Crop</title>
-
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	
-	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
-	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Crop - WixMP JavaScript API</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content=" " />
+	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
+	<link type="text/css" rel="stylesheet" href="http://wix.github.io/wixmedia-js/stylesheets/wixdocs.css" />
+	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body>
-<div class="container-fluid">
-	<div class="navbar navbar-fixed-top ">
-		<div class="navbar-inner">
-			<a class="brand" href="index.html">Wix Media</a>
-			<ul class="nav">
-				
-				<li class="dropdown">
-					<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b
-						class="caret"></b></a>
+<body data-entity-id="Crop" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+	<div class="fixed-header">
+		<div class="container">
+			<div class="docs-logo-container">
+				<a href="http://wix.github.io/wixmedia-js/index.html"><img class="docs-logo" src="http://wix.github.io/wixmedia-js/odin/logo_black.png" /><span class="docs-logo-title">MP Documentation</span></a>
+			</div>
+			<div class="search-box-wrapper">
+				<input class="typeahead form-control" type="text" placeholder="Search API">
+			</div>
+		</div>
 
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="module-WixMedia.html">WixMedia</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
-						class="caret"></b></a>
-
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="Canvas.html">Canvas</a>
-						</li>
-						
-						<li>
-							<a href="Crop.html">Crop</a>
-						</li>
-						
-						<li>
-							<a href="Defaults.html">Defaults</a>
-						</li>
-						
-						<li>
-							<a href="Fill.html">Fill</a>
-						</li>
-						
-						<li>
-							<a href="Fit.html">Fit</a>
-						</li>
-						
-						<li>
-							<a href="UploadClient.html">UploadClient</a>
-						</li>
-						
-						<li>
-							<a href="UploadedMedia.html">UploadedMedia</a>
-						</li>
-						
-						<li>
-							<a href="WixImage.html">WixImage</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">Mixins<b
-						class="caret"></b></a>
-
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="AdjustMixin.html">AdjustMixin</a>
-						</li>
-						
-						<li>
-							<a href="AlignmentMixin.html">AlignmentMixin</a>
-						</li>
-						
-						<li>
-							<a href="FilterMixin.html">FilterMixin</a>
-						</li>
-						
-						<li>
-							<a href="ResizeFillMixin.html">ResizeFillMixin</a>
-						</li>
-						
-						<li>
-							<a href="WidthHeightQualityMixin.html">WidthHeightQualityMixin</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-			</ul>
+	</div>
+	<div id="jumbo" class="pre-scroll">
+		<div class="jumbo-text">
+			<span class="title">Wix Media Platform</span>
+			<span class="subtitle">The Smartest Way to Host and Deliver Your Media Worldwide</span>
 		</div>
 	</div>
-
-	<div class="row-fluid">
-
-		
-		<div class="span8">
-			
-				<div id="main">
-					
-
-
-	<h1 class="page-title">Class: Crop</h1>
-<section>
-
-<header>
-    <h2>
-    Crop
-    </h2>
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-
-    
-        
-<dt>
-    <h4 class="name" id="Crop"><span class="type-signature"></span>new Crop<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Crops the image based on the supplied coordinates, starting at the x, y pixel
-coordinates along with the width and height parameters.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-    
-    </div>
-
-    
-
-    
-        <h3 class="subsection-title">Mixes In</h3>
-
-        <ul>
-            <li><a href="AdjustMixin.html">AdjustMixin</a></li>
-        
-            <li><a href="FilterMixin.html">FilterMixin</a></li>
-        
-            <li><a href="WidthHeightQualityMixin.html">WidthHeightQualityMixin</a></li>
-        </ul>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-            
-<dt>
-    <h4 class="name" id="coords"><span class="type-signature"></span>coords<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="Crop.html">Crop</a>}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>A shorthand for setting the x and y coordinates for this crop</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the x value</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the y value</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type"><a href="Crop.html">Crop</a></span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="x"><span class="type-signature"></span>x<span class="signature">(x)</span><span class="type-signature"> &rarr; {*}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The x value of the crop</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the x value</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>the operation</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">*</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="y"><span class="type-signature"></span>y<span class="signature">(y)</span><span class="type-signature"> &rarr; {*}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The y value of the crop</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the y value</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        images.js
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>the operation</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">*</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        </dl>
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
+	<div class="left-nav">
+		<nav class="left-nav-items">
+			<ul class="nav nav-stacked">
+				<div class="nav-container"><span>WixMP JavaScript API</span></div>
+				<div class="nav-family nav-open">
+					<li class="item left-nav-item" data-entity-id="module:WixMedia">
+						<a href="http://wix.github.io/wixmedia-js/module-WixMedia.html" target="_self">WixMedia </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixUpload">
+						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.html" target="_self">WixUpload </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="Canvas">
+						<a href="http://wix.github.io/wixmedia-js/Canvas.html" target="_self">Canvas </a>
+					</li>
+					<li class="item left-nav-item current-doc" data-entity-id="Crop">
+						<a href="#" id="currentNavTarget">Crop</a>
+						<nav id="onThisPage">
+							<ul class="nav nav-stacked otp-nav nav-open">
+								<li class="item otp-li">
+									<a class="otp" href="#defaults">Defaults</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#baseline-">baseline( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#bl-">bl( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#blur-">blur( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#br-">br( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#brightness-">brightness( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#con-">con( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#contrast-">contrast( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#coords-">coords( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#h-">h( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#hasadjustments-">hasAdjustments( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#hasfilters-">hasFilters( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#height-">height( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#hue-">hue( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#neg-">neg( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#negative-">negative( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#oil-">oil( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#pix-">pix( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#pixelate-">pixelate( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#pixfs-">pixfs( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#q-">q( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#quality-">quality( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#sat-">sat( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#saturation-">saturation( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#sharpen-">sharpen( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#size-">size( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#unsharpmask-">unsharpMask( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#us-">us( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#w-">w( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#width-">width( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#x-">x( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#y-">y( )</a>
+								</li>
+							</ul>
+						</nav>
+					</li>
+					<li class="item left-nav-item" data-entity-id="Defaults">
+						<a href="http://wix.github.io/wixmedia-js/Defaults.html" target="_self">Defaults </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="Fill">
+						<a href="http://wix.github.io/wixmedia-js/Fill.html" target="_self">Fill </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="Fit">
+						<a href="http://wix.github.io/wixmedia-js/Fit.html" target="_self">Fit </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="WixImage">
+						<a href="http://wix.github.io/wixmedia-js/WixImage.html" target="_self">WixImage </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth">
+						<a href="http://wix.github.io/wixmedia-js/auth.html" target="_self">auth </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth.AuthClient">
+						<a href="http://wix.github.io/wixmedia-js/auth.AuthClient.html" target="_self">auth.AuthClient </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth.AuthConfig">
+						<a href="http://wix.github.io/wixmedia-js/auth.AuthConfig.html" target="_self">auth.AuthConfig </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth.TenantConfig">
+						<a href="http://wix.github.io/wixmedia-js/auth.TenantConfig.html" target="_self">auth.TenantConfig </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="auth.WixConfig">
+						<a href="http://wix.github.io/wixmedia-js/auth.WixConfig.html" target="_self">auth.WixConfig </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixMedia.WixAuth">
+						<a href="http://wix.github.io/wixmedia-js/module-WixMedia.WixAuth.html" target="_self">WixMedia.WixAuth </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixUpload.AudioUploader">
+						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.AudioUploader.html" target="_self">WixUpload.AudioUploader </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixUpload.ImageUploader">
+						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.ImageUploader.html" target="_self">WixUpload.ImageUploader </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="module:WixUpload.VideoUploader">
+						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.VideoUploader.html" target="_self">WixUpload.VideoUploader </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload">
+						<a href="http://wix.github.io/wixmedia-js/upload.html" target="_self">upload </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload.data">
+						<a href="http://wix.github.io/wixmedia-js/upload.data.html" target="_self">upload.data </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload.data.AudioMedia">
+						<a href="http://wix.github.io/wixmedia-js/upload.data.AudioMedia.html" target="_self">upload.data.AudioMedia </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload.data.ImageMedia">
+						<a href="http://wix.github.io/wixmedia-js/upload.data.ImageMedia.html" target="_self">upload.data.ImageMedia </a>
+					</li>
+					<li class="item left-nav-item" data-entity-id="upload.data.VideoMedia">
+						<a href="http://wix.github.io/wixmedia-js/upload.data.VideoMedia.html" target="_self">upload.data.VideoMedia </a>
+					</li>
 				</div>
-
-				<div class="clearfix"></div>
-				<footer>
-					
-					<a href='http://media.wix.com/docs'>Wix Media Developer Center</a>
-					<br />
-					
-					
-		<span class="copyright">
-		2014, Wix
-		</span>
-					<br />
-					
-		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Mon Jan 26 2015 11:51:52 GMT+0200 (IST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-		</span>
-				</footer>
-			</div>
-
-			
-			<div class="span3">
-				<div id="toc"></div>
-			</div>
-			
-			<br clear="both">
-		</div>
+			</ul>
+		</nav>
 
 	</div>
-	<script src="scripts/sunlight.js"></script>
-	<script src="scripts/sunlight.javascript.js"></script>
-	<script src="scripts/sunlight-plugin.doclinks.js"></script>
-	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
-	<script src="scripts/sunlight-plugin.menu.js"></script>
-	<script src="scripts/jquery.min.js"></script>
-	<script src="scripts/jquery.scrollTo.js"></script>
-	<script src="scripts/jquery.localScroll.js"></script>
-	<script src="scripts/bootstrap-dropdown.js"></script>
-	<script src="scripts/toc.js"></script>
+	<main class="main-content">
+		<section>
+			<article class="content-holder">
+				<header class="section-header">
+					<div class="title">Crop</div>
+					<div class="header-context"></div>
+				</header>
+				<section>
+					<h1 class="crop">Crop</h1>
+					<p>Starts at the <code class="inline-code">x</code>, <code class="inline-code">y</code> pixel coordinates along with the width and height parameters.</p>
+					<h3 class="mixes-in">Mixes In</h3>
+					<p><a href="AdjustMixin.html">AdjustMixin</a>, <a href="FilterMixin.html">FilterMixin</a>, <a href="WidthHeightQualityMixin.html">WidthHeightQualityMixin</a>, <a href="OperationMixin.html">OperationMixin</a></p>
+					<h3 class="contents">Contents</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td><a href="Crop.html#Defaults">Defaults</a></td>
+								<td>defaults for operations</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#baseline">baseline( )</a></td>
+								<td>Applies baseline encoding on a jpg, instead of progressive encoding.</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#bl">bl( )</a></td>
+								<td>An alias for <code class="inline-code">baseline</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#blur">blur( )</a></td>
+								<td>Applies a blur effect to the image.</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#br">br( )</a></td>
+								<td>An alias for <code class="inline-code">brightness</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#brightness">brightness( )</a></td>
+								<td>brightness of the image</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#con">con( )</a></td>
+								<td>An alias for <code class="inline-code">contrast</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#contrast">contrast( )</a></td>
+								<td>contrast of the image.</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#coords">coords( )</a></td>
+								<td>A shorthand for setting the <code class="inline-code">x</code> and <code class="inline-code">y</code> coordinates for this crop</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#h">h( )</a></td>
+								<td>An alias for <code class="inline-code">height</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#hasAdjustments">hasAdjustments( )</a></td>
+								<td>Indicates that this operation has adjustment parameters</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#hasFilters">hasFilters( )</a></td>
+								<td>Indicates that this operation has filter parameters</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#height">height( )</a></td>
+								<td>The height constraint</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#hue">hue( )</a></td>
+								<td>hue of the image.</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#neg">neg( )</a></td>
+								<td>An alias for <code class="inline-code">negative</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#negative">negative( )</a></td>
+								<td>Negates the colors of the image.</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#oil">oil( )</a></td>
+								<td>Applies an oil paint effect to the image.</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#pix">pix( )</a></td>
+								<td>An alias for <code class="inline-code">pixelate</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#pixelate">pixelate( )</a></td>
+								<td>Applies a pixelate effect to the image.</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#pixfs">pixfs( )</a></td>
+								<td>An alias for <code class="inline-code">pixelateFaces</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#q">q( )</a></td>
+								<td>An alias for <code class="inline-code">quality</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#quality">quality( )</a></td>
+								<td>The quality constraint, if the image is a jpg</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#sat">sat( )</a></td>
+								<td>An alias for <code class="inline-code">saturation</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#saturation">saturation( )</a></td>
+								<td>saturation of the image.</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#sharpen">sharpen( )</a></td>
+								<td>Sharpens the image using radius</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#size">size( )</a></td>
+								<td>The shorthand to set width and height</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#unsharpMask">unsharpMask( )</a></td>
+								<td>Sharpens the image using radius, amount &amp; threshold parameters</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#us">us( )</a></td>
+								<td>An alias for <code class="inline-code">unsharpMask</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#w">w( )</a></td>
+								<td>An alias for <code class="inline-code">width</code></td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#width">width( )</a></td>
+								<td>The width constraint</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#x">x( )</a></td>
+								<td>The <code class="inline-code">x</code> value of the crop</td>
+							</tr>
+							<tr>
+								<td><a href="Crop.html#y">y( )</a></td>
+								<td>The <code class="inline-code">y</code> value of the crop</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="Defaults" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="defaults">Defaults</span>
+						<h2>Defaults</h2></hgroup>
+					<p>defaults for operations</p>
+					<h3 class="syntax">Syntax</h3>
+					<figure class="code-example">
 
+						<pre><code class="language-javascript">crop.Defaults</code></pre>
+					</figure>
+				</section>
+				<section>
+					<p><span id="baseline" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="baseline-">baseline( )</span>
+						<h2>baseline( )</h2></hgroup>
+					<p>Applies baseline encoding on a jpg, instead of progressive encoding.</p>
+					<figure class="code-example">
 
-	<script>  Sunlight.highlightAll({lineNumbers:false,  showMenu: true, enableDoclinks :true}); </script>
+						<pre><code class="language-javascript">crop.baseline([bl] = true)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">bl</code>
+									<span class="param-properties">(optional)</span>
+								</td>
+								<td>boolean</td>
+								<td>
+									enable progressive encoding
+								</td>
+							</tr>
+						</tbody>
+					</table>
 
-	<script>
-		$( function () {
-			$( "#toc" ).toc( {
-				selectors   : "h1,h2,h3,h4",
-				showAndHide : false,
-				scrollTo    : 60
-			} );
-			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="bl" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="bl-">bl( )</span>
+						<h2>bl( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">baseline</code></p>
+					<figure class="code-example">
 
-		} );
-	</script>
+						<pre><code class="language-javascript">crop.bl()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="blur" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="blur-">blur( )</span>
+						<h2>blur( )</h2></hgroup>
+					<p>Applies a blur effect to the image.</p>
+					<figure class="code-example">
 
-	
+						<pre><code class="language-javascript">crop.blur(blur)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">blur</code>
+								</td>
+								<td>number</td>
+								<td>
+									percent to blur the image
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="br" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="br-">br( )</span>
+						<h2>br( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">brightness</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.br()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="brightness" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="brightness-">brightness( )</span>
+						<h2>brightness( )</h2></hgroup>
+					<p>brightness of the image</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.brightness(b)</code></pre>
+					</figure>
+					<h3 class="description">Description</h3>
+					<p>supports <code class="inline-code">auto</code> or a numeric value between <code class="inline-code">-100</code> and <code class="inline-code">100</code></p>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">b</code>
+								</td>
+								<td>string | number</td>
+								<td>
+									a Number between <code class="inline-code">-100</code> and <code class="inline-code">100</code> or &#39;auto&#39;
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3 class="examples">Examples</h3>
+					<figure class="code-example">
+
+						<div class="code-block">
+							<img class="copy-button" data-toggle="tooltip" data-title="Copied" src="http://wix.github.io/wixmedia-js/images/copy.png" />
+							<pre class="hidden-code">dmFyIGltYWdlU291cmNlID0gaW1hZ2UuYnJpZ2h0bmVzcyg5MCkudG9VcmwoKTs=</pre>
+						</div>
+						<pre><code class="language-javascript">var imageSource = image.brightness(90).toUrl();</code></pre>
+					</figure>
+					<figure class="code-example">
+
+						<div class="code-block">
+							<img class="copy-button" data-toggle="tooltip" data-title="Copied" src="http://wix.github.io/wixmedia-js/images/copy.png" />
+							<pre class="hidden-code">dmFyIGltYWdlU291cmNlID0gaW1hZ2UuYnJpZ2h0bmVzcyhpbWFnZS5EZWZhdWx0cy5BVVRPKS50b1VybCgpOw==</pre>
+						</div>
+						<pre><code class="language-javascript">var imageSource = image.brightness(image.Defaults.AUTO).toUrl();</code></pre>
+					</figure>
+				</section>
+				<section>
+					<p><span id="con" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="con-">con( )</span>
+						<h2>con( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">contrast</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.con()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="contrast" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="contrast-">contrast( )</span>
+						<h2>contrast( )</h2></hgroup>
+					<p>contrast of the image.</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.contrast(c)</code></pre>
+					</figure>
+					<h3 class="description">Description</h3>
+					<p>supports <code class="inline-code">auto</code> or a numeric value between <code class="inline-code">-100</code> and <code class="inline-code">100</code></p>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">c</code>
+								</td>
+								<td>string | number</td>
+								<td>
+									a Number between <code class="inline-code">-100</code> and <code class="inline-code">100</code> or <code class="inline-code">auto</code>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3 class="examples">Examples</h3>
+					<figure class="code-example">
+
+						<div class="code-block">
+							<img class="copy-button" data-toggle="tooltip" data-title="Copied" src="http://wix.github.io/wixmedia-js/images/copy.png" />
+							<pre class="hidden-code">dmFyIGltYWdlU291cmNlID0gaW1hZ2UuY29udHJhc3QoOTApLnRvVXJsKCk7</pre>
+						</div>
+						<pre><code class="language-javascript">var imageSource = image.contrast(90).toUrl();</code></pre>
+					</figure>
+					<figure class="code-example">
+
+						<div class="code-block">
+							<img class="copy-button" data-toggle="tooltip" data-title="Copied" src="http://wix.github.io/wixmedia-js/images/copy.png" />
+							<pre class="hidden-code">dmFyIGltYWdlU291cmNlID0gaW1hZ2UuY29udHJhc3QoaW1hZ2UuRGVmYXVsdHMuQVVUTykudG9VcmwoKTs=</pre>
+						</div>
+						<pre><code class="language-javascript">var imageSource = image.contrast(image.Defaults.AUTO).toUrl();</code></pre>
+					</figure>
+				</section>
+				<section>
+					<p><span id="coords" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="coords-">coords( )</span>
+						<h2>coords( )</h2></hgroup>
+					<p>A shorthand for setting the <code class="inline-code">x</code> and <code class="inline-code">y</code> coordinates for this crop</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.coords(x, y)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">x</code>
+								</td>
+								<td>number</td>
+								<td>
+									the x value
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">y</code>
+								</td>
+								<td>number</td>
+								<td>
+									the y value
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td><a href="Crop.html">Crop</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="h" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="h-">h( )</span>
+						<h2>h( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">height</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.h()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="hasAdjustments" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="hasadjustments-">hasAdjustments( )</span>
+						<h2>hasAdjustments( )</h2></hgroup>
+					<p>Indicates that this operation has adjustment parameters</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.hasAdjustments()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>boolean</td>
+								<td>true if adjustments are set</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="hasFilters" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="hasfilters-">hasFilters( )</span>
+						<h2>hasFilters( )</h2></hgroup>
+					<p>Indicates that this operation has filter parameters</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.hasFilters()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>boolean</td>
+								<td>true if filters are set</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="height" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="height-">height( )</span>
+						<h2>height( )</h2></hgroup>
+					<p>The height constraint</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.height(h)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">h</code>
+								</td>
+								<td>Number</td>
+								<td>
+									a number greater than <code class="inline-code">0</code>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="hue" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="hue-">hue( )</span>
+						<h2>hue( )</h2></hgroup>
+					<p>hue of the image.</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.hue(h)</code></pre>
+					</figure>
+					<h3 class="description">Description</h3>
+					<p>supports <code class="inline-code">auto</code> or a numeric value between <code class="inline-code">-100</code> and <code class="inline-code">100</code></p>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">h</code>
+								</td>
+								<td>string | number</td>
+								<td>
+									a Number between <code class="inline-code">-100</code> and <code class="inline-code">100</code> or <code class="inline-code">auto</code>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="neg" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="neg-">neg( )</span>
+						<h2>neg( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">negative</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.neg()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="negative" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="negative-">negative( )</span>
+						<h2>negative( )</h2></hgroup>
+					<p>Negates the colors of the image.</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.negative([neg] = true)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">neg</code>
+									<span class="param-properties">(optional)</span>
+								</td>
+								<td>boolean</td>
+								<td>
+									enabled
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="oil" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="oil-">oil( )</span>
+						<h2>oil( )</h2></hgroup>
+					<p>Applies an oil paint effect to the image.</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.oil([oil] = true)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">oil</code>
+									<span class="param-properties">(optional)</span>
+								</td>
+								<td>boolean</td>
+								<td>
+									enabled
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="pix" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="pix-">pix( )</span>
+						<h2>pix( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">pixelate</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.pix()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="pixelate" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="pixelate-">pixelate( )</span>
+						<h2>pixelate( )</h2></hgroup>
+					<p>Applies a pixelate effect to the image.</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.pixelate(pixels)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">pixels</code>
+								</td>
+								<td>number</td>
+								<td>
+									the width of pixelation squares, in pixels
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="pixfs" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="pixfs-">pixfs( )</span>
+						<h2>pixfs( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">pixelateFaces</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.pixfs()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="q" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="q-">q( )</span>
+						<h2>q( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">quality</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.q()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="quality" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="quality-">quality( )</span>
+						<h2>quality( )</h2></hgroup>
+					<p>The quality constraint, if the image is a jpg</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.quality([q] = 75)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">q</code>
+									<span class="param-properties">(optional)</span>
+								</td>
+								<td>Number</td>
+								<td>
+									a number from <code class="inline-code">0</code> to <code class="inline-code">100</code>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="sat" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="sat-">sat( )</span>
+						<h2>sat( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">saturation</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.sat()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="saturation" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="saturation-">saturation( )</span>
+						<h2>saturation( )</h2></hgroup>
+					<p>saturation of the image.</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.saturation(s)</code></pre>
+					</figure>
+					<h3 class="description">Description</h3>
+					<p>supports <code class="inline-code">auto</code> or a numeric value between <code class="inline-code">-100</code> and <code class="inline-code">100</code></p>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">s</code>
+								</td>
+								<td>string | number</td>
+								<td>
+									a Number between <code class="inline-code">-100</code> and <code class="inline-code">100</code> or <code class="inline-code">auto</code>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="sharpen" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="sharpen-">sharpen( )</span>
+						<h2>sharpen( )</h2></hgroup>
+					<p>Sharpens the image using radius</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.sharpen(radius)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">radius</code>
+								</td>
+								<td>number</td>
+								<td>
+									sharpening mask radius, <code class="inline-code">0</code> to image size
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="size" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="size-">size( )</span>
+						<h2>size( )</h2></hgroup>
+					<p>The shorthand to set width and height</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.size(w, h)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">w</code>
+								</td>
+								<td>Number</td>
+								<td>
+									a number greater than <code class="inline-code">0</code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">h</code>
+								</td>
+								<td>Number</td>
+								<td>
+									a number greater than <code class="inline-code">0</code>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="unsharpMask" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="unsharpmask-">unsharpMask( )</span>
+						<h2>unsharpMask( )</h2></hgroup>
+					<p>Sharpens the image using radius, amount &amp; threshold parameters</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.unsharpMask(radius, amount, amount)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">radius</code>
+								</td>
+								<td>number</td>
+								<td>
+									the unsharp mask radius. default value: <code class="inline-code">0.50</code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">amount</code>
+								</td>
+								<td>number</td>
+								<td>
+									the unsharp mask amount. default value: <code class="inline-code">0.20</code>.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">amount</code>
+								</td>
+								<td>number</td>
+								<td>
+									the unsharp mask threshold. default value: <code class="inline-code">0.00</code>.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="us" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="us-">us( )</span>
+						<h2>us( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">unsharpMask</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.us()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="w" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="w-">w( )</span>
+						<h2>w( )</h2></hgroup>
+					<p>An alias for <code class="inline-code">width</code></p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.w()</code></pre>
+					</figure>
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="width" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="width-">width( )</span>
+						<h2>width( )</h2></hgroup>
+					<p>The width constraint</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.width(w)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">w</code>
+								</td>
+								<td>Number</td>
+								<td>
+									a number greater than <code class="inline-code">0</code>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="x" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="x-">x( )</span>
+						<h2>x( )</h2></hgroup>
+					<p>The <code class="inline-code">x</code> value of the crop</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.x(x)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">x</code>
+								</td>
+								<td>number</td>
+								<td>
+									the x value
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<p><span id="y" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="y-">y( )</span>
+						<h2>y( )</h2></hgroup>
+					<p>The <code class="inline-code">y</code> value of the crop</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">crop.y(y)</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">y</code>
+								</td>
+								<td>number</td>
+								<td>
+									the y value
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td>this</td>
+								<td>the operation</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<nav id="prev-next-nav">
+				</nav>
+			</article>
+		</section>
+	</main>
+
+	<script src="http://wix.github.io/wixmedia-js/scripts/wixdocs-app.js"></script>
 
 </body>
+
 </html>

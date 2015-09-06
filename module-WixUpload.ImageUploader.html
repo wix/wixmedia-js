@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AlignmentMixin - WixMP JavaScript API</title>
+	<title>module:WixUpload.ImageUploader - WixMP JavaScript API</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content=" " />
 	<link type="text/css" rel="stylesheet" href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
@@ -13,7 +13,7 @@
 	<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon" />
 </head>
 
-<body data-entity-id="AlignmentMixin" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
+<body data-entity-id="module:WixUpload.ImageUploader" data-base-url="http://wix.github.io/wixmedia-js" data-enable-sliding="false">
 	<div class="fixed-header">
 		<div class="container">
 			<div class="docs-logo-container">
@@ -81,8 +81,18 @@
 					<li class="item left-nav-item" data-entity-id="module:WixUpload.AudioUploader">
 						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.AudioUploader.html" target="_self">WixUpload.AudioUploader </a>
 					</li>
-					<li class="item left-nav-item" data-entity-id="module:WixUpload.ImageUploader">
-						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.ImageUploader.html" target="_self">WixUpload.ImageUploader </a>
+					<li class="item left-nav-item current-doc" data-entity-id="module:WixUpload.ImageUploader">
+						<a href="#" id="currentNavTarget">WixUpload.ImageUploader</a>
+						<nav id="onThisPage">
+							<ul class="nav nav-stacked otp-nav nav-open">
+								<li class="item otp-li">
+									<a class="otp" href="#uploadfromb64-">uploadFromB64( )</a>
+								</li>
+								<li class="item otp-li">
+									<a class="otp" href="#uploadfromfile-">uploadFromFile( )</a>
+								</li>
+							</ul>
+						</nav>
 					</li>
 					<li class="item left-nav-item" data-entity-id="module:WixUpload.VideoUploader">
 						<a href="http://wix.github.io/wixmedia-js/module-WixUpload.VideoUploader.html" target="_self">WixUpload.VideoUploader </a>
@@ -111,52 +121,35 @@
 		<section>
 			<article class="content-holder">
 				<header class="section-header">
-					<div class="title">AlignmentMixin</div>
+					<div class="title">module:WixUpload.ImageUploader</div>
 					<div class="header-context"></div>
 				</header>
 				<section>
-					<h1 class="alignmentmixin">AlignmentMixin</h1>
+					<h1 class="wixupload-imageuploader">WixUpload.ImageUploader</h1>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
 					<h3 class="contents">Contents</h3>
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td><a href="AlignmentMixin.html#.al">al( )</a></td>
-								<td>An alias for <code class="inline-code">alignment</code></td>
+								<td><a href="module-WixUpload.ImageUploader.html#.uploadFromB64">uploadFromB64( )</a></td>
+								<td>Uploads a base64 encoded image to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned</td>
 							</tr>
 							<tr>
-								<td><a href="AlignmentMixin.html#.alignment">alignment( )</a></td>
-								<td>Sets the alignment value for this operation Defaults#Alignment</td>
+								<td><a href="module-WixUpload.ImageUploader.html#.uploadFromFile">uploadFromFile( )</a></td>
+								<td>Uploads an image to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 				<section>
-					<p><span id=".al" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="al-">al( )</span>
-						<h2>al( )</h2></hgroup>
-					<p>An alias for <code class="inline-code">alignment</code></p>
+					<p><span id=".uploadFromB64" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="uploadfromb64-">uploadFromB64( )</span>
+						<h2>uploadFromB64( )</h2></hgroup>
+					<p>Uploads a base64 encoded image to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned</p>
 					<figure class="code-example">
 
-						<pre><code class="language-javascript">AlignmentMixin.al()</code></pre>
-					</figure>
-					<h3 class="return-value">Return Value</h3>
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>this</td>
-								<td>the operation</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-				<section>
-					<p><span id=".alignment" class="nav-target"></span></p>
-					<hgroup><span class="h_subheading" id="alignment-">alignment( )</span>
-						<h2>alignment( )</h2></hgroup>
-					<p>Sets the alignment value for this operation Defaults#Alignment</p>
-					<figure class="code-example">
-
-						<pre><code class="language-javascript">AlignmentMixin.alignment(a)</code></pre>
+						<pre><code class="language-javascript">module:WixUpload.ImageUploader.uploadFromB64(name, data, [success])</code></pre>
 					</figure>
 					<h3 class="parameters">Parameters</h3>
 					<table class="table table-condensed">
@@ -168,11 +161,30 @@
 						<tbody>
 							<tr>
 								<td>
-									<code class="inline-code">a</code>
+									<code class="inline-code">name</code>
 								</td>
-								<td>Alignments</td>
+								<td>string</td>
 								<td>
-									the alignment value
+									The name of the image
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">data</code>
+								</td>
+								<td>string</td>
+								<td>
+									The data of the image. Data must start with data:image/{jpg|png|gif|..};base64,
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">success</code>
+									<span class="param-properties">(optional)</span>
+								</td>
+								<td>UploadStatus</td>
+								<td>
+									An optional callback triggered on success
 								</td>
 							</tr>
 						</tbody>
@@ -182,11 +194,96 @@
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
-								<td>this</td>
-								<td>the operation</td>
+								<td><a href="upload.data.ImageMedia.html">ImageMedia[ ]</a></td>
+								<td>A promise that will yield an <a href="upload.data.ImageMedia.html">upload.data.ImageMedia</a> object, or null if using callbacks</td>
 							</tr>
 						</tbody>
 					</table>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
+				</section>
+				<section>
+					<p><span id=".uploadFromFile" class="nav-target"></span></p>
+					<hgroup><span class="h_subheading" id="uploadfromfile-">uploadFromFile( )</span>
+						<h2>uploadFromFile( )</h2></hgroup>
+					<p>Uploads an image to the Wix Media Platform. Accepts callbacks, or returns a promise. If callbacks are not supplied, a Promise is returned</p>
+					<figure class="code-example">
+
+						<pre><code class="language-javascript">module:WixUpload.ImageUploader.uploadFromFile(path, [success])</code></pre>
+					</figure>
+					<h3 class="parameters">Parameters</h3>
+					<table class="table table-condensed">
+						<colgroup>
+							<col class="col-xs-2">
+								<col class="col-xs-2">
+									<col class="col-xs-8">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline-code">path</code>
+								</td>
+								<td>string</td>
+								<td>
+									The local path to the image
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline-code">success</code>
+									<span class="param-properties">(optional)</span>
+								</td>
+								<td>UploadStatus</td>
+								<td>
+									An optional callback triggered on success
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="return-value">Return Value</h3>
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<td><a href="upload.data.ImageMedia.html">ImageMedia[ ]</a></td>
+								<td>A promise that will yield an <a href="upload.data.ImageMedia.html">upload.data.ImageMedia</a> object, or null if using callbacks</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3 class="examples">Examples</h3>
+					<figure class="code-example">
+						<figcaption>
+							<p>Uploading an image file with callbacks</p>
+						</figcaption>
+						<div class="code-block">
+							<img class="copy-button" data-toggle="tooltip" data-title="Copied" src="http://wix.github.io/wixmedia-js/images/copy.png" />
+							<pre class="hidden-code">dmFyIHdtcyA9IHJlcXVpcmUoJ3dpeG1lZGlhJyk7Cgp2YXIgdXBsb2FkZXIgPSB3bXMudXBsb2FkZXIoJ0FQUF9LRVknLCAnU0VDUkVUX0tFWScpOwp1cGxvYWRlci5pbWFnZXMoKS51cGxvYWRGcm9tRmlsZSgndGVzdDEuanBnJywgZnVuY3Rpb24oZXJyLCBzdWNjZXNzKSB7Cgljb25zb2xlLmxvZyhlcnIpOwoJY29uc29sZS5sb2coc3VjY2Vzcy5maWxlSWQoKSk7Cn0pOw==</pre>
+						</div>
+						<pre><code class="language-javascript">var wms = require('wixmedia');
+
+var uploader = wms.uploader('APP_KEY', 'SECRET_KEY');
+uploader.images().uploadFromFile('test1.jpg', function(err, success) {
+	console.log(err);
+	console.log(success.fileId());
+});</code></pre>
+					</figure>
+					<figure class="code-example">
+						<figcaption>
+							<p>Uploading an image file with promises</p>
+						</figcaption>
+						<div class="code-block">
+							<img class="copy-button" data-toggle="tooltip" data-title="Copied" src="http://wix.github.io/wixmedia-js/images/copy.png" />
+							<pre class="hidden-code">dmFyIHdtcyA9IHJlcXVpcmUoJ3dpeG1lZGlhJyk7Cgp2YXIgdXBsb2FkZXIgPSB3bXMudXBsb2FkZXIoJ0FQUF9LRVknLCAnU0VDUkVUX0tFWScpOwp1cGxvYWRlci5pbWFnZXMoKS51cGxvYWRGcm9tRmlsZSgndGVzdDEuanBnJykudGhlbihmdW5jdGlvbihkYXRhKSB7Cgljb25zb2xlLmxvZyhkYXRhLmZpbGVJZCgpKTsKfSk7</pre>
+						</div>
+						<pre><code class="language-javascript">var wms = require('wixmedia');
+
+var uploader = wms.uploader('APP_KEY', 'SECRET_KEY');
+uploader.images().uploadFromFile('test1.jpg').then(function(data) {
+	console.log(data.fileId());
+});</code></pre>
+					</figure>
+					<h3 class="supported-runtimes">Supported Runtimes</h3>
+					<p>Node.js</p>
 				</section>
 				<nav id="prev-next-nav">
 				</nav>
