@@ -22,10 +22,10 @@ To begin working with Wix Media Platform:
 
 ### Image Manipulation ###
 #### Node.js
-````js
+````javascript
 var BASE_URL = "<your base URL here>";
 var WixImage = require('wixmedia').WixImage;
-var image = new WixImage(BASE_URL, "<your image ID here>", "<image_name>");
+var image = WixImage(BASE_URL, "<your image ID here>", "<image_name>");
 var fit = image.fit().w(1000).h(1000);
 //prints out the new URL for an image that has width of 1000px and height of 1000px
 console.log(fit.toUrl());
@@ -61,7 +61,7 @@ var API_SECRET = "<SECRET_KEY>";
 var wixmedia = require("wixmedia");
 
 var uploader = wixmedia.uploader(API_KEY, API_SECRET);
-uploader.uploadFromFile("files/images/wixLogo.jpg", function(data) {
+uploader.images().uploadFromFile("files/images/wixLogo.jpg", function(data) {
   console.log("New image created:" + data.imageId);
 }, function(error) {
   console.log(error);
@@ -76,7 +76,7 @@ var API_SECRET = "<SECRET_KEY>";
 var wixmedia = require("wixmedia");
 
 var uploader = wixmedia.uploader(API_KEY, API_SECRET);
-uploader.uploadFromFile("files/images/wixLogo.jpg").then(function(data) {
+uploader.images().uploadFromFile("files/images/wixLogo.jpg").then(function(data) {
   console.log("New image created:" + data.imageId);
 }, function(error) {
   console.log(error);

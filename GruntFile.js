@@ -105,20 +105,9 @@ module.exports = function(grunt) {
                 }
             }
         },
-        jsdoc : {
-            dist : {
-                src: ['src/images.js', 'src/wixmedia.js', 'src/node/upload.js', 'README.md'],
-                options: {
-                    destination: 'docs',
-                    private : false,
-                    configure: 'jsdoc.conf.json',
-                    template: 'node_modules/grunt-jsdoc/node_modules/ink-docstrap/template'
-                }
-            }
-        },
         'gh-pages': {
             options: {
-                base: 'docs'
+                base: 'jsdoc/wixdocs'
             },
             src: ['**']
         }
@@ -129,15 +118,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha');
-    grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('grunt-gh-pages');
 
     // Default task(s).
     grunt.registerTask('web', ['clean:dist', 'jshint', 'browserify:dist', 'browserify:build', 'browserify:distImageApi', 'browserify:buildImageApi']);
     grunt.registerTask('web-tests', ['clean:build', 'browserify:build', 'browserify:buildImageApi', 'browserify:specs', 'mocha']);
-    grunt.registerTask('docs', ['clean:jsdoc', 'jsdoc']);
 
-    grunt.registerTask('publish', ['docs', 'gh-pages']);
+    grunt.registerTask('publish', ['gh-pages']);
 
 
 };

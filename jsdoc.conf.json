@@ -3,29 +3,30 @@
         "allowUnknownTags": true
     },
     "source": {
+        "include" : ["src/images.js", "src/wixmedia.js", "src/node/upload.js", "src/node/authconfig.js", "src/node/AuthClient.js"],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "(^|\\/|\\\\)_"
-    },
-    "plugins": [
-        "plugins/markdown"
-    ],
-    "markdown": {
-        "parser": "gfm",
-        "hardwrap": true
     },
     "opts": {
         "lenient": false
     },
     "templates": {
-        "cleverLinks": true,
-        "monospaceLinks": false,
-        "systemName"      : "Wix Media",
-        "footer"          : "<a href='http://media.wix.com/docs'>Wix Media Developer Center</a>",
-        "copyright"       : "2014, Wix",
-        "navType"         : "vertical",
-        "theme"           : "spacelab",
-        "linenums"        : false,
-        "collapseSymbols" : false,
-        "inverseNav"      : false
+        "migrateExamples": false,
+        "snippetsDir" : "jsdoc/examples",
+        "apiTitle" : "WixMP JavaScript API",
+        "fullSignatures": false,
+        "readme" : "README.md",
+        "appendices" : false,
+        "showMixins" : false,
+        "filters" : {
+            "components" : {
+                "title" : "Supported Runtimes",
+                "sectionTitle" : "Supported Runtimes",
+                "list" : {
+                    "nodejs" : "Node.js",
+                    "browser" : "Browser"
+                }
+            }
+        }
     }
 }
