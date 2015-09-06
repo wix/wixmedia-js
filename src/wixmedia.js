@@ -40,7 +40,8 @@ module.exports = {
 	 * @summary Returns a new UploadClient. Only available in Node.js
 	 * @param {string} apiKey - your API key
 	 * @param {string} secretKey - your secret key
-	 * @returns {UploadClient} an upload client
+	 * @returns {module:WixUpload} an upload client
+	 * @component nodejs
 	 */
 	uploader : function(apiKey, secretKey) {
 		if(secretKey !== undefined) {
@@ -54,26 +55,33 @@ module.exports = {
 	},
 
 	/**
-	 * Methods dealing with authentication when authenticating against wixmp
-	 * @namespace
+	 * @summary Methods dealing with authentication when authenticating against wixmp
+	 * @namespace WixAuth
 	 * @memberof module:WixMedia
+	 * @component nodejs
 	 */
 	auth : {
 		/**
-		 * Config factory to create configurations
+		 * @summary Config factory to create configurations
 		 * @param {AuthModes} mode The auth mode
 		 * @return {WixConfig|TenantConfig} A config object for use with AuthClient and uploader
+		 * @component nodejs
+		 * @memberof module:WixMedia.WixAuth
 		 */
 		config : authconfig.authConfig,
 
 		/**
 		 * Authentication modes used with uploading
+		 * @component nodejs
+		 * @memberof module:WixMedia.WixAuth
 		 */
 		modes: authconfig.AuthModes,
 		/**
-		 * Creates a new AuthClient. Only available in Node.js
+		 * @summary Creates a new AuthClient. Only available in Node.js
 		 * @param config {AuthConfig}
 		 * @returns {AuthClient}
+		 * @component nodejs
+		 * @memberof module:WixMedia.WixAuth
 		 */
 		client: function(config) {
 			return new AuthClient(config);

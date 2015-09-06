@@ -3,7 +3,7 @@
         "allowUnknownTags": true
     },
     "source": {
-        "include" : ["src/images.js", "src/wixmedia.js"],
+        "include" : ["src/images.js", "src/wixmedia.js", "src/node/upload.js", "src/node/authconfig.js", "src/node/AuthClient.js"],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
@@ -17,6 +17,16 @@
         "fullSignatures": false,
         "readme" : "README.md",
         "appendices" : false,
-        "showMixins" : false
+        "showMixins" : false,
+        "filters" : {
+            "components" : {
+                "title" : "Supported Runtimes",
+                "sectionTitle" : "Supported Runtimes",
+                "list" : {
+                    "nodejs" : "Node.js",
+                    "browser" : "Browser"
+                }
+            }
+        }
     }
 }

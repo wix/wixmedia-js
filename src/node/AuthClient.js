@@ -39,6 +39,17 @@ MediaHMACRequest.prototype.toRequestAuth = function(signature) {
 	return this.config.serviceName + " " + this.apiKey + ":" + signature;
 };
 
+/**
+ * @summary Authentication functionality
+ * @namespace auth
+ */
+
+/**
+ * @summary Creates a client that can authenticate against WixMP
+ * @param config
+ * @constructor
+ * @memberof auth
+ */
 function AuthClient(config) {
 	var c = config.toConfig();
 	if(!c.validate()) {
@@ -49,6 +60,15 @@ function AuthClient(config) {
 	this.authPromise = null;
 }
 
+/**
+ * @summary Retrieves a token for use authentication against REST APIs for WixMP services
+ * @param {function} callback The callback to accept the auth token, or an error
+ * @returns {Promise}
+ * @fulfill {external:String} An auth token
+ * @reject {Error} an Error object
+ * @memberof auth.AuthClient
+ * @syntax authClient.getAuthToken()
+ */
 AuthClient.prototype.getAuthToken = function(callback) {
 	var deferred = Q.defer();
 	var that = this;
@@ -111,6 +131,15 @@ AuthClient.prototype.getAuthHeaders = function(authToken) {
 	};
 };
 
+/**
+ * @summary Provisions a new user when in tenant configuration
+ * @param {function} callback Indicates that the provision succeeded or failed
+ * @syntax authClient.provision()
+ * @memberof auth.AuthClient
+ * @returns {Promise}
+ * @fulfill {void} Indicates success
+ * @reject {Error} an Error object
+ */
 AuthClient.prototype.provision = function(callback) {
 	var deferred = Q.defer();
 	var that = this;
