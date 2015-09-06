@@ -44,6 +44,7 @@ module.exports = {
 	 * @component nodejs
 	 */
 	uploader : function(apiKey, secretKey) {
+		var config;
 		if(secretKey !== undefined) {
 			config = authconfig.authConfig(authconfig.AuthModes.WIX).apiKey(apiKey).secretKey(secretKey);
 		} else if(typeof apiKey !== 'string') {

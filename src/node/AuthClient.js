@@ -149,7 +149,7 @@ AuthClient.prototype.provision = function(callback) {
 			path : PROVISION_PATH,
 			host : that.config.url
 		};
-		mediaHttp.request(options).then(function(data) {
+		mediaHttp.request(options).then(function() {
 			deferred.resolve();
 			if (typeof callback === "function") {
 				callback(null, null);
