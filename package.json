@@ -1,6 +1,6 @@
 {
     "name": "wixmedia",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "An SDK to access Wix Media Platform image manipulation APIs and upload capabilities",
     "main": "./src/wixmedia.js",
     "dependencies" : {
