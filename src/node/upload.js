@@ -173,14 +173,15 @@ function B64Data(imageName, data) {
 }
 
 B64Data.prototype.getUploadData = function() {
+	var that = this;
 	return new Promise(function (resolve, reject) {
 		try {
-			var matches = this.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+			var matches = that.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
 			if (matches === null || matches.length < 2) {
 				reject('Bad image Base64 header');
 			} else {
-				resolve(rest.data(this.imageName, null, new Buffer(matches[2], 'base64')));
+				resolve(rest.data(that.imageName, null, new Buffer(matches[2], 'base64')));
 			}
 		}catch(e) {
 			reject('Bad image Base64 header');

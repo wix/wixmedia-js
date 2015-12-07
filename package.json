@@ -4,6 +4,7 @@
     "description": "An SDK to access Wix Media Platform image manipulation APIs and upload capabilities",
     "main": "./src/wixmedia.js",
     "dependencies" : {
+        "bluebird": "^3.0.6",
         "q" : "1.0.1",
         "restler" : "3.2.2",
         "wix-auth-hmac" : "1.0.0",
