@@ -211,7 +211,7 @@ function uploadMedia(client, mode, mediaData, callback) {
 
 				}).on('complete', function (data) {
 					if (data.hasOwnProperty('error_code')) {
-						handleReject(data, callback);
+						handleReject(data, callback, reject);
 					} else {
 						var retVal = mode.toMetadata(data[0]);
 						if (typeof callback === "function") {
