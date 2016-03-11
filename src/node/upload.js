@@ -22,10 +22,21 @@ function decorate(context, data) {
 	Object.defineProperty(context, "iconUrl", { get: function () { return data.icon_url; } });
 	Object.defineProperty(context, "fileUrl", { get: function () { return data.file_url; } });
 	Object.defineProperty(context, "hash", { get: function () { return data.hash; } });
+	Object.defineProperty(context, "labels", { get: function () { return data.labels; } });
 	Object.defineProperty(context, "fileSize", { get: function () { return data.file_size; } });
 	Object.defineProperty(context, "fileName", { get: function () { return data.file_name; } });
 	Object.defineProperty(context, "originalFileName", { get: function () { return data.original_file_name; } });
 	Object.defineProperty(context, "rawData", { get: function () { return data; } });
+	Object.defineProperty(context, "faces", {
+		get: function () {
+			if(data.file_input && data.file_input.face) {
+				return data.file_input.face;
+			}
+			return [];
+		}
+	});
+
+
 }
 
 /**
